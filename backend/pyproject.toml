@@ -1,0 +1,49 @@
+# ---------------------------------------------------------------------------
+# Better Call Kanoon - backend tool configuration.
+#
+# There is deliberately NO [build-system] / [project] section: this directory is
+# an application that is run directly from a source checkout, not a library
+# that gets published to an index. Dependencies live in requirements.txt.
+#
+# Every path below is resolved relative to `backend/`, because ruff and pytest
+# are both run from this directory.
+# ---------------------------------------------------------------------------
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+# `.venv`, caches and generated artefacts live at the repo root or under the
+# data/logs directories; neither is Python source, so neither is linted.
+extend-exclude = [".venv", "venv", "data", "logs", ".git", ".pytest_cache", ".ruff_cache"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "F",    # pyflakes
+    "W",    # pycodestyle warnings
+    "I",    # isort - import ordering
+    "N",    # pep8-naming
+    "UP",   # pyupgrade - modern syntax
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "ANN",  # flake8-annotations - require type hints
+]
+ignore = [
+    "ANN401",  # allow `Any` where a dynamic payload genuinely needs it (e.g. JSON blobs)
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Tests legitimately build many small local fixtures and assert on raw values.
+"tests/*" = ["ANN201", "ANN001", "S101"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+# `tests/` sits beside this file, inside `backend/`.
+testpaths = ["tests"]
+addopts = "-q"

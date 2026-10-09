@@ -1,0 +1,79 @@
+# ---------------------------------------------------------------------------
+# Better Call Kanoon - Docker build context exclusions.
+#
+# This file is not optional. Without it, `COPY frontend/ ./` in the Dockerfile's
+# node stage copies the HOST's node_modules over the Linux ones that `npm ci`
+# just installed. On a Windows host that means win32 binaries landing on top of
+# linux-gnu binaries, and `vite build` fails inside the image. It also bloats
+# the 88 MB dependency tree into the build context on every single build.
+#
+# Same story for `.venv`: without this exclusion the entire Windows virtualenv
+# (every .pyd and .dll in site-packages) is shipped to the daemon on each build.
+# ---------------------------------------------------------------------------
+
+# --- Secrets ---------------------------------------------------------------
+# Never let a real .env reach the daemon, the build cache, or an image layer.
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# --- Host dependency trees -------------------------------------------------
+# The node stage runs `npm ci` itself, from package-lock.json, so it always
+# installs for the TARGET platform rather than the host's.
+node_modules
+**/node_modules
+
+# --- Host virtualenvs ------------------------------------------------------
+# The python stage runs `pip install -r requirements.txt` itself.
+.venv
+**/.venv
+venv
+**/venv
+env
+**/env
+
+# --- Build output (regenerated inside the image) ---------------------------
+# frontend/dist is produced by the node stage; copying the host's copy in
+# would shadow it and could mask a stale local build.
+dist
+**/dist
+build
+**/build
+
+# --- Caches ----------------------------------------------------------------
+__pycache__
+**/__pycache__
+*.py[cod]
+.pytest_cache
+**/.pytest_cache
+.ruff_cache
+**/.ruff_cache
+.mypy_cache
+**/.mypy_cache
+*.egg-info
+**/*.egg-info
+
+# --- VCS, CI and editor metadata -------------------------------------------
+.git
+.gitignore
+.github
+.vscode
+.idea
+.claude
+*.swp
+*.swo
+*~
+
+# --- OS cruft --------------------------------------------------------------
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
+
+# --- Docs and assets the image does not need -------------------------------
+# The README documents local development; it has no place in a runtime image.
+*.md
+!backend/**/*.md

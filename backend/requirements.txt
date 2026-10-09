@@ -1,0 +1,54 @@
+# ---------------------------------------------------------------------------
+# Better Call Kanoon - Stage 1-2 backend runtime + development dependencies.
+#
+# Install from the `backend/` directory:
+#
+#     ../.venv/Scripts/python.exe -m pip install -r requirements.txt
+#
+# Still deliberately lightweight: configuration layer, FastAPI app factory,
+# /api/health and /api/config endpoints, serving the built frontend from
+# ../frontend/dist, and PDF text extraction. There is no ML stack yet, so a
+# fresh clone installs in seconds.
+# ---------------------------------------------------------------------------
+
+# --- Web framework ----------------------------------------------------------
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.27,<1.0
+
+# --- Settings / validation --------------------------------------------------
+pydantic>=2.6,<3.0
+pydantic-settings>=2.2,<3.0
+python-dotenv>=1.0,<2.0
+
+# --- PDF text extraction (Stage 2) -----------------------------------------
+# PyMuPDF is licensed AGPL-3.0. It is used here as a separate, unmodified
+# library invoked at ingest time - not linked into, vendored into, or
+# redistributed as part of this application - and it runs entirely locally.
+# Anyone redistributing a build that embeds it must satisfy the AGPL; see the
+# licensing note in README.md before shipping this anywhere.
+#
+# Import as `pymupdf`. The older `fitz` name is a different, unmaintained
+# package and is deliberately not used.
+pymupdf>=1.24,<2.0
+
+# --- HTTP client (required by fastapi.testclient) ---------------------------
+httpx>=0.27,<1.0
+
+# --- Test tooling -----------------------------------------------------------
+pytest>=8.0,<9.0
+ruff>=0.5,<1.0
+
+# ---------------------------------------------------------------------------
+# NOT installed yet - added in the stage that first needs them, because each of
+# these pulls in large compiled binaries and slows every install:
+#
+#   Stage 3 - hybrid retrieval   : sentence-transformers>=3.0,<4.0
+#                                    torch>=2.2
+#                                    faiss-cpu>=1.8,<2.0
+#                                    rank-bm25>=0.2,<0.3
+#   Stage 4 - answer generation  : groq>=0.11,<1.0
+#   Stage 5 - evaluation harness : datasets / pandas only if the metrics need them
+#
+# Voice input/output uses the browser Web Speech API first, so there is no
+# server-side speech dependency planned for the near term.
+# ---------------------------------------------------------------------------

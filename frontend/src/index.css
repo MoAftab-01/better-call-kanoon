@@ -1,0 +1,740 @@
+/* ==========================================================================
+   Better Call Kanoon — design system
+   Carried over 1:1 from the original vanilla-CSS prototype. Deep navy base,
+   off-white text, one restrained gold accent. No glow, no glassmorphism, no
+   heavy gradients.
+
+   Class names are unchanged from that stylesheet so the port stays faithful to
+   the original design. JSX-only additions are the `.msg-*` message-list block,
+   which had no vanilla counterpart.
+
+   Zero network egress: the only images here are `data:` URIs, and there are no
+   @font-face rules — the font stack uses whatever the device already has.
+   ========================================================================== */
+
+:root {
+  /* Surface + ink ------------------------------------------------------------ */
+  --navy-950: #0a0f18;
+  --navy-900: #0e1420;
+  --navy-850: #121a28;
+  --navy-800: #172032;
+  --navy-700: #1f2a40;
+  --line: #283349;
+  --line-soft: #1d2536;
+
+  --ink: #eef1f7;          /* primary text — 16.3:1 on --navy-900 (WCAG AAA) */
+  --ink-muted: #b6c0d4;    /* secondary text — 10.1:1 (WCAG AAA) */
+  --ink-faint: #8d98ae;    /* tertiary text — 6.4:1 (WCAG AA for body text) */
+
+  /* Accent ------------------------------------------------------------------- */
+  --gold: #d4b15f;
+  --gold-strong: #e2c377;
+  --gold-dim: rgba(212, 177, 95, 0.14);
+  --gold-line: rgba(212, 177, 95, 0.38);
+
+  /* Semantic ----------------------------------------------------------------- */
+  --ok: #7fd1a4;
+  --warn: #f0c274;
+  --danger: #f0938f;
+
+  /* Geometry ----------------------------------------------------------------- */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+
+  --shell: 1080px;
+  --gutter: 20px;
+
+  --dur: 180ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+          "Noto Sans", "Noto Sans Devanagari", Arial, sans-serif;
+}
+
+/* Reset --------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--navy-900);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, p, ul, li, figure { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+a { color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--gold-strong); }
+
+:focus-visible {
+  outline: 2px solid var(--gold-strong);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -60px; left: 12px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--gold);
+  color: var(--navy-950);
+  font-weight: 600;
+  border-radius: var(--r-sm);
+  transition: top var(--dur) var(--ease);
+}
+.skip-link:focus { top: 12px; color: var(--navy-950); }
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Header -------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(10, 15, 24, 0.94);
+  border-bottom: 1px solid var(--line-soft);
+  backdrop-filter: saturate(140%) blur(6px);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-block: 14px;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 38px; height: 38px;
+  border: 1px solid var(--gold-line);
+  border-radius: 10px;
+  background: var(--gold-dim);
+}
+.brand-mark svg {
+  width: 22px; height: 22px;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.brand-text { display: flex; flex-direction: column; min-width: 0; }
+.brand-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.brand-tagline {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  line-height: 1.35;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Language switch ------------------------------------------------------------ */
+.lang-switch {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  background: var(--navy-850);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.lang-btn {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-muted);
+  font: inherit;
+  font-size: 0.83rem;
+  font-weight: 500;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.lang-btn:hover { color: var(--ink); }
+.lang-btn[aria-pressed="true"] {
+  background: var(--gold-dim);
+  color: var(--gold-strong);
+  box-shadow: inset 0 0 0 1px var(--gold-line);
+}
+
+/* Buttons -------------------------------------------------------------------- */
+.btn {
+  appearance: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--navy-850);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease),
+              color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.btn:hover { background: var(--navy-800); border-color: #33415c; }
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #14100a;
+}
+.btn-primary:hover { background: var(--gold-strong); border-color: var(--gold-strong); }
+
+.btn-ghost { background: transparent; }
+
+.btn-emergency { white-space: nowrap; }
+
+.dot {
+  width: 8px; height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--ink-faint);
+}
+.dot-alert { background: var(--danger); }
+
+.service-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+.dot[data-state="pending"] { background: var(--ink-faint); }
+.dot[data-state="ok"]      { background: var(--ok); }
+.dot[data-state="down"]    { background: var(--danger); }
+
+/* Notices -------------------------------------------------------------------- */
+.notice {
+  margin-top: 14px;
+  padding: 11px 14px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--line);
+  background: var(--navy-850);
+  color: var(--ink-muted);
+  font-size: 0.86rem;
+}
+.notice-warn {
+  border-color: rgba(240, 194, 116, 0.4);
+  background: rgba(240, 194, 116, 0.08);
+  color: #f2d3a0;
+}
+
+/* An author-level `display` beats the UA sheet's `[hidden] { display: none }`,
+   so every dismissible element needs this to actually hide. */
+[hidden] {
+  display: none !important;
+}
+
+.banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--gold-line);
+  border-left-width: 3px;
+  border-radius: var(--r-md);
+  background: var(--gold-dim);
+}
+.banner-text {
+  flex: 1;
+  font-size: 0.86rem;
+  color: var(--ink-muted);
+}
+.banner-close {
+  appearance: none;
+  flex: none;
+  width: 28px; height: 28px;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background: transparent;
+  color: var(--ink-muted);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.banner-close:hover { background: rgba(255, 255, 255, 0.07); color: var(--ink); }
+
+/* Main ----------------------------------------------------------------------- */
+.site-main { flex: 1; padding-block: 8px 40px; }
+
+.hero { padding-block: 44px 8px; max-width: 30ch; }
+.hero-heading {
+  font-size: clamp(1.7rem, 1.15rem + 2.4vw, 2.5rem);
+  font-weight: 650;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+.hero-sub {
+  margin-top: 14px;
+  color: var(--ink-muted);
+  font-size: 0.98rem;
+  max-width: 46ch;
+}
+
+.section-heading {
+  margin-bottom: 16px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.starter { margin-top: 40px; }
+.starter-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.starter-card {
+  width: 100%;
+  text-align: left;
+  appearance: none;
+  cursor: pointer;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--navy-850);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.94rem;
+  font-weight: 500;
+  line-height: 1.45;
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease),
+              transform var(--dur) var(--ease);
+}
+.starter-card:hover {
+  border-color: var(--gold-line);
+  background: var(--navy-800);
+  transform: translateY(-1px);
+}
+
+/* Composer console ----------------------------------------------------------- */
+.console {
+  margin-top: 44px;
+  padding: 24px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-xl);
+  background: var(--navy-850);
+}
+
+.mic-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-block: 8px 26px;
+}
+
+.mic {
+  appearance: none;
+  display: grid;
+  place-items: center;
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--navy-800);
+  color: var(--ink-faint);
+  position: relative;
+}
+.mic:disabled { cursor: not-allowed; opacity: 0.85; }
+.mic:not(:disabled) { cursor: pointer; }
+.mic[data-listening="true"] {
+  border-color: var(--gold-line);
+  background: var(--gold-dim);
+  color: var(--gold-strong);
+}
+.mic-icon {
+  width: 32px; height: 32px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+/* Idle ring pulse while enabled — a gentle "ready" breath. With the mic
+   disabled this stage the animation is removed entirely, because a pulsing ring
+   on a control that cannot be pressed is a lie about the interface. */
+.mic:not(:disabled)::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-line);
+  opacity: 0;
+  animation: mic-pulse 3.6s var(--ease) infinite;
+}
+
+@keyframes mic-pulse {
+  0%   { opacity: 0.28; transform: scale(0.96); }
+  50%  { opacity: 0.05; transform: scale(1.06); }
+  100% { opacity: 0.28; transform: scale(0.96); }
+}
+
+.mic-hint {
+  font-size: 0.83rem;
+  color: var(--ink-faint);
+  text-align: center;
+  max-width: 34ch;
+}
+
+.composer { display: flex; flex-direction: column; gap: 12px; }
+
+.composer-input {
+  width: 100%;
+  resize: vertical;
+  min-height: 92px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--navy-900);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+.composer-input::placeholder { color: var(--ink-faint); }
+.composer-input:focus-visible { border-color: var(--gold-line); }
+
+.composer-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.composer-meta { font-size: 0.79rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+.composer-meta[data-over="true"] { color: var(--warn); font-weight: 600; }
+
+.console .notice { margin-top: 14px; }
+
+/* Voice controls ------------------------------------------------------------- */
+.voice {
+  margin-top: 40px;
+  padding: 22px 24px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-xl);
+  background: var(--navy-850);
+}
+.voice-row {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+.toggle { display: inline-flex; align-items: center; gap: 11px; cursor: pointer; }
+.toggle input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+
+.toggle-track {
+  position: relative;
+  flex: none;
+  width: 42px; height: 24px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--navy-800);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.toggle-thumb {
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.toggle input:checked + .toggle-track {
+  background: var(--gold-dim);
+  border-color: var(--gold-line);
+}
+.toggle input:checked + .toggle-track .toggle-thumb {
+  transform: translateX(18px);
+  background: var(--gold-strong);
+}
+.toggle input:focus-visible + .toggle-track {
+  outline: 2px solid var(--gold-strong);
+  outline-offset: 3px;
+}
+.toggle input:disabled + .toggle-track { opacity: 0.5; }
+.toggle-label { font-size: 0.9rem; color: var(--ink); }
+
+.field { display: inline-flex; align-items: center; gap: 10px; }
+.field-label { font-size: 0.86rem; color: var(--ink-muted); }
+
+select {
+  appearance: none;
+  padding: 9px 34px 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--navy-800)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4.5 6 8.5 10 4.5' fill='none' stroke='%23b6c0d4' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E")
+    no-repeat right 12px center / 12px;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+select:disabled { cursor: not-allowed; opacity: 0.55; }
+
+.hint {
+  margin-top: 16px;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+
+.stage-note {
+  margin-top: 34px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+/* Footer --------------------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--line-soft);
+  background: var(--navy-950);
+  padding-block: 26px 34px;
+}
+.footer-inner { display: flex; flex-direction: column; gap: 6px; }
+.footer-line { font-size: 0.8rem; color: var(--ink-faint); }
+.footer-meta { color: var(--ink-faint); }
+
+/* Emergency modal ------------------------------------------------------------ */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(4, 7, 12, 0.72);
+}
+.modal[hidden] { display: none; }
+
+.modal-card {
+  width: 100%;
+  max-width: 560px;
+  max-height: 82vh;
+  overflow-y: auto;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background: var(--navy-850);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.modal-title { font-size: 1.2rem; font-weight: 650; }
+.modal-sub { margin-top: 4px; font-size: 0.82rem; color: var(--ink-faint); }
+
+.contact-list { display: flex; flex-direction: column; gap: 10px; }
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 13px 16px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-md);
+  background: var(--navy-800);
+}
+.contact-text { min-width: 0; flex: 1 1 12rem; }
+.contact-label { font-size: 0.92rem; font-weight: 600; }
+.contact-note { font-size: 0.79rem; color: var(--ink-faint); line-height: 1.45; }
+.contact-source { font-size: 0.72rem; color: var(--ink-faint); }
+
+.contact-dial {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 15px;
+  border-radius: 999px;
+  border: 1px solid var(--gold-line);
+  background: var(--gold-dim);
+  color: var(--gold-strong);
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
+.contact-dial:hover { background: rgba(212, 177, 95, 0.22); color: var(--gold-strong); }
+
+.contact-unverified {
+  flex: none;
+  font-size: 0.72rem;
+  color: var(--warn);
+  border: 1px solid rgba(240, 194, 116, 0.35);
+  border-radius: 999px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+
+/* Message list ---------------------------------------------------------------
+   New in the React port: the vanilla Stage 1 had no message list, because there
+   was nothing to put in one. The styles follow the same tokens as everything
+   else so the console does not read as a bolted-on widget. */
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+  /* The list scrolls itself so a long conversation never pushes the composer
+     off screen. `block: nearest` semantics come from assigning scrollTop
+     directly in MessageList, which needs a scrollable box to do that. */
+  max-height: 22rem;
+  overflow-y: auto;
+}
+
+.msg-empty {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+
+.msg {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 46rem;
+}
+.msg-user { align-self: flex-end; align-items: flex-end; }
+
+.msg-role {
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.msg-user .msg-role { color: var(--gold-strong); }
+
+.msg-bubble {
+  padding: 11px 15px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--navy-800);
+  font-size: 0.93rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.msg-user .msg-bubble {
+  background: var(--gold-dim);
+  border-color: var(--gold-line);
+  color: var(--ink);
+}
+.msg-notice .msg-bubble {
+  border-color: rgba(240, 194, 116, 0.4);
+  background: rgba(240, 194, 116, 0.08);
+  color: #f2d3a0;
+}
+
+.msg-play {
+  align-self: flex-start;
+  appearance: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink-muted);
+  font: inherit;
+  font-size: 0.74rem;
+}
+.msg-play:hover { color: var(--ink); border-color: var(--gold-line); }
+.msg-play-icon { fill: currentColor; }
+
+/* Responsive ----------------------------------------------------------------- */
+@media (min-width: 560px) {
+  .starter-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 860px) {
+  :root { --gutter: 32px; }
+  .modal { align-items: center; }
+  .hero { padding-block: 60px 10px; }
+  .starter { margin-top: 52px; }
+  .console { margin-top: 56px; padding: 32px; }
+  .mic { width: 96px; height: 96px; }
+  .mic-icon { width: 36px; height: 36px; }
+}
+
+/* Reduced motion ------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Kill the idle pulse entirely. */
+  .mic::after { display: none; animation: none; }
+}

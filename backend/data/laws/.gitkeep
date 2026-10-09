@@ -1,0 +1,4 @@
+# Placeholder so this directory exists in a fresh clone.
+# Download statute PDFs from official sources such as the India Code portal and
+# drop them here. *.pdf files are git-ignored on purpose; see ../.gitkeep docs
+# in the repository .gitignore.

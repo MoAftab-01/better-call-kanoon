@@ -1,0 +1,75 @@
+# ---------------------------------------------------------------------------
+# Better Call Kanoon - single-container deployment.
+#
+#   cp backend/.env.example backend/.env     # optional; add GROQ_API_KEY if you have one
+#   docker compose up --build
+#   open http://localhost:8000
+#
+# The image is built from the repository-root Dockerfile, which builds the React
+# frontend in a node stage and copies the resulting `frontend/dist` into a
+# python-slim runtime. The container therefore serves the whole app - UI and API -
+# from a single origin, with no node_modules and no frontend/src in the image.
+#
+# No secrets are baked in: everything sensitive arrives through `env_file`, which
+# Compose reads on the host and injects at container start.
+# ---------------------------------------------------------------------------
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: better-call-kanoon:0.1.0
+    container_name: better-call-kanoon
+    restart: unless-stopped
+
+    # Read every variable from backend/.env. Docker Compose still starts the
+    # container if that file is missing, so a first run works before you do.
+    # (A root .env is NOT read here - the app's settings live in backend/.)
+    env_file:
+      - backend/.env
+
+    environment:
+      # Explicit and literal so the container's port is always defined, with or
+      # without a .env file. The value left of the colon is the HOST port, the
+      # value right of it is the CONTAINER port.
+      PORT: "${PORT:-8000}"
+      HOST: "0.0.0.0"
+      PYTHONUNBUFFERED: "1"
+      # Where the ingested corpus, the retrieval index and the helpline data
+      # live inside the container. Matches the defaults in app/config.py.
+      DATA_DIR: "data"
+      INDEX_DIR: "data/index"
+      # The built React app, copied in from the node build stage. Uncomment
+      # STATIC_DIR here only if you move the dist directory.
+      # STATIC_DIR: "../frontend/dist"
+
+    ports:
+      - "${PORT:-8000}:${PORT:-8000}"
+
+    volumes:
+      # Persist everything the ingestion script writes, across container
+      # rebuilds: the statute PDFs you downloaded into data/laws, the generated
+      # retrieval index in data/index, and the emergency helpline data.
+      # Read-write, because the ingestion script writes into data/index.
+      - ./backend/data:/app/backend/data
+      # Application logs.
+      - ./backend/logs:/app/backend/logs
+
+    healthcheck:
+      # Identical to the HEALTHCHECK baked into the image; repeating it here
+      # means `docker compose ps` reports health without inspecting the image.
+      test:
+        - CMD
+        - python
+        - -c
+        - |
+          import os, urllib.request
+          urllib.request.urlopen(
+              f"http://127.0.0.1:{os.environ.get('PORT', '8000')}/api/health",
+              timeout=4,
+          )
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

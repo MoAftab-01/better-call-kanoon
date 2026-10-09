@@ -1,0 +1,132 @@
+# ---------------------------------------------------------------------------
+# Better Call Kanoon - ignore rules (REPOSITORY ROOT)
+#
+# Layout: `backend/` is the FastAPI app (Python), `frontend/` is the Vite +
+# React + TypeScript client. This file covers BOTH sides - Python bytecode and
+# virtualenvs on one, node_modules and build output on the other.
+#
+# Why the two rules that matter most are here:
+#
+#   1. backend/data/laws/*.pdf - the statute PDFs are downloaded by the user
+#      from official sources such as the India Code portal. They are large,
+#      they change when the Government of India republishes them, and committing
+#      them would push copyrighted government material into the repository.
+#      The `data/laws/` directory itself IS tracked (via its .gitkeep), so a
+#      fresh clone still has somewhere to put them.
+#
+#   2. backend/data/index/* - the retrieval index (embeddings, chunk vectors,
+#      BM25 postings) is a BUILD ARTEFACT. It is large, it is binary, and it
+#      is fully reproducible from the law PDFs by running the ingestion script.
+#      Committing it means every re-index creates a noisy diff. Only the
+#      directory placeholder is tracked.
+# ---------------------------------------------------------------------------
+
+# --- Secrets ----------------------------------------------------------------
+# The backend's environment file is `backend/.env` (that is the directory
+# pydantic-settings reads, and the file docker-compose.yml passes through).
+# `backend/.env.example` is the only environment file that is tracked.
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# --- User-supplied legal source material ------------------------------------
+backend/data/laws/*.pdf
+backend/data/laws/*.doc
+backend/data/laws/*.docx
+
+# --- Generated retrieval index (directory kept, contents ignored) -----------
+backend/data/index/*
+!backend/data/index/.gitkeep
+
+# --- Runtime logs -----------------------------------------------------------
+# Order matters, and so does the *shape* of the pattern:
+#
+#   * `backend/logs/*` (contents, not the directory) lets git descend into
+#     backend/logs/ so the negation below can re-include the placeholder. A
+#     bare `logs/` would match backend/logs/ at ANY depth, and git never
+#     descends into an ignored directory - which would silently make
+#     `backend/logs/.gitkeep` untrackable.
+#   * `logs/*.log` is rooted at the repository root (a pattern containing a
+#     slash is anchored), so it covers a root logs/ folder without touching
+#     backend/logs/. `*.log` then catches log files anywhere.
+backend/logs/*
+logs/*.log
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+!backend/logs/.gitkeep
+
+# --- Frontend (Vite + React + TypeScript) -----------------------------------
+node_modules/
+frontend/node_modules/
+# Vite build output - a build artefact, served by the backend at runtime.
+# `npm run build` in frontend/ regenerates it; it is never committed.
+frontend/dist/
+frontend/build/
+# Vite caches and env files (the real .env.example stays tracked).
+frontend/.vite/
+frontend/.cache/
+*.local
+
+# --- Python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# --- Virtual environments ---------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# --- Test / lint / type caches ----------------------------------------------
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+
+# --- Editors and IDEs -------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.spyderproject
+.ropeproject
+
+# --- Operating system cruft -------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# --- OS / editor temp files -------------------------------------------------
+*.tmp
+*.bak
+*.orig
+
+# --- Local uploads and scratch space ----------------------------------------
+.cache/
+tmp/
+temp/

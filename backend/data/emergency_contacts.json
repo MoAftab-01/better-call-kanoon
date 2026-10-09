@@ -1,0 +1,77 @@
+{
+  "_note": "These are widely published national helpline numbers issued by the Government of India and MUST be verified against official Government of India sources before any production deployment.",
+  "contacts": [
+    {
+      "id": "emergency_response",
+      "label": "Emergency Response (all-in-one)",
+      "number": "112",
+      "note": "Single emergency number for police, fire, ambulance and disaster response.",
+      "source": "National Emergency Response Programme, Ministry of Home Affairs",
+      "verified": false
+    },
+    {
+      "id": "police",
+      "label": "Police",
+      "number": "100",
+      "note": "Law enforcement emergencies and police assistance.",
+      "source": "National Police Helpline, Ministry of Home Affairs",
+      "verified": false
+    },
+    {
+      "id": "ambulance",
+      "label": "Ambulance",
+      "number": "101",
+      "note": "Emergency medical assistance and ambulance dispatch.",
+      "source": "Emergency Ambulance Services, Ministry of Health and Family Welfare",
+      "verified": false
+    },
+    {
+      "id": "emergency_medical_rural",
+      "label": "Emergency medical (rural/remote)",
+      "number": "108",
+      "note": "Ambulance services for rural and remote areas.",
+      "source": "Emergency Ambulance Services, Ministry of Health and Family Welfare",
+      "verified": false
+    },
+    {
+      "id": "women_helpline",
+      "label": "Women helpline",
+      "number": "1091",
+      "note": "Support for women in distress, available in many languages.",
+      "source": "Women Helpline, Ministry of Women and Child Development",
+      "verified": false
+    },
+    {
+      "id": "women_domestic_violence",
+      "label": "Women domestic violence helpline",
+      "number": "181",
+      "note": "Dedicated helpline for women facing domestic violence.",
+      "source": "Women Helpline, Ministry of Women and Child Development",
+      "verified": false
+    },
+    {
+      "id": "childline",
+      "label": "Childline (child protection)",
+      "number": "1098",
+      "note": "24-hour emergency support for children in distress.",
+      "source": "Childline India Foundation, Ministry of Women and Child Development",
+      "verified": false
+    },
+    {
+      "id": "cyber_fraud",
+      "label": "Cyber Financial Fraud helpline",
+      "number": "193",
+      "note": "Report cyber financial fraud such as online scams.",
+      "source": "National Cyber Crime Reporting Portal, Ministry of Home Affairs",
+      "verified": false
+    },
+    {
+      "id": "elderline",
+      "label": "Elderline (senior citizen support)",
+      "number": "14567",
+      "note": "Helpline for senior citizens needing care, guidance or emotional support.",
+      "source": "Elderline, Ministry of Social Justice and Empowerment",
+      "verified": false
+    }
+  ]
+}
