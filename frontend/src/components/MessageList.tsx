@@ -5,7 +5,7 @@
  * stealing focus, which matters here because the composer's focus must stay in
  * the textarea while the user is typing.
  *
- * Ported behaviour note: the vanilla Stage 1 had no message list at all, because
+ * Message list displays user questions and real retrieved answers.
  * there was no chat endpoint to produce entries. This one exists so the messages
  * that *are* honest — the user's own question, and the "arrives in a later stage"
  * notice — are visible and announced.

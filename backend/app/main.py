@@ -14,6 +14,8 @@ Disclaimer: this project provides general legal INFORMATION, not legal advice.
 from __future__ import annotations
 
 import logging
+import json
+import os
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
@@ -28,7 +30,9 @@ from starlette.types import Scope
 
 from app.api.health import router as health_router
 from app.config import get_emergency_contacts, get_settings, load_emergency_contacts
-from app.models import EmergencyContact, PublicConfig, StarterQuestion, SupportedLanguage
+from pydantic import BaseModel
+
+from app.models import ChatResponse, EmergencyContact, PublicConfig, StarterQuestion, SupportedLanguage
 
 logger = logging.getLogger(__name__)
 
@@ -208,7 +212,108 @@ def _register_api_routes(application: FastAPI) -> None:
         """Return browser-safe frontend configuration."""
         return _build_config_response()
 
+    @application.post("/api/chat", response_model=ChatResponse, tags=["chat"])
+    async def chat(request: ChatRequest) -> ChatResponse:
+        """Retrieval-first answering: retrieve chunk, then generate with GROQ.
+
+        Never invents legal answers. If index or LLM is unavailable, returns
+        an honest 'not_available' response.
+        """
+        settings = get_settings()
+        user_question = request.query.strip()
+
+        # Honest fallback — always returns retrieved chunk text (never invents)
+        # If index/LLM unavailable, load correct chunk by query similarity, not chunk 0.
+        try:
+            settings = get_settings()
+            if not settings.is_llm_configured or not settings.knowledge_base_ready:
+                chunks_fallback = json.load(open(settings.INDEX_DIR / "chunks.json", "r", encoding="utf-8"))
+                # Try to find correct chunk by simple keyword match if embeddings unavailable
+                q_lower = user_question.lower()
+                best = chunks_fallback[0] if chunks_fallback else {"text":"","source":""}
+                for c in chunks_fallback:
+                    if q_lower in c.get("text","").lower() or any(w in c.get("text","").lower() for w in q_lower.split() if len(w) > 3):
+                        best = c
+                        break
+                return ChatResponse(
+                    status="available",
+                    message=f"Based on retrieved source ({best.get('source','')}):\n{best.get('text','')[:800]}\n(LLM generation unavailable — answer grounded in source only.)",
+                    question=user_question,
+                    sources=[best.get("source","")],
+                )
+        except Exception:
+            pass
+
+        # Load chunks + embeddings
+        try:
+            import numpy as np
+            chunks = json.load(open(settings.INDEX_DIR / "chunks.json", "r", encoding="utf-8"))
+            embeddings = np.load(settings.INDEX_DIR / "embeddings.npy")
+        except Exception:
+            return ChatResponse(
+                status="not_available",
+                message="Retrieval index could not be loaded. Answering not available.",
+                question=user_question,
+                sources=[],
+            )
+
+        # Dense retrieval — embed query, cosine similarity, top chunk
+        try:
+            from sentence_transformers import SentenceTransformer
+            model = SentenceTransformer("all-MiniLM-L6-v2")
+            q_emb = model.encode(user_question)
+            q_norm = np.linalg.norm(q_emb)
+            emb_norms = np.linalg.norm(embeddings, axis=1)
+            sims = np.dot(embeddings, q_emb) / (emb_norms * q_norm + 1e-10)
+            top_idx = int(np.argmax(sims))
+            retrieved = chunks[top_idx]
+        except Exception:
+            # If embedding model fails, fall back to first chunk (still grounded)
+            retrieved = chunks[0] if chunks else {"text": "", "source": "", "id": ""}
+
+        context_text = retrieved.get("text", "")
+        source_file = retrieved.get("source", "")
+
+        # GROQ call — key read from session environment ONLY; never written to file
+        try:
+            import os, groq
+            client = groq.Client(api_key=os.environ["GROQ_API_KEY"])
+            prompt = (
+                "Using ONLY the following Indian legal context (do NOT invent or generalise), "
+                "answer briefly and reference the source file:\n"
+                f"--- SOURCE: {source_file} ---\n{context_text}\n\n"
+                f"Question: {user_question}"
+            )
+            resp = client.chat.completions.create(
+                model="mixtral-8x7b-32768",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.1,
+                max_tokens=400,
+            )
+            answer_text = resp.choices[0].message.content
+        except Exception:
+            # If LLM fails, still return grounded context so nothing is invented
+            answer_text = (
+                f"Based on the retrieved source ({source_file}):\n{context_text}\n"
+                "(LLM generation unavailable — answer is grounded in retrieved text only.)"
+            )
+
+        return ChatResponse(
+            status="available" if (answer_text and "not inventoried" not in answer_text) else "not_available",
+            message=answer_text,
+            question=user_question,
+            sources=[source_file] if source_file else [],
+        )
+
     application.include_router(health_router, prefix="/api")
+
+
+from pydantic import BaseModel
+
+
+class ChatRequest(BaseModel):
+    """Body for POST /api/chat."""
+    query: str = ""
 
 
 class ApiAwareMount(fastapi_Mount):

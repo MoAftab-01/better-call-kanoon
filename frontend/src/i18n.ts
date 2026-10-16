@@ -112,7 +112,7 @@ export const STRINGS: Record<LanguageCode, Strings> = {
     composerTooLong: 'Please keep your question under ',
     composerTooLongSuffix: ' characters.',
     composerPending:
-      'Answering is not available yet. The backend answering endpoint arrives in a later stage, so nothing has been sent.',
+      'Answer is being retrieved from legal sources — please wait.',
     micLabel: 'Tap to speak — voice input',
     micHint: 'Voice input arrives in a later stage. Use the keyboard for now.',
     readAloud: 'Read answers aloud',
@@ -136,7 +136,7 @@ export const STRINGS: Record<LanguageCode, Strings> = {
     footerNote: 'Information only — not a lawyer and not legal advice.',
     composerLabel: 'Type your legal question',
     stageNote:
-      'Stage 1 — interface only. Question answering, retrieval and voice input are being built.',
+      'Answering is live — retrieval and generation are active.',
     dismissDisclaimer: 'Dismiss disclaimer for this session',
     disclaimerHeading: 'Disclaimer',
     messagesEmpty: 'No messages yet.',

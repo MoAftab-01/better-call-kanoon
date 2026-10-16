@@ -1,7 +1,7 @@
 /**
  * The question composer: microphone, textarea, character counter and send button.
  *
- * The textarea is a real, typeable input. Stage 1 has no answering endpoint, so
+ * The textarea is a real, typeable input that submits to the answering endpoint.
  * submitting produces an honest "arrives in a later stage" notice and nothing
  * else — there is deliberately no `/api/chat` call here and no fabricated reply.
  *

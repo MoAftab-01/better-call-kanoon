@@ -1,7 +1,7 @@
 /**
  * The conversation model.
  *
- * Stage 1 has no answering endpoint, so nothing here fabricates a reply. The one
+ * Messages come from the real /api/chat endpoint — never fabricated.
  * message the app can produce on its own is an honest "this is not available yet"
  * notice - which is exactly the point: a plausible-looking invented legal answer
  * would be far worse than no answer at all.

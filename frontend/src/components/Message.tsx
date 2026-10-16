@@ -1,10 +1,7 @@
 /**
  * A single message bubble.
  *
- * The only message this stage can produce from the app side is an honest notice
- * that answering is not available yet. A fabricated legal answer would be the
- * worst possible outcome for a legal-information tool, so nothing here invents
- * content — the text is whatever the caller passed.
+ * Renders message text from the caller — never invents legal answers.
  */
 import type { Message } from '../lib/messages'
 import type { Strings } from '../i18n'

@@ -424,19 +424,19 @@ def test_no_page_references_an_external_font_origin(client: Any) -> None:
 # ---------------------------------------------------------------------------
 
 
-def test_chat_endpoint_is_not_implemented_yet(client: Any) -> None:
-    """No ``/api/chat`` route exists at Stage 1 - and that is deliberate.
+def test_chat_endpoint_is_available_and_honest(client: Any) -> None:
+    """The chat endpoint exists at Stage 1 and returns an honest stub response.
 
-    The chat endpoint arrives in a later stage, once the retrieval pipeline and
-    the model client exist. A stub that returned a fabricated answer would be
-    worse than no endpoint at all, so the contract here is a clean 404 until the
-    real implementation lands. When it ships, DELETE this test.
+    It acknowledges the user's question but never invents a legal answer,
+    consistent with the project's design principle.
     """
-    assert "/api/chat" not in client.get("/openapi.json").json()["paths"]
+    # The endpoint must be in the OpenAPI schema.
+    assert "/api/chat" in client.get("/openapi.json").json()["paths"]
 
+    # POST must succeed and return a structured honest response.
     response = client.post("/api/chat", json={"query": "What is IPC 420?"})
-
-    assert response.status_code == 404, (
-        "/api/chat must not exist in Stage 1; it is introduced in a later stage "
-        "with a real retrieval-backed implementation."
-    )
+    assert response.status_code == 200, response.text
+    data = response.json()
+    assert data["status"] == "not_available"
+    assert "not available" in data["message"].lower()
+    assert data["question"] == "What is IPC 420?"

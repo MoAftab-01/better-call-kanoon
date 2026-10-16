@@ -119,27 +119,8 @@ class Settings(BaseSettings):
     # Large language model (optional — never required to start)
     GROQ_API_KEY: str = ""
     GROQ_MODEL: str = ""
-    # Retrieval
-    TOP_K: int = 5
-    #: How many candidates to pull from each retriever before fusing.
-    #: Fusion can only rerank what it is given, so this multiplies ``TOP_K``.
-    #: **Not validated** - no recall measurement stands behind the value.
-    CANDIDATE_MULTIPLIER: int = 4
-    #: Reciprocal-rank-fusion damping constant. 60 is the value from the
-    #: original RRF paper; it is **not** tuned for this corpus.
-    RRF_K: float = 60.0
-    #: The embedding model is read from here and never hardcoded in source, so
-    #: a model that is withdrawn can be swapped without a code change. The
-    #: backend that consumes it is **not installed**, so nothing reads this
-    #: yet - see the Stage 3 note in the README.
-    EMBEDDING_MODEL: str = "sentence-transformers/all-MiniLM-L6-v2"
     # Request limits
     MAX_INPUT_LENGTH: int = 1000
-    #: Requests allowed per window per client. **Not enforced yet** - the
-    #: middleware that will read this arrives with the chat endpoint in a
-    #: later stage. Declared now so the value is configurable from the start
-    #: rather than hardcoded when the limiter lands.
-    RATE_LIMIT: int = 20
     # Localisation
     DEFAULT_LANGUAGE: str = "en"
     SUPPORTED_LANGUAGES: CommaSeparatedList = Field(default_factory=lambda: ["en", "hi"])

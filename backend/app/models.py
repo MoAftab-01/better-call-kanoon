@@ -10,6 +10,7 @@ lawyer and does not provide legal advice.
 from __future__ import annotations
 
 from pydantic import BaseModel, ConfigDict, Field
+from typing import Any
 
 #: Reported by ``/api/health`` when the knowledge base is not ready.
 #:
@@ -89,6 +90,39 @@ class EmergencyContact(BaseModel):
     )
     verified: bool = Field(
         default=False, description="Checked against an official source."
+    )
+
+
+class ChatResponse(BaseModel):
+    """Response body of ``POST /api/chat`` — honest at Stage 1."""
+
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "status": "not_available",
+                "message": "Answering is not available yet. The backend answering endpoint arrives in a later stage, so nothing has been sent.",
+                "question": "What replaced IPC 420?",
+            }
+        }
+    )
+
+    status: str = Field(
+        default="not_available",
+        description="Always 'not_available' at Stage 1; the endpoint cannot answer questions.",
+    )
+    message: str = Field(
+        default="Answering is not available yet. The backend answering endpoint arrives in a later stage, so nothing has been sent.",
+        description="Honest explanation delivered to the user.",
+    )
+    question: str = Field(
+        default="",
+        description="The user's question, echoed back so the caller knows it was received.",
+    )
+
+
+    sources: list[str] = Field(
+        default_factory=list,
+        description="Source file names for chunks used to answer.",
     )
 
 
@@ -191,9 +225,11 @@ class PublicConfig(BaseModel):
 
 
 __all__ = [
+    "ChatResponse",
     "EmergencyContact",
     "HealthResponse",
     "KnowledgeBaseStatus",
+    "NOT_BUILT_SOURCE",
     "PublicConfig",
     "StarterQuestion",
     "SupportedLanguage",

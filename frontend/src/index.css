@@ -635,7 +635,7 @@ select:disabled { cursor: not-allowed; opacity: 0.55; }
 }
 
 /* Message list ---------------------------------------------------------------
-   New in the React port: the vanilla Stage 1 had no message list, because there
+   Message list shows real answers from the retrieval + LLM endpoint.
    was nothing to put in one. The styles follow the same tokens as everything
    else so the console does not read as a bolted-on widget. */
 .messages {

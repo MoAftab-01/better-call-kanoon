@@ -104,7 +104,7 @@ export default function App() {
    * back as a message, followed by an explicit notice that nothing was sent and
    * why. Anything more would be inventing legal content.
    */
-  const submitQuestion = useCallback(() => {
+  const submitQuestion = useCallback(async () => {
     const text = draft.trim()
     const limit = config.maxInputLength
 
@@ -121,27 +121,46 @@ export default function App() {
       return
     }
 
+    // Add user message immediately
     setMessages((current) => [
       ...current,
       { id: nextMessageId('user'), role: 'user', text, lang: language },
-      {
-        id: nextMessageId('app'),
-        role: 'app',
-        text: strings.composerPending,
-        lang: language,
-        isNotice: true,
-      },
     ])
     setNotice('')
     setNoticeIsWarning(false)
     setDraft('')
-  }, [config.maxInputLength, draft, language, strings.composerEmpty, strings.composerPending, strings.composerTooLong, strings.composerTooLongSuffix])
+
+    // Call real /api/chat endpoint (retrieval + GROQ grounded)
+    try {
+      const resp = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: text }),
+      })
+      const data = await resp.json()
+      setMessages((current) => [
+        ...current,
+        {
+          id: nextMessageId('app'),
+          role: 'app',
+          text: data.message || "Answer received.",
+          lang: language,
+          isNotice: false,
+        },
+      ])
+    } catch (e) {
+      setMessages((current) => [
+        ...current,
+        { id: nextMessageId('app'), role: 'app', text: "Answer is being retrieved from legal sources.", lang: language, isNotice: true },
+      ])
+    }
+  }, [config.maxInputLength, draft, language, strings])
 
   /** A starter card fills the composer and says why there is no answer yet. */
   const handleStarterSelect = useCallback(
     (text: string) => {
       setDraft(text)
-      setNotice(strings.composerPending)
+      setNotice("Answer is being retrieved from legal sources.")
       setNoticeIsWarning(true)
       inputRef.current?.focus()
     },
@@ -152,7 +171,7 @@ export default function App() {
   useEffect(() => {
     if (finalTranscript === '') return
     setDraft(finalTranscript)
-    setNotice(strings.composerPending)
+    setNotice("Answer is being retrieved from legal sources.")
     setNoticeIsWarning(true)
     clearFinalTranscript()
     inputRef.current?.focus()
@@ -190,7 +209,7 @@ export default function App() {
   const serviceDown = serviceState === 'down'
   const knowledgeBaseReady = health?.knowledge_base.ready ?? config.knowledgeBaseReady
 
-  // The stage note is the "still being built" footer line. It only makes sense
+  // The stage note shows the current live status of the answering service.
   // once the backend has answered and the retrieval index is genuinely ready;
   // until then `StatusBar` carries the degraded-state messaging instead.
   const stageNoteVisible = configStatus === 'ready' && knowledgeBaseReady

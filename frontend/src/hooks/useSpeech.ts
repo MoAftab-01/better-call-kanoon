@@ -6,7 +6,7 @@
  * control that silently does nothing.
  *
  * Note on what this stage can honestly do: speech *synthesis* works today and
- * can read a message aloud. Speech *recognition* is wired up, but Stage 1 has no
+ * can read a message aloud. Speech recognition is wired for future use.
  * answering endpoint, so the transcript fills the composer rather than producing
  * an answer. Nothing here ever fabricates a reply.
  *
