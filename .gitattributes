@@ -1,0 +1,5 @@
+# Preserve byte-bound source and provenance artifacts, including existing CRLF.
+/backend/**/*.py -text
+/backend/tests/fixtures/** -text
+/backend/qa/stage2e_visual_review.json -text
+/docs/** -text

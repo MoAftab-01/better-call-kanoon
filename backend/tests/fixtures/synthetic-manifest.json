@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "documents": [
+    {
+      "file_path": "synthetic-not-law.txt",
+      "metadata": {
+        "official_title": "SYNTHETIC INGESTION FIXTURE — NOT AN INDIAN LAW",
+        "instrument_type": "other",
+        "jurisdiction": null,
+        "state": null,
+        "issuing_authority": null,
+        "source_url": null,
+        "source_type": "synthetic",
+        "retrieval_date": null,
+        "enactment_date": null,
+        "publication_date": null,
+        "effective_date": null,
+        "amendment_version": null,
+        "legal_applicability": null,
+        "language": "en",
+        "provenance": {
+          "supplied_by": "Better Call Kanoon synthetic test suite",
+          "verification_claim": "unverified",
+          "verification_evidence": null,
+          "notes": "Fabricated software test fixture only; not a law or authoritative legal document."
+        }
+      }
+    }
+  ]
+}

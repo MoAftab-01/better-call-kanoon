@@ -1,0 +1,10 @@
+SYNTHETIC INGESTION FIXTURE — NOT AN INDIAN LAW
+All content below is fabricated test data for software verification only.
+
+Section 1. Synthetic heading
+Practice text only: हिन्दी, ₹ १०,०००, “Unicode”, and a line-ending hyphen-
+remain exactly as written. This text creates no legal rights or duties.
+1. This bare numeric label is test text, not an inferred section identifier.
+
+Section 2. Another synthetic heading
+No real statute, judgment, provision, date, amendment, or citation is represented.

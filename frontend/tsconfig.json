@@ -3,26 +3,19 @@
     "target": "ES2022",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "moduleResolution": "bundler",
-    "moduleDetection": "force",
+    "moduleResolution": "Bundler",
     "jsx": "react-jsx",
-    "useDefineForClassFields": true,
-    "resolveJsonModule": true,
-    "allowImportingTsExtensions": true,
+    "types": ["vite/client", "node"],
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
-    "skipLibCheck": true,
-    "noEmit": true,
-
-    /* Strict mode, plus the extra checks that stop sloppiness reaching the UI. */
-    "strict": true,
-    "noImplicitOverride": true,
+    "resolveJsonModule": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true,
-
-    "types": ["vite/client"]
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"]
+  "include": ["src", "vite.config.ts"]
 }

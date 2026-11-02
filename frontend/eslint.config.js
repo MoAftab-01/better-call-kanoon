@@ -3,29 +3,20 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
+import { defineConfig } from 'eslint/config'
 
-/**
- * Flat ESLint config, equivalent to the one the `react-ts` Vite template ships.
- * `npm run lint` must pass cleanly.
- */
-export default tseslint.config(
-  { ignores: ['dist', 'node_modules'] },
+export default defineConfig([
+  { ignores: ['dist/**', 'node_modules/**', '.qa/**'] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      ecmaVersion: 2022,
-      globals: globals.browser,
-    },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-    },
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    languageOptions: { ecmaVersion: 2022, globals: globals.browser },
+    plugins: { 'react-hooks': reactHooks, 'react-refresh': reactRefresh },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-      // An honest UI must never render `undefined` or a raw thrown value.
-      '@typescript-eslint/no-explicit-any': 'error',
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'error',
+      'react-refresh/only-export-components': ['error', { allowConstantExport: true }],
     },
   },
-)
+  { files: ['vite.config.ts', 'eslint.config.js'], languageOptions: { globals: globals.node } },
+])
