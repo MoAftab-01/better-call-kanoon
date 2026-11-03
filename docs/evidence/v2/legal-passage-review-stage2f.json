@@ -1,0 +1,1421 @@
+{
+  "approval_requirements": [
+    "One explicit candidate confirmation, one approved request, --approve-one, named reviewer and timezone-aware decision time.",
+    "Visual/boundary/qualifier/archival attestations and hash-matching evidence for ALL selected/context pages.",
+    "No unresolved page-wide exclusion; whole operative paragraph when selecting any part of a notification operative paragraph.",
+    "Current raw/processed/catalogue/QA/text/context hashes; a separately trusted latest audit checkpoint."
+  ],
+  "catalog": {
+    "input_pins": {
+      "backend/publication/__init__.py": "32c4b46de1063f8bc4d016bcd11e4995a188b37a0b6d8ecacc3d91f92edd6d01",
+      "backend/publication/__main__.py": "6190eecc9d5d8773d5f73543ab2a3671597e0f992b643a958f83b1c274a2ccb8",
+      "backend/publication/bindings.py": "028736afdcb11a06fc97913e90186a4dfbc375d07da05195c27a146ecb050562",
+      "backend/publication/migrate.py": "355c2de154cdcce19701eb0ddd7690c178a0ffc6ce29c52f6bb65735eaef6533",
+      "backend/qa/legal_text.py": "b506d0e528bbfc241fd13897aaaa3fa533ab2a093b32d0c078c2e1b31fb9381c",
+      "backend/qa/stage2e_visual_review.json": "387d8dc9b703c90dbb7ec19964db490f9fff08bf5c70126ade0df2491dc115a1",
+      "backend/review/__init__.py": "63076aa7729e47b6c6446fe9380b2dba7eb3dbc21376b4204a62e89b1fd2fd52",
+      "backend/review/__main__.py": "b5bf530d203a6d68989a722d9a15d82eb5875adad2245acfee432625f78684b1",
+      "backend/review/models.py": "2b47a32d5cfd83e35141b13987f1d83e7f02946bd23cb67b6fbb7933696deac4",
+      "backend/review/service.py": "1ed8ea67727a22b8df67fa5077d71ee39c43d4e2bac849a9412529ff4c009f7b",
+      "backend/review/synthetic_demo.py": "8cfcbdfb34eab8ef5e6ef6d86fee942a0b0a8668d55b5e76865f5ab9a866e5ea",
+      "docs/evidence/v1-preservation.json": "ed54a5e7055c6fc5dc04e9f85b24db2f884933790f65e0b0a4b32e37f948cc34",
+      "docs/evidence/v2/acquired-legal-source-manifest-stage2c.json": "9da8506e0e1bc55d8ae390c39a1680bbcb9c095c85204f47313e1d6977fa596a",
+      "docs/evidence/v2/legal-document-ingestion-stage2d.json": "5113618a8b668787e114ddf87950ea7f1b178f25ee3df74ea0c4101deac2d0a9",
+      "docs/evidence/v2/legal-document-ingestion-stage2d.md": "237bebfd55afa022694de56e5db451341874f303f177ecf67efe50ecbb7c51e9",
+      "docs/evidence/v2/legal-source-acquisition-stage2c.json": "f060225590d88e15acd1d06e33bfcdb85f7999e6d13f206afc2263389462717a",
+      "docs/evidence/v2/legal-source-acquisition-stage2c.md": "e5687c6497c150dfd68bc78c1f8c6b997a09164784bda193d8f45a91e264d3a7",
+      "docs/evidence/v2/legal-text-quality-stage2e.json": "236fec73f5dbcc37e31d253bc916dfd3076f8412cb196c13aba86acb6a07a491",
+      "docs/evidence/v2/legal-text-quality-stage2e.md": "347dc118bdc978ac7672c4980684ed5e51cee23204cd2d77d1b1136df36633e3",
+      "docs/proposed-legal-source-manifest-stage2b.json": "615340ff2dff99027c9cfcd67cb979d8cd543cc4b0a317df4f0f3d330236a5ee"
+    },
+    "policy_version": "stage2f-publication-v2"
+  },
+  "default_ledger": "backend/data/reviews/stage2f/v2",
+  "hard_exclusions": [
+    "devanagari_mapping_unverified",
+    "duplicate_page_text",
+    "empty_page",
+    "invisible_or_directional_format_character",
+    "legacy_hindi_glyph_codes",
+    "marginal_citation_association_unverified",
+    "possible_mojibake",
+    "private_surrogate_or_unassigned_unicode",
+    "replacement_character",
+    "table_or_form_layout_unverified",
+    "unexpected_control"
+  ],
+  "implementation_files": [
+    "backend/review/__init__.py",
+    "backend/review/__main__.py",
+    "backend/review/models.py",
+    "backend/review/service.py",
+    "backend/review/synthetic_demo.py",
+    "backend/publication/__init__.py",
+    "backend/publication/bindings.py",
+    "backend/publication/migrate.py",
+    "backend/publication/__main__.py"
+  ],
+  "initial_verified_evidence_allowlist": {
+    "blocked": [],
+    "checkpoint": {
+      "event_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "sequence": 0
+    },
+    "entries": [],
+    "legal_currentness": "unknown; no approval here certifies current commencement or applicability",
+    "policy_version": "stage2f-v1",
+    "schema_version": 1,
+    "scope": "archival_text_only"
+  },
+  "integrity_limits": [
+    "Files are append-only through this CLI and read-only after publication; not OS-enforced WORM storage.",
+    "Hash chains are tamper-evident relative to a retained checkpoint; privileged owners can rewrite the entire local store.",
+    "Reviewer identities, attestations and times are explicit user claims, not identity authentication, signatures or trusted timestamps.",
+    "Approval concerns archival text fidelity only; legal currentness and applicability remain unknown."
+  ],
+  "publication_binding_version": "v2",
+  "publication_notice": "New catalogue; canonical candidate algorithm and original exclusion rules unchanged. Read-only V2 verifier exposes no event writer.",
+  "real_approvals_created": 0,
+  "real_candidates_submitted": 0,
+  "record_schemas": {
+    "audit_event": {
+      "$defs": {
+        "Attestations": {
+          "additionalProperties": false,
+          "properties": {
+            "archival_scope_only": {
+              "default": false,
+              "title": "Archival Scope Only",
+              "type": "boolean"
+            },
+            "boundaries_and_attribution_verified": {
+              "default": false,
+              "title": "Boundaries And Attribution Verified",
+              "type": "boolean"
+            },
+            "cross_page_context_verified": {
+              "default": false,
+              "title": "Cross Page Context Verified",
+              "type": "boolean"
+            },
+            "qualifiers_and_exceptions_preserved": {
+              "default": false,
+              "title": "Qualifiers And Exceptions Preserved",
+              "type": "boolean"
+            },
+            "visual_comparison_performed": {
+              "default": false,
+              "title": "Visual Comparison Performed",
+              "type": "boolean"
+            }
+          },
+          "title": "Attestations",
+          "type": "object"
+        },
+        "Attribution": {
+          "additionalProperties": false,
+          "properties": {
+            "anchor": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Span"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "kind": {
+              "enum": [
+                "document_only",
+                "printed_label"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "label": {
+              "anyOf": [
+                {
+                  "maxLength": 4000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Label"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "title": "Attribution",
+          "type": "object"
+        },
+        "Candidate": {
+          "additionalProperties": false,
+          "properties": {
+            "attribution": {
+              "$ref": "#/$defs/Attribution"
+            },
+            "candidate_id": {
+              "pattern": "^passage_[0-9a-f]{64}$",
+              "title": "Candidate Id",
+              "type": "string"
+            },
+            "catalog_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Catalog Sha256",
+              "type": "string"
+            },
+            "context_rationale": {
+              "maxLength": 4000,
+              "minLength": 1,
+              "title": "Context Rationale",
+              "type": "string"
+            },
+            "context_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Context Sha256",
+              "type": "string"
+            },
+            "context_spans": {
+              "items": {
+                "$ref": "#/$defs/Span"
+              },
+              "maxItems": 6,
+              "minItems": 1,
+              "title": "Context Spans",
+              "type": "array"
+            },
+            "cross_page_context": {
+              "anyOf": [
+                {
+                  "maxLength": 4000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Cross Page Context"
+            },
+            "document_id": {
+              "pattern": "^doc_[0-9a-f]{64}$",
+              "title": "Document Id",
+              "type": "string"
+            },
+            "legal_currentness": {
+              "const": "unknown",
+              "default": "unknown",
+              "title": "Legal Currentness",
+              "type": "string"
+            },
+            "original_identifiers": {
+              "additionalProperties": true,
+              "title": "Original Identifiers",
+              "type": "object"
+            },
+            "passage_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Passage Sha256",
+              "type": "string"
+            },
+            "processed_path": {
+              "maxLength": 4000,
+              "minLength": 1,
+              "title": "Processed Path",
+              "type": "string"
+            },
+            "processed_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Processed Sha256",
+              "type": "string"
+            },
+            "provenance_status": {
+              "const": "user_supplied",
+              "default": "user_supplied",
+              "title": "Provenance Status",
+              "type": "string"
+            },
+            "qa_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Qa Sha256",
+              "type": "string"
+            },
+            "raw_path": {
+              "maxLength": 4000,
+              "minLength": 1,
+              "title": "Raw Path",
+              "type": "string"
+            },
+            "raw_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Raw Sha256",
+              "type": "string"
+            },
+            "schema_version": {
+              "const": 1,
+              "default": 1,
+              "title": "Schema Version",
+              "type": "integer"
+            },
+            "scope": {
+              "const": "archival_text_only",
+              "default": "archival_text_only",
+              "title": "Scope",
+              "type": "string"
+            },
+            "source_metadata": {
+              "$ref": "#/$defs/LegalMetadata"
+            },
+            "spans": {
+              "items": {
+                "$ref": "#/$defs/Span"
+              },
+              "maxItems": 3,
+              "minItems": 1,
+              "title": "Spans",
+              "type": "array"
+            },
+            "verification_status": {
+              "const": "not_independently_verified",
+              "default": "not_independently_verified",
+              "title": "Verification Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "candidate_id",
+            "catalog_sha256",
+            "qa_sha256",
+            "document_id",
+            "raw_path",
+            "raw_sha256",
+            "processed_path",
+            "processed_sha256",
+            "source_metadata",
+            "original_identifiers",
+            "spans",
+            "context_spans",
+            "passage_sha256",
+            "context_sha256",
+            "context_rationale",
+            "attribution"
+          ],
+          "title": "Candidate",
+          "type": "object"
+        },
+        "Decision": {
+          "additionalProperties": false,
+          "properties": {
+            "attestations": {
+              "$ref": "#/$defs/Attestations"
+            },
+            "decision": {
+              "enum": [
+                "pending",
+                "approved",
+                "rejected",
+                "needs_correction"
+              ],
+              "title": "Decision",
+              "type": "string"
+            },
+            "decision_time": {
+              "format": "date-time",
+              "title": "Decision Time",
+              "type": "string"
+            },
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/EvidenceReference"
+              },
+              "maxItems": 12,
+              "minItems": 1,
+              "title": "Evidence",
+              "type": "array"
+            },
+            "rationale": {
+              "maxLength": 4000,
+              "minLength": 1,
+              "title": "Rationale",
+              "type": "string"
+            },
+            "reviewer_id": {
+              "maxLength": 4000,
+              "minLength": 1,
+              "title": "Reviewer Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "decision",
+            "reviewer_id",
+            "decision_time",
+            "rationale",
+            "evidence"
+          ],
+          "title": "Decision",
+          "type": "object"
+        },
+        "EvidenceReference": {
+          "additionalProperties": false,
+          "properties": {
+            "file_path": {
+              "maxLength": 4000,
+              "minLength": 1,
+              "title": "File Path",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "rendered_pdf_page",
+                "qa_report",
+                "context_review"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "note": {
+              "maxLength": 4000,
+              "minLength": 1,
+              "title": "Note",
+              "type": "string"
+            },
+            "physical_pages": {
+              "items": {
+                "type": "integer"
+              },
+              "maxItems": 6,
+              "minItems": 1,
+              "title": "Physical Pages",
+              "type": "array"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Sha256",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "file_path",
+            "sha256",
+            "physical_pages",
+            "note"
+          ],
+          "title": "EvidenceReference",
+          "type": "object"
+        },
+        "LegalMetadata": {
+          "additionalProperties": false,
+          "properties": {
+            "amendment_version": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Amendment Version"
+            },
+            "effective_date": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Effective Date"
+            },
+            "enactment_date": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Enactment Date"
+            },
+            "instrument_type": {
+              "enum": [
+                "act",
+                "rule",
+                "regulation",
+                "notification",
+                "judgment",
+                "order",
+                "circular",
+                "constitution",
+                "ordinance",
+                "other",
+                "unknown"
+              ],
+              "title": "Instrument Type",
+              "type": "string"
+            },
+            "issuing_authority": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Issuing Authority"
+            },
+            "jurisdiction": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Jurisdiction"
+            },
+            "language": {
+              "pattern": "^(?:[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*|unknown)$",
+              "title": "Language",
+              "type": "string"
+            },
+            "legal_applicability": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Legal Applicability"
+            },
+            "official_title": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Official Title",
+              "type": "string"
+            },
+            "provenance": {
+              "$ref": "#/$defs/SuppliedProvenance"
+            },
+            "publication_date": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Publication Date"
+            },
+            "retrieval_date": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Retrieval Date"
+            },
+            "source_type": {
+              "enum": [
+                "official_portal",
+                "official_gazette",
+                "official_court",
+                "government_portal",
+                "user_supplied",
+                "secondary",
+                "synthetic",
+                "unknown"
+              ],
+              "title": "Source Type",
+              "type": "string"
+            },
+            "source_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Source Url"
+            },
+            "state": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "State"
+            }
+          },
+          "required": [
+            "official_title",
+            "instrument_type",
+            "jurisdiction",
+            "issuing_authority",
+            "source_url",
+            "source_type",
+            "language",
+            "provenance"
+          ],
+          "title": "LegalMetadata",
+          "type": "object"
+        },
+        "Span": {
+          "additionalProperties": false,
+          "properties": {
+            "end_line": {
+              "minimum": 1,
+              "title": "End Line",
+              "type": "integer"
+            },
+            "page_id": {
+              "maxLength": 4000,
+              "minLength": 1,
+              "title": "Page Id",
+              "type": "string"
+            },
+            "physical_page": {
+              "minimum": 1,
+              "title": "Physical Page",
+              "type": "integer"
+            },
+            "start_line": {
+              "minimum": 1,
+              "title": "Start Line",
+              "type": "integer"
+            },
+            "text_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Text Sha256",
+              "type": "string"
+            }
+          },
+          "required": [
+            "page_id",
+            "physical_page",
+            "start_line",
+            "end_line",
+            "text_sha256"
+          ],
+          "title": "Span",
+          "type": "object"
+        },
+        "SuppliedProvenance": {
+          "additionalProperties": false,
+          "properties": {
+            "notes": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Notes"
+            },
+            "supplied_by": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Supplied By",
+              "type": "string"
+            },
+            "verification_claim": {
+              "default": "unverified",
+              "enum": [
+                "unverified",
+                "user_claimed_verified"
+              ],
+              "title": "Verification Claim",
+              "type": "string"
+            },
+            "verification_evidence": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Verification Evidence"
+            }
+          },
+          "required": [
+            "supplied_by"
+          ],
+          "title": "SuppliedProvenance",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "candidate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Candidate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "candidate_id": {
+          "pattern": "^passage_[0-9a-f]{64}$",
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "event_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Event Sha256",
+          "type": "string"
+        },
+        "previous_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Previous Sha256",
+          "type": "string"
+        },
+        "review": {
+          "$ref": "#/$defs/Decision"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "sequence": {
+          "minimum": 1,
+          "title": "Sequence",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "sequence",
+        "previous_sha256",
+        "candidate_id",
+        "candidate",
+        "review",
+        "event_sha256"
+      ],
+      "title": "Event",
+      "type": "object"
+    },
+    "candidate": {
+      "$defs": {
+        "Attribution": {
+          "additionalProperties": false,
+          "properties": {
+            "anchor": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Span"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "kind": {
+              "enum": [
+                "document_only",
+                "printed_label"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "label": {
+              "anyOf": [
+                {
+                  "maxLength": 4000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Label"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "title": "Attribution",
+          "type": "object"
+        },
+        "LegalMetadata": {
+          "additionalProperties": false,
+          "properties": {
+            "amendment_version": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Amendment Version"
+            },
+            "effective_date": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Effective Date"
+            },
+            "enactment_date": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Enactment Date"
+            },
+            "instrument_type": {
+              "enum": [
+                "act",
+                "rule",
+                "regulation",
+                "notification",
+                "judgment",
+                "order",
+                "circular",
+                "constitution",
+                "ordinance",
+                "other",
+                "unknown"
+              ],
+              "title": "Instrument Type",
+              "type": "string"
+            },
+            "issuing_authority": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Issuing Authority"
+            },
+            "jurisdiction": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Jurisdiction"
+            },
+            "language": {
+              "pattern": "^(?:[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*|unknown)$",
+              "title": "Language",
+              "type": "string"
+            },
+            "legal_applicability": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Legal Applicability"
+            },
+            "official_title": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Official Title",
+              "type": "string"
+            },
+            "provenance": {
+              "$ref": "#/$defs/SuppliedProvenance"
+            },
+            "publication_date": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Publication Date"
+            },
+            "retrieval_date": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Retrieval Date"
+            },
+            "source_type": {
+              "enum": [
+                "official_portal",
+                "official_gazette",
+                "official_court",
+                "government_portal",
+                "user_supplied",
+                "secondary",
+                "synthetic",
+                "unknown"
+              ],
+              "title": "Source Type",
+              "type": "string"
+            },
+            "source_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Source Url"
+            },
+            "state": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "State"
+            }
+          },
+          "required": [
+            "official_title",
+            "instrument_type",
+            "jurisdiction",
+            "issuing_authority",
+            "source_url",
+            "source_type",
+            "language",
+            "provenance"
+          ],
+          "title": "LegalMetadata",
+          "type": "object"
+        },
+        "Span": {
+          "additionalProperties": false,
+          "properties": {
+            "end_line": {
+              "minimum": 1,
+              "title": "End Line",
+              "type": "integer"
+            },
+            "page_id": {
+              "maxLength": 4000,
+              "minLength": 1,
+              "title": "Page Id",
+              "type": "string"
+            },
+            "physical_page": {
+              "minimum": 1,
+              "title": "Physical Page",
+              "type": "integer"
+            },
+            "start_line": {
+              "minimum": 1,
+              "title": "Start Line",
+              "type": "integer"
+            },
+            "text_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Text Sha256",
+              "type": "string"
+            }
+          },
+          "required": [
+            "page_id",
+            "physical_page",
+            "start_line",
+            "end_line",
+            "text_sha256"
+          ],
+          "title": "Span",
+          "type": "object"
+        },
+        "SuppliedProvenance": {
+          "additionalProperties": false,
+          "properties": {
+            "notes": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Notes"
+            },
+            "supplied_by": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Supplied By",
+              "type": "string"
+            },
+            "verification_claim": {
+              "default": "unverified",
+              "enum": [
+                "unverified",
+                "user_claimed_verified"
+              ],
+              "title": "Verification Claim",
+              "type": "string"
+            },
+            "verification_evidence": {
+              "anyOf": [
+                {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Verification Evidence"
+            }
+          },
+          "required": [
+            "supplied_by"
+          ],
+          "title": "SuppliedProvenance",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "attribution": {
+          "$ref": "#/$defs/Attribution"
+        },
+        "candidate_id": {
+          "pattern": "^passage_[0-9a-f]{64}$",
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "catalog_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Catalog Sha256",
+          "type": "string"
+        },
+        "context_rationale": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Context Rationale",
+          "type": "string"
+        },
+        "context_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Context Sha256",
+          "type": "string"
+        },
+        "context_spans": {
+          "items": {
+            "$ref": "#/$defs/Span"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Context Spans",
+          "type": "array"
+        },
+        "cross_page_context": {
+          "anyOf": [
+            {
+              "maxLength": 4000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cross Page Context"
+        },
+        "document_id": {
+          "pattern": "^doc_[0-9a-f]{64}$",
+          "title": "Document Id",
+          "type": "string"
+        },
+        "legal_currentness": {
+          "const": "unknown",
+          "default": "unknown",
+          "title": "Legal Currentness",
+          "type": "string"
+        },
+        "original_identifiers": {
+          "additionalProperties": true,
+          "title": "Original Identifiers",
+          "type": "object"
+        },
+        "passage_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Passage Sha256",
+          "type": "string"
+        },
+        "processed_path": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Processed Path",
+          "type": "string"
+        },
+        "processed_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Processed Sha256",
+          "type": "string"
+        },
+        "provenance_status": {
+          "const": "user_supplied",
+          "default": "user_supplied",
+          "title": "Provenance Status",
+          "type": "string"
+        },
+        "qa_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Qa Sha256",
+          "type": "string"
+        },
+        "raw_path": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Raw Path",
+          "type": "string"
+        },
+        "raw_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Raw Sha256",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "scope": {
+          "const": "archival_text_only",
+          "default": "archival_text_only",
+          "title": "Scope",
+          "type": "string"
+        },
+        "source_metadata": {
+          "$ref": "#/$defs/LegalMetadata"
+        },
+        "spans": {
+          "items": {
+            "$ref": "#/$defs/Span"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Spans",
+          "type": "array"
+        },
+        "verification_status": {
+          "const": "not_independently_verified",
+          "default": "not_independently_verified",
+          "title": "Verification Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "catalog_sha256",
+        "qa_sha256",
+        "document_id",
+        "raw_path",
+        "raw_sha256",
+        "processed_path",
+        "processed_sha256",
+        "source_metadata",
+        "original_identifiers",
+        "spans",
+        "context_spans",
+        "passage_sha256",
+        "context_sha256",
+        "context_rationale",
+        "attribution"
+      ],
+      "title": "Candidate",
+      "type": "object"
+    },
+    "decision_request": {
+      "$defs": {
+        "Attestations": {
+          "additionalProperties": false,
+          "properties": {
+            "archival_scope_only": {
+              "default": false,
+              "title": "Archival Scope Only",
+              "type": "boolean"
+            },
+            "boundaries_and_attribution_verified": {
+              "default": false,
+              "title": "Boundaries And Attribution Verified",
+              "type": "boolean"
+            },
+            "cross_page_context_verified": {
+              "default": false,
+              "title": "Cross Page Context Verified",
+              "type": "boolean"
+            },
+            "qualifiers_and_exceptions_preserved": {
+              "default": false,
+              "title": "Qualifiers And Exceptions Preserved",
+              "type": "boolean"
+            },
+            "visual_comparison_performed": {
+              "default": false,
+              "title": "Visual Comparison Performed",
+              "type": "boolean"
+            }
+          },
+          "title": "Attestations",
+          "type": "object"
+        },
+        "EvidenceReference": {
+          "additionalProperties": false,
+          "properties": {
+            "file_path": {
+              "maxLength": 4000,
+              "minLength": 1,
+              "title": "File Path",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "rendered_pdf_page",
+                "qa_report",
+                "context_review"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "note": {
+              "maxLength": 4000,
+              "minLength": 1,
+              "title": "Note",
+              "type": "string"
+            },
+            "physical_pages": {
+              "items": {
+                "type": "integer"
+              },
+              "maxItems": 6,
+              "minItems": 1,
+              "title": "Physical Pages",
+              "type": "array"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Sha256",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "file_path",
+            "sha256",
+            "physical_pages",
+            "note"
+          ],
+          "title": "EvidenceReference",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "attestations": {
+          "$ref": "#/$defs/Attestations"
+        },
+        "decision": {
+          "enum": [
+            "pending",
+            "approved",
+            "rejected",
+            "needs_correction"
+          ],
+          "title": "Decision",
+          "type": "string"
+        },
+        "decision_time": {
+          "format": "date-time",
+          "title": "Decision Time",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "rationale": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "reviewer_id": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Reviewer Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "decision",
+        "reviewer_id",
+        "decision_time",
+        "rationale",
+        "evidence"
+      ],
+      "title": "Decision",
+      "type": "object"
+    }
+  },
+  "schema_version": 1,
+  "stage": "2F",
+  "state_transitions": {
+    "approved": [
+      "needs_correction",
+      "rejected"
+    ],
+    "needs_correction": [
+      "pending",
+      "rejected"
+    ],
+    "pending": [
+      "approved",
+      "needs_correction",
+      "rejected"
+    ],
+    "rejected": []
+  },
+  "verification": {
+    "backend_tests": {
+      "elapsed_seconds": 23.85,
+      "failed": 0,
+      "new_review_cases": 30,
+      "passed": 131,
+      "skipped": 0,
+      "warnings": 1
+    },
+    "manual_commands": {
+      "PowerShell_blocks_parsed": 7,
+      "real_read_only_examples_executed": true,
+      "synthetic_write_examples": "Syntax checked only; equivalent explicit single-review CLI exercised solely in synthetic pytest data."
+    },
+    "preservation": {
+      "hashes_mtimes_and_modes_unchanged": true,
+      "includes": "Raw PDFs, processed JSON, approved prior docs/manifests/QA and Git metadata.",
+      "protected_file_count": 1231
+    },
+    "read_only_commands": "documents/list/verify/allowlist/history all passed without storage creation",
+    "real_ledger_exists": false,
+    "real_preview": "deterministic, unsubmitted, no actor or decision created"
+  }
+}

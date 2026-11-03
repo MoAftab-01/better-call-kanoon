@@ -1,0 +1,930 @@
+{
+  "acquired_manifest": "docs/evidence/v2/acquired-legal-source-manifest-stage2c.json",
+  "additional_currentness_research": {
+    "queries": [
+      "site:egazette.gov.in \"106\" \"Sanhita\" \"2026\" commencement",
+      "site:mha.gov.in \"Bharatiya\" \"corrigendum\"",
+      "site:legislative.gov.in \"Bharatiya\" \"amendment\" \"2026\""
+    ],
+    "result": "No results returned by these bounded searches. This is not evidence of absence. Prior Stage 2B/2C watchlists remain unresolved; no new legal-currentness conclusion.",
+    "searched_at": "2026-10-26T20:25:13.203738+00:00"
+  },
+  "completed_at": "2026-10-26T20:23:16.092461+00:00",
+  "currentness_research": {
+    "checked_date_Asia_Kolkata": "2026-10-27",
+    "conclusion": "No subsequent commencement, amendment or corrigendum was established as operative by this bounded research. This is not evidence of absence. Current applicability, amendment completeness, and continuing status of the 2024 exceptions remain unverified.",
+    "historical_corroboration": {
+      "evidence_type": "Official indexed web text; not an acquired Gazette PDF",
+      "finding": "Historical report describes commencement from 2024-07-01 with the BNS section 106(2) exclusion and the corresponding BNSS First Schedule entry exclusion. It does not establish their status on 2026-10-27.",
+      "issuer": "Press Information Bureau / Ministry of Home Affairs",
+      "published_date": "2024-12-10",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2082757&lang=2&reg=48"
+    },
+    "queries": [
+      "\"106(2)\" \"commencement\" \"2026\" site:egazette.gov.in",
+      "\"Bharatiya Nyaya Sanhita\" \"corrigendum\" site:egazette.gov.in",
+      "\"Bharatiya Nagarik Suraksha Sanhita\" \"amendment\" \"2026\" site:sansad.in",
+      "\"Bharatiya Sakshya Adhiniyam\" \"amendment\" \"2026\" site:indiacode.gov.in"
+    ],
+    "unresolved_watchlist": [
+      {
+        "description": "BNS Amendment Bill, 2026, introduced artifact identified in Stage 2B; enactment and later status not established.",
+        "url": "https://sansad.in/getFile/BillsTexts/RSBillTexts/Asintroduced/8e3192026103107AM.pdf?source=legislation"
+      },
+      {
+        "description": "BNSS Amendment Bill, 2025, introduced artifact identified in Stage 2B; enactment and later status not established.",
+        "url": "https://sansad.in/getFile/BillsTexts/RSBillTexts/Asintroduced/421211202550452PM.pdf?source=legislation"
+      },
+      {
+        "description": "Tamil Nadu Bills Gazette identified in Stage 2B; not proof of a final State amendment Act or commencement.",
+        "url": "https://www.stationeryprinting.tn.gov.in/extraordinary/2025/21_Ex_IV_1_E_2025.pdf"
+      }
+    ]
+  },
+  "manifest_note": "Six genuinely acquired PDFs only. Stage 2A schema validation passed without ingestion. file_path is relative to explicit source root backend/data/raw. verification_claim remains unverified; acquisition evidence is separate from independent legal verification.",
+  "manifest_validation": {
+    "document_count": 6,
+    "expected_hashes_match_saved_files": true,
+    "ingestion_invoked": false,
+    "result": "PASS",
+    "schema": "backend.app.ingestion.models.DocumentManifest (Stage 2A unchanged)"
+  },
+  "policy": {
+    "approved_hosts": [
+      "egazette.gov.in",
+      "indiacode.gov.in",
+      "indiacode.nic.in",
+      "www.egazette.gov.in",
+      "www.indiacode.gov.in",
+      "www.indiacode.nic.in"
+    ],
+    "connect_timeout_seconds": 8,
+    "document_request_trust_source": "Standalone truststore 0.10.5; explicit Windows SSLContext(PROTOCOL_TLS_CLIENT)",
+    "follow_redirects": "manual allowlist check at every hop",
+    "hostname_validation": true,
+    "https_only": true,
+    "ingestion_performed": false,
+    "maximum_attempts_per_document": 2,
+    "maximum_document_wall_seconds": 45,
+    "maximum_download_bytes": 26214400,
+    "maximum_redirects_per_attempt": 4,
+    "parallel_requests": 2,
+    "read_timeout_seconds": 10,
+    "source_overwrites": false,
+    "third_party_fallbacks": false,
+    "tls_certificate_validation": true,
+    "trust_env": false,
+    "verify_mode": "CERT_REQUIRED"
+  },
+  "previous_runs": [
+    {
+      "acquired_manifest": null,
+      "completed_at": "2026-10-26T19:47:06.556170+00:00",
+      "currentness_research": {
+        "checked_date_Asia_Kolkata": "2026-10-27",
+        "conclusion": "No subsequent commencement, amendment or corrigendum was established as operative by this bounded research. This is not evidence of absence. Current applicability, amendment completeness, and continuing status of the 2024 exceptions remain unverified.",
+        "historical_corroboration": {
+          "evidence_type": "Official indexed web text; not an acquired Gazette PDF",
+          "finding": "Historical report describes commencement from 2024-07-01 with the BNS section 106(2) exclusion and the corresponding BNSS First Schedule entry exclusion. It does not establish their status on 2026-10-27.",
+          "issuer": "Press Information Bureau / Ministry of Home Affairs",
+          "published_date": "2024-12-10",
+          "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2082757&lang=2&reg=48"
+        },
+        "queries": [
+          "\"106(2)\" \"commencement\" \"2026\" site:egazette.gov.in",
+          "\"Bharatiya Nyaya Sanhita\" \"corrigendum\" site:egazette.gov.in",
+          "\"Bharatiya Nagarik Suraksha Sanhita\" \"amendment\" \"2026\" site:sansad.in",
+          "\"Bharatiya Sakshya Adhiniyam\" \"amendment\" \"2026\" site:indiacode.gov.in"
+        ],
+        "unresolved_watchlist": [
+          {
+            "description": "BNS Amendment Bill, 2026, introduced artifact identified in Stage 2B; enactment and later status not established.",
+            "url": "https://sansad.in/getFile/BillsTexts/RSBillTexts/Asintroduced/8e3192026103107AM.pdf?source=legislation"
+          },
+          {
+            "description": "BNSS Amendment Bill, 2025, introduced artifact identified in Stage 2B; enactment and later status not established.",
+            "url": "https://sansad.in/getFile/BillsTexts/RSBillTexts/Asintroduced/421211202550452PM.pdf?source=legislation"
+          },
+          {
+            "description": "Tamil Nadu Bills Gazette identified in Stage 2B; not proof of a final State amendment Act or commencement.",
+            "url": "https://www.stationeryprinting.tn.gov.in/extraordinary/2025/21_Ex_IV_1_E_2025.pdf"
+          }
+        ]
+      },
+      "git_metadata": {
+        "after": {
+          "file_count": 1173,
+          "sha256": "1f51850d2dacbf7f76818025741ffac76c98ec6cafc526f0e197df570a86d627"
+        },
+        "before": {
+          "file_count": 1173,
+          "sha256": "1f51850d2dacbf7f76818025741ffac76c98ec6cafc526f0e197df570a86d627"
+        },
+        "unchanged": true
+      },
+      "india_code_migration": {
+        "evidence": "Legacy government site migration notice inspected in web research; no assumption that legacy document handles map to new paths. No fallback corpus downloads from India Code.",
+        "new_site_research_tool_access": "https://indiacode.gov.in/ was not accessible through the research viewer; no document path mapping was assumed.",
+        "notice_url": "https://www.indiacode.nic.in/",
+        "official_announced_destination": "https://indiacode.gov.in/"
+      },
+      "manifest_note": "Only acquired PDFs are eligible. An empty manifest is not emitted because Stage 2A requires at least one document.",
+      "policy": {
+        "approved_hosts": [
+          "egazette.gov.in",
+          "indiacode.gov.in",
+          "indiacode.nic.in",
+          "www.egazette.gov.in",
+          "www.indiacode.gov.in",
+          "www.indiacode.nic.in"
+        ],
+        "connect_timeout_seconds": 8,
+        "document_request_trust_source": "HTTPX installed certifi bundle; verification enabled",
+        "follow_redirects": "manual allowlist check at every hop",
+        "https_only": true,
+        "ingestion_performed": false,
+        "maximum_attempts_per_document": 2,
+        "maximum_document_wall_seconds": 45,
+        "maximum_download_bytes": 26214400,
+        "maximum_redirects_per_attempt": 4,
+        "parallel_requests": 2,
+        "read_timeout_seconds": 10,
+        "source_overwrites": false,
+        "third_party_fallbacks": false,
+        "tls_certificate_validation": true
+      },
+      "protected_sources": {
+        "after": {
+          "file_count": 36,
+          "sha256": "86f4290d476050177ef990824cbaeb48ae5d67c6a69a8c4e49e20c029e82e634"
+        },
+        "before": {
+          "file_count": 36,
+          "sha256": "86f4290d476050177ef990824cbaeb48ae5d67c6a69a8c4e49e20c029e82e634"
+        },
+        "unchanged": true
+      },
+      "records": [
+        {
+          "acquired_at": null,
+          "attempts": [
+            {
+              "attempt": 1,
+              "completed_at": "2026-10-26T19:47:02.517468+00:00",
+              "error": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+              "redirect_chain": [],
+              "started_at": "2026-10-26T19:47:01.266113+00:00"
+            },
+            {
+              "attempt": 2,
+              "completed_at": "2026-10-26T19:47:03.640497+00:00",
+              "error": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+              "redirect_chain": [],
+              "started_at": "2026-10-26T19:47:03.527633+00:00"
+            }
+          ],
+          "blocked_reason": "TLS certificate-chain validation failed on both bounded document attempts: unable to get local issuer certificate. No HTTP response or PDF payload obtained; stopped without substitution.",
+          "byte_size": null,
+          "document": "BNS act",
+          "extracted_evidence": [],
+          "final_download_url": null,
+          "pdf_header_validation": "not_performed_no_payload",
+          "pdf_parseability_validation": "not_performed_no_payload",
+          "proposed_filename": "bns-2023-act-45-original-gazette-250883.pdf",
+          "raw_path": null,
+          "saved_hash_validation": "not_performed_no_saved_file",
+          "sha256": null,
+          "source_url": "https://egazette.gov.in/WriteReadData/2023/250883.pdf",
+          "status": "BLOCKED",
+          "unresolved_mismatches": [
+            "Document title, number, issuing authority, dates, completeness and operative commencement wording cannot be compared without acquired PDF bytes."
+          ],
+          "verification": {
+            "byte_integrity": "not_acquired",
+            "cryptographic_pdf_signature": "not_verified",
+            "current_legal_applicability": "unverified",
+            "document_identity": "not_inspected",
+            "official_provenance": "not_established_for_bytes"
+          }
+        },
+        {
+          "acquired_at": null,
+          "attempts": [
+            {
+              "attempt": 1,
+              "completed_at": "2026-10-26T19:47:02.533377+00:00",
+              "error": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+              "redirect_chain": [],
+              "started_at": "2026-10-26T19:47:01.335242+00:00"
+            },
+            {
+              "attempt": 2,
+              "completed_at": "2026-10-26T19:47:03.645541+00:00",
+              "error": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+              "redirect_chain": [],
+              "started_at": "2026-10-26T19:47:03.529570+00:00"
+            }
+          ],
+          "blocked_reason": "TLS certificate-chain validation failed on both bounded document attempts: unable to get local issuer certificate. No HTTP response or PDF payload obtained; stopped without substitution.",
+          "byte_size": null,
+          "document": "BNSS act",
+          "extracted_evidence": [],
+          "final_download_url": null,
+          "pdf_header_validation": "not_performed_no_payload",
+          "pdf_parseability_validation": "not_performed_no_payload",
+          "proposed_filename": "bnss-2023-act-46-original-gazette-250884.pdf",
+          "raw_path": null,
+          "saved_hash_validation": "not_performed_no_saved_file",
+          "sha256": null,
+          "source_url": "https://egazette.gov.in/WriteReadData/2023/250884.pdf",
+          "status": "BLOCKED",
+          "unresolved_mismatches": [
+            "Document title, number, issuing authority, dates, completeness and operative commencement wording cannot be compared without acquired PDF bytes."
+          ],
+          "verification": {
+            "byte_integrity": "not_acquired",
+            "cryptographic_pdf_signature": "not_verified",
+            "current_legal_applicability": "unverified",
+            "document_identity": "not_inspected",
+            "official_provenance": "not_established_for_bytes"
+          }
+        },
+        {
+          "acquired_at": null,
+          "attempts": [
+            {
+              "attempt": 1,
+              "completed_at": "2026-10-26T19:47:03.780122+00:00",
+              "error": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+              "redirect_chain": [],
+              "started_at": "2026-10-26T19:47:03.640497+00:00"
+            },
+            {
+              "attempt": 2,
+              "completed_at": "2026-10-26T19:47:04.935118+00:00",
+              "error": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+              "redirect_chain": [],
+              "started_at": "2026-10-26T19:47:04.794759+00:00"
+            }
+          ],
+          "blocked_reason": "TLS certificate-chain validation failed on both bounded document attempts: unable to get local issuer certificate. No HTTP response or PDF payload obtained; stopped without substitution.",
+          "byte_size": null,
+          "document": "BSA act",
+          "extracted_evidence": [],
+          "final_download_url": null,
+          "pdf_header_validation": "not_performed_no_payload",
+          "pdf_parseability_validation": "not_performed_no_payload",
+          "proposed_filename": "bsa-2023-act-47-original-gazette-250882.pdf",
+          "raw_path": null,
+          "saved_hash_validation": "not_performed_no_saved_file",
+          "sha256": null,
+          "source_url": "https://egazette.gov.in/WriteReadData/2023/250882.pdf",
+          "status": "BLOCKED",
+          "unresolved_mismatches": [
+            "Document title, number, issuing authority, dates, completeness and operative commencement wording cannot be compared without acquired PDF bytes."
+          ],
+          "verification": {
+            "byte_integrity": "not_acquired",
+            "cryptographic_pdf_signature": "not_verified",
+            "current_legal_applicability": "unverified",
+            "document_identity": "not_inspected",
+            "official_provenance": "not_established_for_bytes"
+          }
+        },
+        {
+          "acquired_at": null,
+          "attempts": [
+            {
+              "attempt": 1,
+              "completed_at": "2026-10-26T19:47:03.784501+00:00",
+              "error": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+              "redirect_chain": [],
+              "started_at": "2026-10-26T19:47:03.645541+00:00"
+            },
+            {
+              "attempt": 2,
+              "completed_at": "2026-10-26T19:47:04.915158+00:00",
+              "error": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+              "redirect_chain": [],
+              "started_at": "2026-10-26T19:47:04.796847+00:00"
+            }
+          ],
+          "blocked_reason": "TLS certificate-chain validation failed on both bounded document attempts: unable to get local issuer certificate. No HTTP response or PDF payload obtained; stopped without substitution.",
+          "byte_size": null,
+          "document": "BNS notification",
+          "extracted_evidence": [],
+          "final_download_url": null,
+          "pdf_header_validation": "not_performed_no_payload",
+          "pdf_parseability_validation": "not_performed_no_payload",
+          "proposed_filename": "bns-commencement-so-850e-2024-gazette-252353.pdf",
+          "raw_path": null,
+          "saved_hash_validation": "not_performed_no_saved_file",
+          "sha256": null,
+          "source_url": "https://egazette.gov.in/WriteReadData/2024/252353.pdf",
+          "status": "BLOCKED",
+          "unresolved_mismatches": [
+            "Document title, number, issuing authority, dates, completeness and operative commencement wording cannot be compared without acquired PDF bytes."
+          ],
+          "verification": {
+            "byte_integrity": "not_acquired",
+            "cryptographic_pdf_signature": "not_verified",
+            "current_legal_applicability": "unverified",
+            "document_identity": "not_inspected",
+            "official_provenance": "not_established_for_bytes"
+          }
+        },
+        {
+          "acquired_at": null,
+          "attempts": [
+            {
+              "attempt": 1,
+              "completed_at": "2026-10-26T19:47:05.044954+00:00",
+              "error": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+              "redirect_chain": [],
+              "started_at": "2026-10-26T19:47:04.915158+00:00"
+            },
+            {
+              "attempt": 2,
+              "completed_at": "2026-10-26T19:47:06.165954+00:00",
+              "error": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+              "redirect_chain": [],
+              "started_at": "2026-10-26T19:47:06.059576+00:00"
+            }
+          ],
+          "blocked_reason": "TLS certificate-chain validation failed on both bounded document attempts: unable to get local issuer certificate. No HTTP response or PDF payload obtained; stopped without substitution.",
+          "byte_size": null,
+          "document": "BNSS notification",
+          "extracted_evidence": [],
+          "final_download_url": null,
+          "pdf_header_validation": "not_performed_no_payload",
+          "pdf_parseability_validation": "not_performed_no_payload",
+          "proposed_filename": "bnss-commencement-so-848e-2024-gazette-252354.pdf",
+          "raw_path": null,
+          "saved_hash_validation": "not_performed_no_saved_file",
+          "sha256": null,
+          "source_url": "https://egazette.gov.in/WriteReadData/2024/252354.pdf",
+          "status": "BLOCKED",
+          "unresolved_mismatches": [
+            "Document title, number, issuing authority, dates, completeness and operative commencement wording cannot be compared without acquired PDF bytes."
+          ],
+          "verification": {
+            "byte_integrity": "not_acquired",
+            "cryptographic_pdf_signature": "not_verified",
+            "current_legal_applicability": "unverified",
+            "document_identity": "not_inspected",
+            "official_provenance": "not_established_for_bytes"
+          }
+        },
+        {
+          "acquired_at": null,
+          "attempts": [
+            {
+              "attempt": 1,
+              "completed_at": "2026-10-26T19:47:05.064140+00:00",
+              "error": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+              "redirect_chain": [],
+              "started_at": "2026-10-26T19:47:04.935118+00:00"
+            },
+            {
+              "attempt": 2,
+              "completed_at": "2026-10-26T19:47:06.195872+00:00",
+              "error": "ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+              "redirect_chain": [],
+              "started_at": "2026-10-26T19:47:06.061465+00:00"
+            }
+          ],
+          "blocked_reason": "TLS certificate-chain validation failed on both bounded document attempts: unable to get local issuer certificate. No HTTP response or PDF payload obtained; stopped without substitution.",
+          "byte_size": null,
+          "document": "BSA notification",
+          "extracted_evidence": [],
+          "final_download_url": null,
+          "pdf_header_validation": "not_performed_no_payload",
+          "pdf_parseability_validation": "not_performed_no_payload",
+          "proposed_filename": "bsa-commencement-so-849e-2024-gazette-252352.pdf",
+          "raw_path": null,
+          "saved_hash_validation": "not_performed_no_saved_file",
+          "sha256": null,
+          "source_url": "https://egazette.gov.in/WriteReadData/2024/252352.pdf",
+          "status": "BLOCKED",
+          "unresolved_mismatches": [
+            "Document title, number, issuing authority, dates, completeness and operative commencement wording cannot be compared without acquired PDF bytes."
+          ],
+          "verification": {
+            "byte_integrity": "not_acquired",
+            "cryptographic_pdf_signature": "not_verified",
+            "current_legal_applicability": "unverified",
+            "document_identity": "not_inspected",
+            "official_provenance": "not_established_for_bytes"
+          }
+        }
+      ],
+      "report_updated_at": "2026-10-26T19:52:24.300632+00:00",
+      "review_date_Asia_Kolkata": "2026-10-27",
+      "stage": "2C",
+      "started_at": "2026-10-26T19:47:00.910654+00:00",
+      "tls_diagnostic": {
+        "certifi_store_ca_count": 118,
+        "certificates_installed": false,
+        "check_hostname": true,
+        "elapsed_seconds": 0.22,
+        "interpretation": "This client could not establish the certificate chain. This does not prove that the government website is globally down or that its documents are invalid.",
+        "platform_store_ca_count": 54,
+        "recorded_at": "2026-10-26T19:52:24.300632+00:00",
+        "request": "HEAD https://egazette.gov.in/ (homepage only, no legal PDF requested)",
+        "result": "ConnectError: CERTIFICATE_VERIFY_FAILED; unable to get local issuer certificate",
+        "tls_checks_disabled": false,
+        "trust_source": "Existing Windows trust roots plus installed certifi bundle",
+        "trust_store_modified": false,
+        "verify_mode": "CERT_REQUIRED"
+      }
+    }
+  ],
+  "protected_source_and_git_verification": {
+    "after_inventory_sha256": "ce98d990e13ff602a7d2b33799f50df8410b5c0eff26b661863470ac0a424d03",
+    "before_inventory_sha256": "ce98d990e13ff602a7d2b33799f50df8410b5c0eff26b661863470ac0a424d03",
+    "file_count": 1213,
+    "unchanged": true
+  },
+  "publication_binding_version": "v2",
+  "publication_notice": "Derived publication metadata; source identities/URLs/hashes remain unchanged; not byte-identical to V1.",
+  "records": [
+    {
+      "acquired_at": "2026-10-26T20:23:09.608918+00:00",
+      "attempts": [
+        {
+          "attempt": 1,
+          "completed_at": "2026-10-26T20:23:09.608918+00:00",
+          "content_length": "1382923",
+          "content_type": "application/pdf",
+          "http_status": 200,
+          "redirect_chain": [],
+          "response_url": "https://egazette.gov.in/WriteReadData/2023/250883.pdf",
+          "started_at": "2026-10-26T20:23:05.273837+00:00"
+        }
+      ],
+      "blocked_reason": null,
+      "byte_size": 1382923,
+      "commencement_review": null,
+      "content_reviewed_at": "2026-10-26T20:25:13.203738+00:00",
+      "document": "BNS act",
+      "extracted_evidence": [
+        {
+          "pdf_page": 1,
+          "text": "THE BHARATIYA NYAYA SANHITA, 2023 NO. 45 OF 2023 [25th December, 2023.] An Act to consolidate and amend the provisions relating to offences and for matters connected therewith or incidental thereto. BE it enacted by Parliament in the Seventy-fourth Year of the Republic of India as follows:–– CHAPTER I PRELIMINARY 1. (1) This Act may be called the Bharatiya Nyaya Sanhita, 2023. (2) It shall come into force on such date as the Central Government may, by notification in the Official Gazette, appoint, and different dates may be appointed for different provisions of this Sanhita. Short title, commencement and application. vlk/kkj.k EXTRAORDINARY Hkkx II — [k.M 1 PART II — Section 1 izkf/kdkj ls izdkf'kr PUBLISHED BY AUTHORITY lañ 53] ubZ fnYyh] lkseokj] fnlEcj 25] 2023@ikS\"k 4] 1945 ¼'kd½ No. 53] NEW DELHI, MONDAY, DECEMBER 25, 2023/PAUSHA 4, 1945 (SAKA) bl Hkkx esa fHkUu i`\"B la[;k nh tkrh gS ftlls fd ;g vyx ladyu ds :i esa j[kk tk ldsA Separate paging is given to this Part in order that it may be filed as a separate compilation. xxxGIDHxxx xxxGIDExxx jftLVªh lañ Mhñ ,yñ—(,u)04@0007@2003—23 REGISTERED NO. DL—(N)04/0007/2003—23 MINISTRY OF LAW AND JUSTICE (Legislative Department) New Delhi, the 25th December, 2023/Pausha 4, 1945 (Saka) The following Act of Parliament received the assent of the President on the 25th December, 2023 and is hereby published for general information:— सी.जी.-डी.एल.-अ.-25122023-250883 CG-DL-E-25122023-250883"
+        },
+        {
+          "pdf_page": 102,
+          "text": "102 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—SEC. 1] Of breach of contract to attend on and supply wants of helpless person 357. Whoever, being bound by a lawful contract to attend on or to supply the wants of any person who, by reason of youth, or of unsoundness of mind, or of a disease or bodily weakness, is helpless or incapable of providing for his own safety or of supplying his own wants, voluntarily omits so to do, shall be punished with imprisonment of either description for a term which may extend to three months, or with fine which may extend to five thousand rupees, or with both. CHAPTER XX REPEAL AND SAVINGS 358. (1) The Indian Penal Code is hereby repealed. (2) Notwithstanding the repeal of the Code referred to in sub-section (1), it shall not affect,— (a) the previous operation of the Code so repealed or anything duly done or suffered thereunder; or (b) any right, privilege, obligation or liability acquired, accrued or incurred under the Code so repealed; or (c) any penalty, or punishment incurred in respect of any offences committed against the Code so repealed; or (d) any investigation or remedy in respect of any such penalty, or punishment; or (e) any proceeding, investigation or remedy in respect of any such penalty or punishment as aforesaid, and any such proceeding or remedy may be instituted, continued or enforced, and any such penalty may be imposed as if that Code had not been repealed. (3) Notwithstanding such repeal, anything done or any action taken under the said Code shall be deemed to have been done or taken under the corresponding provisions of this Sanhita. (4) The mention of particular matters in sub-section (2) shall not be held to prejudice or affect the general application of section 6 of the General Clauses Act,1897 with regard to the effect of the repeal. Breach of contract to attend on and supply wants of helpless person. Repeal and savings. 45 of 1860. 10 of 1897. ————— DIWAKAR SINGH, Joint Secretary & Legislative Counsel to the Govt. of India. MGIPMRND—531GI(S3)—25-12-2023. UPLOADED BY THE MANAGER, GOVERNMENT OF INDIA PRESS, MINTO ROAD, NEW DELHI–110002 AND PUBLISHED BY THE CONTROLLER OF PUBLICATIONS, DELHI–110054. "
+        }
+      ],
+      "final_download_url": "https://egazette.gov.in/WriteReadData/2023/250883.pdf",
+      "identity_checks": {
+        "act_number": true,
+        "assent_date": true,
+        "gazette_identity": true,
+        "issuing_authority": true,
+        "official_title": true,
+        "publication_date": true,
+        "publishing_colophon": true
+      },
+      "observed_metadata": {
+        "act_number": 45,
+        "act_year": 2023,
+        "body_language": "en",
+        "enactment_date": "2023-12-25",
+        "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+        "official_title": "The Bharatiya Nyaya Sanhita, 2023",
+        "publication_date": "2023-12-25",
+        "version": "original enacted Gazette publication; not consolidated"
+      },
+      "page_count": 102,
+      "parser_repaired": false,
+      "pdf_header_validation": "PASS",
+      "pdf_parseability_validation": "PASS",
+      "proposed_filename": "bns-2023-act-45-original-gazette-250883.pdf",
+      "raw_path": "backend/data/raw/bns-2023-act-45-original-gazette-250883.pdf",
+      "save_mode": "created_read_only",
+      "saved_hash_validation": "PASS",
+      "sha256": "67c92f7869420685e6cdc29b1bdde19fff91312b10241b3ed3e1163c5399600b",
+      "source_url": "https://egazette.gov.in/WriteReadData/2023/250883.pdf",
+      "status": "PASS",
+      "status_scope": "Acquisition, saved-byte integrity, PDF parseability and printed identity only; not legal currentness or cryptographic signature validity.",
+      "text_extraction_limitations": [
+        "Hindi in legacy-font Gazette headers and notification page 1 is not reliably represented by plain-text extraction; inspect rendered PDF. No OCR or source modification performed."
+      ],
+      "unresolved_mismatches": [],
+      "verification": {
+        "byte_integrity": "PASS: saved SHA256, size and HTTP Content-Length match",
+        "cryptographic_pdf_signature": "NOT VERIFIED: visible signature appearance is not a cryptographic validation",
+        "current_legal_applicability": "UNVERIFIED: no comprehensive amendment, corrigendum or later commencement review",
+        "document_identity": "PASS: printed title/number, authority, dates and Gazette identity match preliminary inventory",
+        "official_provenance": "PASS: original candidate retrieved from exact approved official host with Windows-backed TLS and hostname validation; printed Gazette identity also matches"
+      }
+    },
+    {
+      "acquired_at": "2026-10-26T20:23:11.589698+00:00",
+      "attempts": [
+        {
+          "attempt": 1,
+          "completed_at": "2026-10-26T20:23:11.590703+00:00",
+          "content_length": "2033181",
+          "content_type": "application/pdf",
+          "http_status": 200,
+          "redirect_chain": [],
+          "response_url": "https://egazette.gov.in/WriteReadData/2023/250884.pdf",
+          "started_at": "2026-10-26T20:23:05.308856+00:00"
+        }
+      ],
+      "blocked_reason": null,
+      "byte_size": 2033181,
+      "commencement_review": null,
+      "content_reviewed_at": "2026-10-26T20:25:13.203738+00:00",
+      "document": "BNSS act",
+      "extracted_evidence": [
+        {
+          "pdf_page": 1,
+          "text": "vlk/kkj.k EXTRAORDINARY Hkkx II — [k.M 1 PART II — Section 1 izkf/kdkj ls izdkf'kr PUBLISHED BY AUTHORITY lañ 54] ubZ fnYyh] lkseokj] fnlEcj 25] 2023@ikS\"k 4] 1945 ¼'kd½ No. 54] NEW DELHI, MONDAY, DECEMBER 25, 2023/PAUSHA 4, 1945 (SAKA) bl Hkkx esa fHkUu i`\"B la[;k nh tkrh gS ftlls fd ;g vyx ladyu ds :i esa j[kk tk ldsA Separate paging is given to this Part in order that it may be filed as a separate compilation. xxxGIDHxxx xxxGIDExxx jftLVªh lañ Mhñ ,yñ—(,u)04@0007@2003—23 REGISTERED NO. DL—(N)04/0007/2003—23 MINISTRY OF LAW AND JUSTICE (Legislative Department) New Delhi, the 25th December, 2023/Pausha 4, 1945 (Saka) The following Act of Parliament received the assent of the President on the 25th December, 2023 and is hereby published for general information:— THE BHARATIYA NAGARIK SURAKSHA SANHITA, 2023 NO. 46 OF 2023 [25th December, 2023.] An Act to consolidate and amend the law relating to Criminal Procedure. BE it enacted by Parliament in the Seventy-fourth Year of the Republic of India as follows:— CHAPTER I PRELIMINARY 1. (1) This Act may be called the Bharatiya Nagarik Suraksha Sanhita, 2023. (2) The provisions of this Sanhita, other than those relating to Chapters IX, XI and XII thereof, shall not apply— (a) to the State of Nagaland; (b) to the tribal areas, but the concerned State Government may, by notification, apply such provisions or any of them to the whole or part of the State of Nagaland or such tribal areas, as the case may be, with such supplemental, incidental or consequential modifications, as may be specified in the notification. Short title, extent and commencement. सी.जी.-डी.एल.-अ.-25122023-250884 CG-DL-E-25122023-250884"
+        },
+        {
+          "pdf_page": 249,
+          "text": "SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 249 ————— DIWAKAR SINGH, Joint Secretary & Legislative Counsel to the Govt. of India. MGIPMRND—532GI(S3)—25-12-2023. UPLOADED BY THE MANAGER, GOVERNMENT OF INDIA PRESS, MINTO ROAD, NEW DELHI–110002 AND PUBLISHED BY THE CONTROLLER OF PUBLICATIONS, DELHI–110054. FORM No. 58 WARRANT OF IMPRISONMENT ON FORFEITURE OF BOND FOR GOOD BEHAVIOUR (See section 491) To the Superintendent (or Keeper) of the Civil Jail at.............................................. WHEREAS..............................................(name, description and address) did, on the .............................................. day of.............................................., 20.................. , give security by bond in the sum of rupees........................for the good behaviour of...................................(name, etc., of the principal), and proof of the breach of the said bond has been given before me and duly recorded, whereby the said..............................................(name) has forfeited to Government the sum of rupees.................. , and whereas he has failed to pay the said sum or to show cause why the said sum should not be paid although duly called upon to do so, and payment thereof cannot be enforced by attachment of his movable property, and an order has been made for the imprisonment of the said..............................................(name) in the Civil Jail for the period of..............................................(term of imprisonment); This is to authorise and require you, the Superintendent (or Keeper), to receive the said..............................................(name) into your custody, together with this warrant, and to keep him safely in the said Jail for the said period of..............................................(term of imprisonment), returning this warrant with an endorsement certifying the manner of its execution. Dated, this.............................................. day of.............................................. , 20 ............ . (Seal of the Court) (Signature) "
+        }
+      ],
+      "final_download_url": "https://egazette.gov.in/WriteReadData/2023/250884.pdf",
+      "identity_checks": {
+        "act_number": true,
+        "assent_date": true,
+        "gazette_identity": true,
+        "issuing_authority": true,
+        "official_title": true,
+        "publication_date": true,
+        "publishing_colophon": true
+      },
+      "observed_metadata": {
+        "act_number": 46,
+        "act_year": 2023,
+        "body_language": "en",
+        "enactment_date": "2023-12-25",
+        "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+        "official_title": "The Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "publication_date": "2023-12-25",
+        "version": "original enacted Gazette publication; not consolidated"
+      },
+      "page_count": 249,
+      "parser_repaired": false,
+      "pdf_header_validation": "PASS",
+      "pdf_parseability_validation": "PASS",
+      "proposed_filename": "bnss-2023-act-46-original-gazette-250884.pdf",
+      "raw_path": "backend/data/raw/bnss-2023-act-46-original-gazette-250884.pdf",
+      "save_mode": "created_read_only",
+      "saved_hash_validation": "PASS",
+      "sha256": "5e60e2afe30d0fe7eca4f8126301146b76c86a444e690581f81eb564843517fe",
+      "source_url": "https://egazette.gov.in/WriteReadData/2023/250884.pdf",
+      "status": "PASS",
+      "status_scope": "Acquisition, saved-byte integrity, PDF parseability and printed identity only; not legal currentness or cryptographic signature validity.",
+      "text_extraction_limitations": [
+        "Hindi in legacy-font Gazette headers and notification page 1 is not reliably represented by plain-text extraction; inspect rendered PDF. No OCR or source modification performed."
+      ],
+      "unresolved_mismatches": [],
+      "verification": {
+        "byte_integrity": "PASS: saved SHA256, size and HTTP Content-Length match",
+        "cryptographic_pdf_signature": "NOT VERIFIED: visible signature appearance is not a cryptographic validation",
+        "current_legal_applicability": "UNVERIFIED: no comprehensive amendment, corrigendum or later commencement review",
+        "document_identity": "PASS: printed title/number, authority, dates and Gazette identity match preliminary inventory",
+        "official_provenance": "PASS: original candidate retrieved from exact approved official host with Windows-backed TLS and hostname validation; printed Gazette identity also matches"
+      }
+    },
+    {
+      "acquired_at": "2026-10-26T20:23:12.881984+00:00",
+      "attempts": [
+        {
+          "attempt": 1,
+          "completed_at": "2026-10-26T20:23:12.882969+00:00",
+          "content_length": "1218408",
+          "content_type": "application/pdf",
+          "http_status": 200,
+          "redirect_chain": [],
+          "response_url": "https://egazette.gov.in/WriteReadData/2023/250882.pdf",
+          "started_at": "2026-10-26T20:23:09.609918+00:00"
+        }
+      ],
+      "blocked_reason": null,
+      "byte_size": 1218408,
+      "commencement_review": null,
+      "content_reviewed_at": "2026-10-26T20:25:13.203738+00:00",
+      "document": "BSA act",
+      "extracted_evidence": [
+        {
+          "pdf_page": 1,
+          "text": "THE BHARATIYA SAKSHYA ADHINIYAM, 2023 NO. 47 OF 2023 [25th December, 2023.] An Act to consolidate and to provide for general rules and principles of evidence for fair trial. BE it enacted by Parliament in the Seventy-fourth Year of the Republic of India as follows:— PART I CHAPTER I PRELIMINARY 1. (1) This Act may be called the Bharatiya Sakshya Adhiniyam, 2023. (2) It applies to all judicial proceedings in or before any Court, including Courts-martial, but not to affidavits presented to any Court or officer, nor to proceedings before an arbitrator. Short title, application and commencement. vlk/kkj.k EXTRAORDINARY Hkkx II — [k.M 1 PART II — Section 1 izkf/kdkj ls izdkf'kr PUBLISHED BY AUTHORITY lañ 55] ubZ fnYyh] lkseokj] fnlEcj 25] 2023@ikS\"k 4] 1945 ¼'kd½ No. 55] NEW DELHI, MONDAY, DECEMBER 25, 2023/PAUSHA 4, 1945 (SAKA) bl Hkkx esa fHkUu i`\"B la[;k nh tkrh gS ftlls fd ;g vyx ladyu ds :i esa j[kk tk ldsA Separate paging is given to this Part in order that it may be filed as a separate compilation. xxxGIDHxxx xxxGIDExxx jftLVªh lañ Mhñ ,yñ—(,u)04@0007@2003—23 REGISTERED NO. DL—(N)04/0007/2003—23 MINISTRY OF LAW AND JUSTICE (Legislative Department) New Delhi, the 25th December, 2023/Pausha 4, 1945 (Saka) The following Act of Parliament received the assent of the President on the 25th December, 2023 and is hereby published for general information:— सी.जी.-डी.एल.-अ.-25122023-250882 CG-DL-E-25122023-250882"
+        },
+        {
+          "pdf_page": 47,
+          "text": "SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 47 PART B (To be filled by the Expert) I, ____________________ (Name), Son/daughter/spouse of _____________________ residing/employed at _________________________ do hereby solemnly affirm and sincerely state and submit as follows:— The produced electronic record/output of the digital record are obtained from the following device/digital record source (tick mark):— Computer / Storage Media DVR Mobile Flash Drive CD/DVD Server Cloud Other Other: ________________________________________ Make & Model: _______________ Color: _______________ Serial Number: _______________ IMEI/UIN/UID/MAC/Cloud ID_____________________ (as applicable) and any other relevant information, if any, about the device/digital record_______(specify). I state that the HASH value/s of the electronic/digital record/s is _____________________, obtained through the following algorithm:— SHA1: SHA256: MD5: Other__________________ (Legally acceptable standard) (Hash report to be enclosed with the certificate) (Name, designation and signature) Date (DD/MM/YYYY): _____ Time (IST): ________hours (In 24 hours format) Place: ____________ ————— DIWAKAR SINGH, Joint Secretary & Legislative Counsel to the Govt. of India. MGIPMRND—533GI(S3)—25-12-2023. UPLOADED BY THE MANAGER, GOVERNMENT OF INDIA PRESS, MINTO ROAD, NEW DELHI–110002 AND PUBLISHED BY THE CONTROLLER OF PUBLICATIONS, DELHI–110054. "
+        }
+      ],
+      "final_download_url": "https://egazette.gov.in/WriteReadData/2023/250882.pdf",
+      "identity_checks": {
+        "act_number": true,
+        "assent_date": true,
+        "gazette_identity": true,
+        "issuing_authority": true,
+        "official_title": true,
+        "publication_date": true,
+        "publishing_colophon": true
+      },
+      "observed_metadata": {
+        "act_number": 47,
+        "act_year": 2023,
+        "body_language": "en",
+        "enactment_date": "2023-12-25",
+        "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+        "official_title": "The Bharatiya Sakshya Adhiniyam, 2023",
+        "publication_date": "2023-12-25",
+        "version": "original enacted Gazette publication; not consolidated"
+      },
+      "page_count": 47,
+      "parser_repaired": false,
+      "pdf_header_validation": "PASS",
+      "pdf_parseability_validation": "PASS",
+      "proposed_filename": "bsa-2023-act-47-original-gazette-250882.pdf",
+      "raw_path": "backend/data/raw/bsa-2023-act-47-original-gazette-250882.pdf",
+      "save_mode": "created_read_only",
+      "saved_hash_validation": "PASS",
+      "sha256": "31ee68ea57b5303bf6697b5d8cb2004b9eb9180d7e9cbcbbdbf5bccab7cda5c1",
+      "source_url": "https://egazette.gov.in/WriteReadData/2023/250882.pdf",
+      "status": "PASS",
+      "status_scope": "Acquisition, saved-byte integrity, PDF parseability and printed identity only; not legal currentness or cryptographic signature validity.",
+      "text_extraction_limitations": [
+        "Hindi in legacy-font Gazette headers and notification page 1 is not reliably represented by plain-text extraction; inspect rendered PDF. No OCR or source modification performed."
+      ],
+      "unresolved_mismatches": [],
+      "verification": {
+        "byte_integrity": "PASS: saved SHA256, size and HTTP Content-Length match",
+        "cryptographic_pdf_signature": "NOT VERIFIED: visible signature appearance is not a cryptographic validation",
+        "current_legal_applicability": "UNVERIFIED: no comprehensive amendment, corrigendum or later commencement review",
+        "document_identity": "PASS: printed title/number, authority, dates and Gazette identity match preliminary inventory",
+        "official_provenance": "PASS: original candidate retrieved from exact approved official host with Windows-backed TLS and hostname validation; printed Gazette identity also matches"
+      }
+    },
+    {
+      "acquired_at": "2026-10-26T20:23:13.572162+00:00",
+      "attempts": [
+        {
+          "attempt": 1,
+          "completed_at": "2026-10-26T20:23:13.572162+00:00",
+          "content_length": "922134",
+          "content_type": "application/pdf",
+          "http_status": 200,
+          "redirect_chain": [],
+          "response_url": "https://egazette.gov.in/WriteReadData/2024/252353.pdf",
+          "started_at": "2026-10-26T20:23:11.590703+00:00"
+        }
+      ],
+      "blocked_reason": null,
+      "byte_size": 922134,
+      "commencement_review": {
+        "appointed_date": "2024-07-01",
+        "evidence_pdf_page": 2,
+        "exact_exception_text": "except the provision of sub-section (2) of section 106",
+        "exact_operative_english_text": "S.O. 850(E).—In exercise of the powers conferred by sub-section (2) of section 1 of the Bharatiya Nyaya Sanhita, 2023 (45 of 2023), the Central Government hereby appoints the 1st day of July, 2024 as the date on which the provisions of the said Sanhita, except the provision of sub-section (2) of section 106, shall come into force.",
+        "notification_date": "2024-02-23",
+        "notification_number": "S.O. 850(E)",
+        "publication_date": "2024-02-24",
+        "scope": "Appoints 2024-07-01 except BNS section 106(2). Later commencement/status of that subsection remains unknown.",
+        "subsequent_status": "unverified"
+      },
+      "content_reviewed_at": "2026-10-26T20:25:13.203738+00:00",
+      "document": "BNS notification",
+      "extracted_evidence": [
+        {
+          "pdf_page": 1,
+          "text": "1257 GI/2024 (1) रजिस्ट्री सं. डी.एल.- 33004/99 REGD. No. D. L.-33004/99 xxxGIDHxxx xxxGIDExxx असाधारण EXTRAORDINARY भाग II—खण् ड 3—उप-खण् ड (ii) PART II—Section 3—Sub-section (ii) प्राजधकार से प्रकाजित PUBLISHED BY AUTHORITY गृह मंत्रालय अजधसूचना नई दिल्ली, 23 फरवरी, 2024 का.आ. 850(अ).—केन्द्रीय सरकार, भारतीय न्द्याय संजहता, 2023 (2023 का 45) की धारा 1 की उपधारा (2) द्वारा प्रित्त िजियों का प्रयोग करते हुए, 1 िुलाई, 2024 को उस तारीख के रूप में जनयत करती है, जिसको उि संजहता के उपबंध, धारा 106 की उपधारा (2) के उपबंधों के जसवाय, प्रवृत होंगे। [फा. सं. 1/3/2023 न्द्याजयक प्रकोष्ठ-I] श्री प्रकाि, संयुक् त सजचव सं. 811] नई दिल्ली, िजनवार, फरवरी 24, 2024/फाल् गुन 5, 1945 No. 811] NEW DELHI, SATURDAY, FEBRUARY 24, 2024/PHALGUNA 5, 1945 सी.जी.-डी.एल.-अ.-24022024-252353 CG-DL-E-24022024-252353"
+        },
+        {
+          "pdf_page": 2,
+          "text": "2 THE GAZETTE OF INDIA : EXTRAORDINARY [PART II—SEC. 3(ii)] MINISTRY OF HOME AFFAIRS NOTIFICATION New Delhi, the 23rd February, 2024 S.O. 850(E).—In exercise of the powers conferred by sub-section (2) of section 1 of the Bharatiya Nyaya Sanhita, 2023 (45 of 2023), the Central Government hereby appoints the 1st day of July, 2024 as the date on which the provisions of the said Sanhita, except the provision of sub-section (2) of section 106, shall come into force. [F. No. 1/3/2023-Judicial Cell-I] SHRI PRAKASH, Jt. Secy. "
+        }
+      ],
+      "final_download_url": "https://egazette.gov.in/WriteReadData/2024/252353.pdf",
+      "identity_checks": {
+        "act_reference": true,
+        "appointed_date": true,
+        "bilingual_pages": true,
+        "commencement_exception": true,
+        "file_reference": true,
+        "gazette_identity": true,
+        "issuing_authority": true,
+        "notification_date": true,
+        "notification_number": true,
+        "publication_date": true
+      },
+      "observed_metadata": {
+        "issuing_authority": "Government of India, Ministry of Home Affairs",
+        "language": "mul",
+        "notification_date": "2024-02-23",
+        "notification_number": "S.O. 850(E)",
+        "official_title": "NOTIFICATION",
+        "publication_date": "2024-02-24",
+        "version": "original Gazette commencement notification"
+      },
+      "page_count": 2,
+      "parser_repaired": false,
+      "pdf_header_validation": "PASS",
+      "pdf_parseability_validation": "PASS",
+      "proposed_filename": "bns-commencement-so-850e-2024-gazette-252353.pdf",
+      "raw_path": "backend/data/raw/bns-commencement-so-850e-2024-gazette-252353.pdf",
+      "save_mode": "created_read_only",
+      "saved_hash_validation": "PASS",
+      "sha256": "dfcd5df23fb711f2996959b13ee6ff6bd32ed38be1e1f2d1c820cbba86e2a8c9",
+      "source_url": "https://egazette.gov.in/WriteReadData/2024/252353.pdf",
+      "status": "PASS",
+      "status_scope": "Acquisition, saved-byte integrity, PDF parseability and printed identity only; not legal currentness or cryptographic signature validity.",
+      "text_extraction_limitations": [
+        "Hindi in legacy-font Gazette headers and notification page 1 is not reliably represented by plain-text extraction; inspect rendered PDF. No OCR or source modification performed."
+      ],
+      "unresolved_mismatches": [],
+      "verification": {
+        "byte_integrity": "PASS: saved SHA256, size and HTTP Content-Length match",
+        "cryptographic_pdf_signature": "NOT VERIFIED: visible signature appearance is not a cryptographic validation",
+        "current_legal_applicability": "UNVERIFIED: no comprehensive amendment, corrigendum or later commencement review",
+        "document_identity": "PASS: printed title/number, authority, dates and Gazette identity match preliminary inventory",
+        "official_provenance": "PASS: original candidate retrieved from exact approved official host with Windows-backed TLS and hostname validation; printed Gazette identity also matches"
+      }
+    },
+    {
+      "acquired_at": "2026-10-26T20:23:15.115602+00:00",
+      "attempts": [
+        {
+          "attempt": 1,
+          "completed_at": "2026-10-26T20:23:15.116617+00:00",
+          "content_length": "924297",
+          "content_type": "application/pdf",
+          "http_status": 200,
+          "redirect_chain": [],
+          "response_url": "https://egazette.gov.in/WriteReadData/2024/252354.pdf",
+          "started_at": "2026-10-26T20:23:12.882969+00:00"
+        }
+      ],
+      "blocked_reason": null,
+      "byte_size": 924297,
+      "commencement_review": {
+        "appointed_date": "2024-07-01",
+        "evidence_pdf_page": 2,
+        "exact_exception_text": "except the provisions of the entry relating to section 106(2) of the Bharatiya Nyaya Sanhita, 2023, in the First Schedule",
+        "exact_operative_english_text": "S.O. 848(E).—In exercise of the powers conferred by sub-section (3) of section 1 of the Bharatiya Nagarik Suraksha Sanhita, 2023 (46 of 2023), the Central Government hereby appoints the 1st day of July, 2024 as the date on which the provisions of the said Sanhita, except the provisions of the entry relating to section 106(2) of the Bharatiya Nyaya Sanhita, 2023, in the First Schedule, shall come into force.",
+        "notification_date": "2024-02-23",
+        "notification_number": "S.O. 848(E)",
+        "publication_date": "2024-02-24",
+        "scope": "Appoints 2024-07-01 except the First Schedule entry relating to BNS section 106(2); this does not exclude BNSS section 106(2). Later status remains unknown.",
+        "subsequent_status": "unverified"
+      },
+      "content_reviewed_at": "2026-10-26T20:25:13.203738+00:00",
+      "document": "BNSS notification",
+      "extracted_evidence": [
+        {
+          "pdf_page": 1,
+          "text": "1255 GI/2024 (1) रजिस्ट्री सं. डी.एल.- 33004/99 REGD. No. D. L.-33004/99 xxxGIDHxxx xxxGIDExxx असाधारण EXTRAORDINARY भाग II—खण् ड 3—उप-खण् ड (ii) PART II—Section 3—Sub-section (ii) प्राजधकार से प्रकाजित PUBLISHED BY AUTHORITY गृह मंत्रालय अजधसूचना नई दिल्ली, 23 फरवरी, 2024 का.आ. 848(अ).—केन्द्रीय सरकार, भारतीय नागररक सुरक्षा संजहता, 2023 (2023 का 46) की धारा 1 की उपधारा (3) द्वारा प्रित्त िजियों का प्रयोग करते हुए, 1 िुलाई, 2024 को उस तारीख के रूप में जनयत करती है, जिसको उि संजहता के उपबंध, पहली अनुसूची में भारतीय न्द्याय संजहता, 2023 की धारा 106 की उपधारा (2) से सम्बंजधत प्रजवजि के उपबंधों के जसवाय, प्रवृत होंगे। [फा. सं. 1/3/2023 न्द्याजयक प्रकोष्ठ-I] श्री प्रकाि, संयुक् त सजचव सं. 809] नई दिल्ली, िजनवार, फरवरी 24, 2024/फाल् गुन 5, 1945 No. 809] NEW DELHI, SATURDAY, FEBRUARY 24, 2024/PHALGUNA 5, 1945 सी.जी.-डी.एल.-अ.-24022024-252354 CG-DL-E-24022024-252354"
+        },
+        {
+          "pdf_page": 2,
+          "text": "2 THE GAZETTE OF INDIA : EXTRAORDINARY [PART II—SEC. 3(ii)] MINISTRY OF HOME AFFAIRS NOTIFICATION New Delhi, the 23rd February, 2024 S.O. 848(E).—In exercise of the powers conferred by sub-section (3) of section 1 of the Bharatiya Nagarik Suraksha Sanhita, 2023 (46 of 2023), the Central Government hereby appoints the 1st day of July, 2024 as the date on which the provisions of the said Sanhita, except the provisions of the entry relating to section 106(2) of the Bharatiya Nyaya Sanhita, 2023, in the First Schedule, shall come into force. [F. No. 1/3/2023-Judicial Cell-I] SHRI PRAKASH, Jt. Secy. "
+        }
+      ],
+      "final_download_url": "https://egazette.gov.in/WriteReadData/2024/252354.pdf",
+      "identity_checks": {
+        "act_reference": true,
+        "appointed_date": true,
+        "bilingual_pages": true,
+        "commencement_exception": true,
+        "file_reference": true,
+        "gazette_identity": true,
+        "issuing_authority": true,
+        "notification_date": true,
+        "notification_number": true,
+        "publication_date": true
+      },
+      "observed_metadata": {
+        "issuing_authority": "Government of India, Ministry of Home Affairs",
+        "language": "mul",
+        "notification_date": "2024-02-23",
+        "notification_number": "S.O. 848(E)",
+        "official_title": "NOTIFICATION",
+        "publication_date": "2024-02-24",
+        "version": "original Gazette commencement notification"
+      },
+      "page_count": 2,
+      "parser_repaired": false,
+      "pdf_header_validation": "PASS",
+      "pdf_parseability_validation": "PASS",
+      "proposed_filename": "bnss-commencement-so-848e-2024-gazette-252354.pdf",
+      "raw_path": "backend/data/raw/bnss-commencement-so-848e-2024-gazette-252354.pdf",
+      "save_mode": "created_read_only",
+      "saved_hash_validation": "PASS",
+      "sha256": "0db8a86a0cf41fbf5ee304ee84b8b145da0bd523af510baf351d79d051ef657d",
+      "source_url": "https://egazette.gov.in/WriteReadData/2024/252354.pdf",
+      "status": "PASS",
+      "status_scope": "Acquisition, saved-byte integrity, PDF parseability and printed identity only; not legal currentness or cryptographic signature validity.",
+      "text_extraction_limitations": [
+        "Hindi in legacy-font Gazette headers and notification page 1 is not reliably represented by plain-text extraction; inspect rendered PDF. No OCR or source modification performed."
+      ],
+      "unresolved_mismatches": [],
+      "verification": {
+        "byte_integrity": "PASS: saved SHA256, size and HTTP Content-Length match",
+        "cryptographic_pdf_signature": "NOT VERIFIED: visible signature appearance is not a cryptographic validation",
+        "current_legal_applicability": "UNVERIFIED: no comprehensive amendment, corrigendum or later commencement review",
+        "document_identity": "PASS: printed title/number, authority, dates and Gazette identity match preliminary inventory",
+        "official_provenance": "PASS: original candidate retrieved from exact approved official host with Windows-backed TLS and hostname validation; printed Gazette identity also matches"
+      }
+    },
+    {
+      "acquired_at": "2026-10-26T20:23:15.869012+00:00",
+      "attempts": [
+        {
+          "attempt": 1,
+          "completed_at": "2026-10-26T20:23:15.870011+00:00",
+          "content_length": "922833",
+          "content_type": "application/pdf",
+          "http_status": 200,
+          "redirect_chain": [],
+          "response_url": "https://egazette.gov.in/WriteReadData/2024/252352.pdf",
+          "started_at": "2026-10-26T20:23:13.573257+00:00"
+        }
+      ],
+      "blocked_reason": null,
+      "byte_size": 922833,
+      "commencement_review": {
+        "appointed_date": "2024-07-01",
+        "evidence_pdf_page": 2,
+        "exact_exception_text": null,
+        "exact_operative_english_text": "S.O. 849(E).— In exercise of the powers conferred by sub-section (3) of section 1 of the Bharatiya Sakshya Adhiniyam, 2023 (47 of 2023), the Central Government hereby appoints the 1st day of July, 2024 as the date on which the provisions of the said Adhiniyam, shall come into force.",
+        "notification_date": "2024-02-23",
+        "notification_number": "S.O. 849(E)",
+        "publication_date": "2024-02-24",
+        "scope": "Appoints 2024-07-01; no provision-specific carve-out in this notification. This is not a finding of universal applicability or unchanged current law.",
+        "subsequent_status": "unverified"
+      },
+      "content_reviewed_at": "2026-10-26T20:25:13.203738+00:00",
+      "document": "BSA notification",
+      "extracted_evidence": [
+        {
+          "pdf_page": 1,
+          "text": "1256 GI/2024 (1) रजिस्ट्री सं. डी.एल.- 33004/99 REGD. No. D. L.-33004/99 xxxGIDHxxx xxxGIDExxx असाधारण EXTRAORDINARY भाग II—खण् ड 3—उप-खण् ड (ii) PART II—Section 3—Sub-section (ii) प्राजधकार से प्रकाजित PUBLISHED BY AUTHORITY गृह मंत्रालय अजधसूचना नई दिल्ली, 23 फरवरी, 2024 का.आ. 849(अ).—केन्द्रीय सरकार, भारतीय साक्ष्य अजधजनयम, 2023 (2023 का 47) की धारा 1 की उपधारा (3) द्वारा प्रित्त िजियों का प्रयोग करते हुए, 1 िुलाई, 2024 को उस तारीख के रूप में जनयत करती है, जिसको उि अजधजनयम के उपबंध प्रवृत होंगे। [फा. सं. 1/3/2023 न्द्याजयक प्रकोष्ठ-I] श्री प्रकाि, संयुक् त सजचव सं. 810] नई दिल्ली, िजनवार, फरवरी 24, 2024/फाल् गुन 5, 1945 No. 810] NEW DELHI, SATURDAY, FEBRUARY 24, 2024/PHALGUNA 5, 1945 सी.जी.-डी.एल.-अ.-24022024-252352 CG-DL-E-24022024-252352"
+        },
+        {
+          "pdf_page": 2,
+          "text": "2 THE GAZETTE OF INDIA : EXTRAORDINARY [PART II—SEC. 3(ii)] MINISTRY OF HOME AFFAIRS NOTIFICATION New Delhi, the 23rd February, 2024 S.O. 849(E).— In exercise of the powers conferred by sub-section (3) of section 1 of the Bharatiya Sakshya Adhiniyam, 2023 (47 of 2023), the Central Government hereby appoints the 1st day of July, 2024 as the date on which the provisions of the said Adhiniyam, shall come into force. [F. No. 1/3/2023-Judicial Cell-I] SHRI PRAKASH, Jt. Secy. "
+        }
+      ],
+      "final_download_url": "https://egazette.gov.in/WriteReadData/2024/252352.pdf",
+      "identity_checks": {
+        "act_reference": true,
+        "appointed_date": true,
+        "bilingual_pages": true,
+        "file_reference": true,
+        "gazette_identity": true,
+        "issuing_authority": true,
+        "no_provision_specific_exception_in_this_operative_paragraph": true,
+        "notification_date": true,
+        "notification_number": true,
+        "publication_date": true
+      },
+      "observed_metadata": {
+        "issuing_authority": "Government of India, Ministry of Home Affairs",
+        "language": "mul",
+        "notification_date": "2024-02-23",
+        "notification_number": "S.O. 849(E)",
+        "official_title": "NOTIFICATION",
+        "publication_date": "2024-02-24",
+        "version": "original Gazette commencement notification"
+      },
+      "page_count": 2,
+      "parser_repaired": false,
+      "pdf_header_validation": "PASS",
+      "pdf_parseability_validation": "PASS",
+      "proposed_filename": "bsa-commencement-so-849e-2024-gazette-252352.pdf",
+      "raw_path": "backend/data/raw/bsa-commencement-so-849e-2024-gazette-252352.pdf",
+      "save_mode": "created_read_only",
+      "saved_hash_validation": "PASS",
+      "sha256": "fde9e9722eb4c01375525c2a30442903371913f4199b8cef1d031535d88228e7",
+      "source_url": "https://egazette.gov.in/WriteReadData/2024/252352.pdf",
+      "status": "PASS",
+      "status_scope": "Acquisition, saved-byte integrity, PDF parseability and printed identity only; not legal currentness or cryptographic signature validity.",
+      "text_extraction_limitations": [
+        "Hindi in legacy-font Gazette headers and notification page 1 is not reliably represented by plain-text extraction; inspect rendered PDF. No OCR or source modification performed."
+      ],
+      "unresolved_mismatches": [],
+      "verification": {
+        "byte_integrity": "PASS: saved SHA256, size and HTTP Content-Length match",
+        "cryptographic_pdf_signature": "NOT VERIFIED: visible signature appearance is not a cryptographic validation",
+        "current_legal_applicability": "UNVERIFIED: no comprehensive amendment, corrigendum or later commencement review",
+        "document_identity": "PASS: printed title/number, authority, dates and Gazette identity match preliminary inventory",
+        "official_provenance": "PASS: original candidate retrieved from exact approved official host with Windows-backed TLS and hostname validation; printed Gazette identity also matches"
+      }
+    }
+  ],
+  "report_updated_at": "2026-10-26T20:25:13.203738+00:00",
+  "review_date_Asia_Kolkata": "2026-10-27",
+  "stage": "2C",
+  "started_at": "2026-10-26T20:23:05.224235+00:00"
+}

@@ -1,0 +1,27 @@
+{
+  "binding_version": "v2",
+  "catalogue_sha256": "db74f8c4ad5e496a490a585ce2a04e46368f6bae457a121d5a30e9f8c6a399b0",
+  "label": "PROPOSED / NOT SUBMITTED / NOT APPROVED",
+  "legal_currentness": "unknown",
+  "limitation": "Metadata migration is not visual/human review, retrieval approval or proof of current applicability.",
+  "packet_export": [
+    {
+      "candidate_id": "passage_6c55f9a7fca605a78983e9cae28fa49712e5973bfc42a4a44e4435ad599de08f",
+      "path": "docs/evidence/v2/packets/proposal_passage_6c55f9a7fca605a78983e9cae28fa49712e5973bfc42a4a44e4435ad599de08f.json",
+      "sha256": "5438564eaa4566e7e79c4096c3ff1cef0c5786b83087f62b9ba0b18d078d034f"
+    },
+    {
+      "candidate_id": "passage_667c29888c46581982215e00f1d6a49502dd25cc486efc572473d9cd759d2611",
+      "path": "docs/evidence/v2/packets/proposal_passage_667c29888c46581982215e00f1d6a49502dd25cc486efc572473d9cd759d2611.json",
+      "sha256": "afd2366f2d24209cc29c4db31da057f335a5b36760308ceef200435296594084"
+    },
+    {
+      "candidate_id": "passage_241f23cc9f3ba925cdd7ba481ebf7892e6f1cdeaa18f74f17f08b3e8163130bb",
+      "path": "docs/evidence/v2/packets/proposal_passage_241f23cc9f3ba925cdd7ba481ebf7892e6f1cdeaa18f74f17f08b3e8163130bb.json",
+      "sha256": "1519bbd06531bb3314b4637275bb73bfd45ddbc460957dd41f42041efcb533eb"
+    }
+  ],
+  "proposed_count": 3,
+  "qa_sha256": "236fec73f5dbcc37e31d253bc916dfd3076f8412cb196c13aba86acb6a07a491",
+  "schema_version": 1
+}

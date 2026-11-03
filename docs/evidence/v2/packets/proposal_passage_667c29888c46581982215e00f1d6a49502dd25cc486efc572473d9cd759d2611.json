@@ -1,0 +1,217 @@
+{
+  "approved": false,
+  "binding_version": "v2",
+  "candidate": {
+    "attribution": {
+      "anchor": null,
+      "kind": "document_only",
+      "label": null
+    },
+    "candidate_id": "passage_667c29888c46581982215e00f1d6a49502dd25cc486efc572473d9cd759d2611",
+    "catalog_sha256": "db74f8c4ad5e496a490a585ce2a04e46368f6bae457a121d5a30e9f8c6a399b0",
+    "context_rationale": "Stage 2G proposal: complete QA-located English operative paragraph; the entire same physical PDF page is retained as context, including heading, date, reference and publication/signature furniture. No visual approval, submission, legal currentness or applicability determination is asserted.",
+    "context_sha256": "d298e1bb14f053b71771ae247ca7238380bc1d6250aeab7787d1dd8623ac5a9f",
+    "context_spans": [
+      {
+        "end_line": 66,
+        "page_id": "doc_aff29a301e21598f7fe2e72f0a8bbc2e3bdf923b014480e5bb3e76564fd47654:page:000002",
+        "physical_page": 2,
+        "start_line": 1,
+        "text_sha256": "6517fce6745803817b33948bb8a3b412004aa4c58c2645b165c036672335497b"
+      }
+    ],
+    "cross_page_context": null,
+    "document_id": "doc_aff29a301e21598f7fe2e72f0a8bbc2e3bdf923b014480e5bb3e76564fd47654",
+    "legal_currentness": "unknown",
+    "original_identifiers": {
+      "issuing_authority": "Government of India, Ministry of Home Affairs",
+      "language": "mul",
+      "notification_date": "2024-02-23",
+      "notification_number": "S.O. 850(E)",
+      "official_title": "NOTIFICATION",
+      "publication_date": "2024-02-24",
+      "version": "original Gazette commencement notification"
+    },
+    "passage_sha256": "c2a7e49615f53db7ec8b1dac2c42389ae6b2b50d1039d8e716a43905e5b6273c",
+    "processed_path": "backend/data/processed/stage2d/v1/doc_aff29a301e21598f7fe2e72f0a8bbc2e3bdf923b014480e5bb3e76564fd47654.json",
+    "processed_sha256": "eb7b007a054bacc0db8e3a9c10580974840db9a73034b508989c8a6111a120ee",
+    "provenance_status": "user_supplied",
+    "qa_sha256": "236fec73f5dbcc37e31d253bc916dfd3076f8412cb196c13aba86acb6a07a491",
+    "raw_path": "backend/data/raw/bns-commencement-so-850e-2024-gazette-252353.pdf",
+    "raw_sha256": "dfcd5df23fb711f2996959b13ee6ff6bd32ed38be1e1f2d1c820cbba86e2a8c9",
+    "schema_version": 1,
+    "scope": "archival_text_only",
+    "source_metadata": {
+      "amendment_version": "Original 2024 commencement notification. Subsequent notifications, amendments and corrigenda not exhaustively verified.",
+      "effective_date": null,
+      "enactment_date": null,
+      "instrument_type": "notification",
+      "issuing_authority": "Government of India, Ministry of Home Affairs",
+      "jurisdiction": "India (Central Government notification)",
+      "language": "mul",
+      "legal_applicability": null,
+      "official_title": "NOTIFICATION",
+      "provenance": {
+        "notes": "Appoints 2024-07-01 except BNS section 106(2). Later commencement/status of that subsection remains unknown. Acquisition checks do not independently certify legal validity or currency. Cryptographic PDF signatures not validated. Stage 2A retains user_supplied / not_independently_verified. Dates/authority are content-reviewed supplied metadata. Hindi extraction may contain legacy-font errors; manually inspect PDF.",
+        "supplied_by": "Better Call Kanoon Stage 2C acquisition and PDF-content review",
+        "verification_claim": "unverified",
+        "verification_evidence": "Acquired 2026-10-26T20:23:13.572162+00:00 from https://egazette.gov.in/WriteReadData/2024/252353.pdf; final URL https://egazette.gov.in/WriteReadData/2024/252353.pdf. SHA-256 dfcd5df23fb711f2996959b13ee6ff6bd32ed38be1e1f2d1c820cbba86e2a8c9; 922134 bytes; 2 PDF pages. Printed identity/date/authority checks passed; page-specific evidence is in docs/legal-source-acquisition-stage2c.json."
+      },
+      "publication_date": "2024-02-24",
+      "retrieval_date": "2026-10-27",
+      "source_type": "official_gazette",
+      "source_url": "https://egazette.gov.in/WriteReadData/2024/252353.pdf",
+      "state": null
+    },
+    "spans": [
+      {
+        "end_line": 11,
+        "page_id": "doc_aff29a301e21598f7fe2e72f0a8bbc2e3bdf923b014480e5bb3e76564fd47654:page:000002",
+        "physical_page": 2,
+        "start_line": 8,
+        "text_sha256": "94eca2bcaf75181c3df3fdba361d55bf052b588241d46b01de0c25f0149ff11c"
+      }
+    ],
+    "verification_status": "not_independently_verified"
+  },
+  "candidate_id": "passage_667c29888c46581982215e00f1d6a49502dd25cc486efc572473d9cd759d2611",
+  "citation_kind": "document_and_physical_page_only",
+  "commencement_context": {
+    "exact_exception": "except the provision of sub-section (2) of section 106",
+    "location": {
+      "end_line": 11,
+      "start_line": 8,
+      "text": "S.O. 850(E).—In exercise of the powers conferred by sub-section (2) of section 1 of the Bharatiya\nNyaya Sanhita, 2023 (45 of 2023), the Central Government hereby appoints the 1st day of July, 2024 as the\ndate on which the provisions of the said Sanhita, except the provision of sub-section (2) of section 106,\nshall come into force."
+    },
+    "pdf_page": 2,
+    "subsequent_status": "unverified"
+  },
+  "document": "BNS notification",
+  "eligible": false,
+  "exact_passage": [
+    {
+      "end_line": 11,
+      "page_id": "doc_aff29a301e21598f7fe2e72f0a8bbc2e3bdf923b014480e5bb3e76564fd47654:page:000002",
+      "physical_page": 2,
+      "start_line": 8,
+      "text": "S.O. 850(E).—In exercise of the powers conferred by sub-section (2) of section 1 of the Bharatiya\nNyaya Sanhita, 2023 (45 of 2023), the Central Government hereby appoints the 1st day of July, 2024 as the\ndate on which the provisions of the said Sanhita, except the provision of sub-section (2) of section 106,\nshall come into force.",
+      "text_sha256": "94eca2bcaf75181c3df3fdba361d55bf052b588241d46b01de0c25f0149ff11c"
+    }
+  ],
+  "gate_checks": {
+    "exclusion_reasons": [],
+    "full_english_operative_paragraph": true,
+    "full_same_page_context": true,
+    "stage2f_candidate_validation": "PASS"
+  },
+  "human_review_checklist": [
+    "Recheck raw PDF, processed JSON, catalogue and QA hashes against this candidate.",
+    "Open the ORIGINAL PDF at the physical page shown; compare every selected character and line with the rendering.",
+    "Compare the complete operative paragraph and its qualifications/exceptions; do not treat an appointed date alone as evidence.",
+    "Check instrument number, heading, issuing authority, date and reference against the full unchanged context.",
+    "Inspect every retained QA finding, including reading order and publication/signature furniture; never silently remove lines.",
+    "Distinguish BNS section 106(2) from the BNSS First Schedule entry concerning that BNS subsection.",
+    "Use only document/physical-page attribution; no verified legal provision identifier or current-status claim is supplied.",
+    "Do not submit, approve or promote through this packet; any later review requires separate explicit authorization."
+  ],
+  "kind": "discovery_review_packet",
+  "label": "PROPOSED / NOT SUBMITTED / NOT APPROVED",
+  "limitations": [
+    "This is an unsubmitted proposal for human inspection, not approved evidence.",
+    "An original enactment or commencement instrument does not establish present legal applicability.",
+    "Later commencement, amendments, corrigenda, jurisdictional scope and applicability remain unknown.",
+    "Existing QA findings and reading-order uncertainty remain; text-layer equality is not visual verification.",
+    "Hindi page 1 is outside this English single-page profile and remains unverified; no translation or bilingual comparison is claimed."
+  ],
+  "packet_schema_version": 1,
+  "qa_pages": [
+    {
+      "automatic_checks": {
+        "extracted_text_match": true,
+        "physical_order": true,
+        "section_line_coverage": true
+      },
+      "characters": 826,
+      "eligibility_reason": "No approved passage-level visual/semantic review ledger; automatic equality does not prove visual fidelity or current law.",
+      "findings": [
+        {
+          "code": "unusual_whitespace_candidate",
+          "end_line": 3,
+          "evidence": "   [PART II—SEC. 3(ii)]",
+          "method": "automatic_heuristic",
+          "start_line": 3
+        },
+        {
+          "code": "possible_page_boundary_continuation",
+          "end_line": 61,
+          "evidence": "and Published by the Controller of Publications, Delhi-110054.  MANOJ KUMAR",
+          "method": "automatic_heuristic",
+          "start_line": 61
+        },
+        {
+          "code": "sorted_extraction_differs",
+          "end_line": 66,
+          "evidence": "Alternative ordering differs; neither ordering is certified visually correct.",
+          "method": "automatic_heuristic",
+          "start_line": 1
+        }
+      ],
+      "margin_folio_candidates": [
+        2
+      ],
+      "non_ascii": 2,
+      "nonempty": true,
+      "page_id": "doc_aff29a301e21598f7fe2e72f0a8bbc2e3bdf923b014480e5bb3e76564fd47654:page:000002",
+      "pdf_page": 2,
+      "printed_number_candidates": [],
+      "text_sha256": "6517fce6745803817b33948bb8a3b412004aa4c58c2645b165c036672335497b",
+      "verified_evidence_eligible": false,
+      "visual_reviews": [
+        {
+          "approval": "Not user-approved passage-level legal verification; no correction authorized or applied.",
+          "document": "BNS notification",
+          "method": "agent_visual_spot_check",
+          "normalized_span": {
+            "end_line": 11,
+            "extracted_evidence": "S.O. 850(E).—In exercise of the powers conferred by sub-section (2) of section 1 of the Bharatiya\nNyaya Sanhita, 2023 (45 of 2023), the Central Government hereby appoints the 1st day of July, 2024 as the\ndate on which the provisions of the said Sanhita, except the provision of sub-section (2) of section 106,\nshall come into force.",
+            "start_line": 8
+          },
+          "observation": "Compared rendered English paragraph to JSON; appointed date and the instrument-specific exception (where present) are preserved. This verifies the sampled text, not subsequent legal status or the footer/signature.",
+          "pdf_page": 2,
+          "render": {
+            "clip_pdf_points": [
+              0,
+              0,
+              595,
+              310
+            ],
+            "format": "JPEG",
+            "quality": 55,
+            "width_pixels": 900
+          },
+          "scope": "English heading, instrument number/date and complete operative paragraph only.",
+          "source_sha256": "dfcd5df23fb711f2996959b13ee6ff6bd32ed38be1e1f2d1c820cbba86e2a8c9",
+          "status": "sample_matches"
+        }
+      ]
+    }
+  ],
+  "source_pdf": {
+    "path": "backend/data/raw/bns-commencement-so-850e-2024-gazette-252353.pdf",
+    "physical_pages": [
+      2
+    ],
+    "sha256": "dfcd5df23fb711f2996959b13ee6ff6bd32ed38be1e1f2d1c820cbba86e2a8c9"
+  },
+  "submitted": false,
+  "surrounding_context": [
+    {
+      "end_line": 66,
+      "page_id": "doc_aff29a301e21598f7fe2e72f0a8bbc2e3bdf923b014480e5bb3e76564fd47654:page:000002",
+      "physical_page": 2,
+      "start_line": 1,
+      "text": "2\nTHE GAZETTE OF INDIA : EXTRAORDINARY\n   [PART II—SEC. 3(ii)]\nMINISTRY OF HOME AFFAIRS\nNOTIFICATION\nNew Delhi, the 23rd February, 2024\n\nS.O. 850(E).—In exercise of the powers conferred by sub-section (2) of section 1 of the Bharatiya\nNyaya Sanhita, 2023 (45 of 2023), the Central Government hereby appoints the 1st day of July, 2024 as the\ndate on which the provisions of the said Sanhita, except the provision of sub-section (2) of section 106,\nshall come into force.\n [F. No. 1/3/2023-Judicial Cell-I]\nSHRI  PRAKASH, Jt. Secy.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUploaded by Dte. of Printing at Government of India Press, Ring Road, Mayapuri, New Delhi-110064\nand Published by the Controller of Publications, Delhi-110054.  MANOJ KUMAR\nVERMA\nDigitally signed by MANOJ\nKUMAR VERMA\nDate: 2024.02.24 13:50:32\n+05'30'",
+      "text_sha256": "6517fce6745803817b33948bb8a3b412004aa4c58c2645b165c036672335497b"
+    }
+  ]
+}

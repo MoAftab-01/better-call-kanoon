@@ -1,0 +1,432 @@
+{
+  "approved_passages": 0,
+  "corpus_data_in_git": false,
+  "evidence_version": "v2",
+  "files": [
+    {
+      "bytes": 196,
+      "path": ".gitattributes",
+      "sha256": "11d182f565e4f52dafeea6e300efa2bb968a45c1936648c411472a3d10acc98a"
+    },
+    {
+      "bytes": 983,
+      "path": ".gitignore",
+      "sha256": "2b2be780974e0db9298d030c288114b94e9f8ff35b545273a33b65c9c5ed733f"
+    },
+    {
+      "bytes": 5842,
+      "path": "README.md",
+      "sha256": "b6bc6866bba2b0c090363feba5908c18f2671d93cbccc93dd9fc3cfa57c34c04"
+    },
+    {
+      "bytes": 46,
+      "path": "backend/app/__init__.py",
+      "sha256": "e3cc5c5ffc1df026c38eaa6475f90ee22e5cf769e8f1bc457d41a4e6f4356115"
+    },
+    {
+      "bytes": 77,
+      "path": "backend/app/ingestion/__init__.py",
+      "sha256": "b4ca20527346410a8e6788db5f4f774f37c808dd7e6b6259d6137e0d33e82406"
+    },
+    {
+      "bytes": 48,
+      "path": "backend/app/ingestion/__main__.py",
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    {
+      "bytes": 2216,
+      "path": "backend/app/ingestion/cli.py",
+      "sha256": "8f56f0f525e17127085cef313c8e693c0625d7b8cb2019ff3afed4a046287aa9"
+    },
+    {
+      "bytes": 5090,
+      "path": "backend/app/ingestion/extraction.py",
+      "sha256": "10c226186e3f289917a3a43eb8e65e967df9c7e81bcde106dedd9b101a11b155"
+    },
+    {
+      "bytes": 5693,
+      "path": "backend/app/ingestion/models.py",
+      "sha256": "b0e03af19600914f37a0615e492915ddee7872204f3f3ad2bc2e78c91a8c24d9"
+    },
+    {
+      "bytes": 2170,
+      "path": "backend/app/ingestion/paths.py",
+      "sha256": "059df3c4b161e5e18e9f51e3ec40cd0930c397867ccdef5d9cac46ee0335adba"
+    },
+    {
+      "bytes": 9017,
+      "path": "backend/app/ingestion/pipeline.py",
+      "sha256": "cf9312cc35d8486f8e0dbfb4ac6f37eb7c5b5660ac4e5620886194d3fdc16418"
+    },
+    {
+      "bytes": 274,
+      "path": "backend/app/main.py",
+      "sha256": "a567589683a9a56bbb6c7db77bc52b5184c9e0a83ae03c7bf7a1f929f8db0d56"
+    },
+    {
+      "bytes": 81,
+      "path": "backend/discovery/__init__.py",
+      "sha256": "006098ac227ae1028bd6a7c4554a1c46b4a43ba195dd6be25d1d55c2011acff7"
+    },
+    {
+      "bytes": 2121,
+      "path": "backend/discovery/__main__.py",
+      "sha256": "233b9e76ff4082da958843d9f7e17542b1f42bb807093dd0947c58a8ff89f1fb"
+    },
+    {
+      "bytes": 11964,
+      "path": "backend/discovery/passages.py",
+      "sha256": "2d49bf283692e01ab821bbea68f0fd1439f763d11e109a74e2ba9507285ade74"
+    },
+    {
+      "bytes": 82,
+      "path": "backend/publication/__init__.py",
+      "sha256": "32c4b46de1063f8bc4d016bcd11e4995a188b37a0b6d8ecacc3d91f92edd6d01"
+    },
+    {
+      "bytes": 3380,
+      "path": "backend/publication/__main__.py",
+      "sha256": "6190eecc9d5d8773d5f73543ab2a3671597e0f992b643a958f83b1c274a2ccb8"
+    },
+    {
+      "bytes": 12434,
+      "path": "backend/publication/bindings.py",
+      "sha256": "028736afdcb11a06fc97913e90186a4dfbc375d07da05195c27a146ecb050562"
+    },
+    {
+      "bytes": 11859,
+      "path": "backend/publication/migrate.py",
+      "sha256": "355c2de154cdcce19701eb0ddd7690c178a0ffc6ce29c52f6bb65735eaef6533"
+    },
+    {
+      "bytes": 83,
+      "path": "backend/qa/__init__.py",
+      "sha256": "58adba01f288d1ffa8bf6f89b319051c68421b2e565a7d456a00f1de40ee3b85"
+    },
+    {
+      "bytes": 16343,
+      "path": "backend/qa/legal_text.py",
+      "sha256": "b506d0e528bbfc241fd13897aaaa3fa533ab2a093b32d0c078c2e1b31fb9381c"
+    },
+    {
+      "bytes": 19961,
+      "path": "backend/qa/stage2e_visual_review.json",
+      "sha256": "387d8dc9b703c90dbb7ec19964db490f9fff08bf5c70126ade0df2491dc115a1"
+    },
+    {
+      "bytes": 63,
+      "path": "backend/requirements.txt",
+      "sha256": "6751fecffb4128ff696abf4e27dc71766fc244a415137ea1cb7754fdab1ab429"
+    },
+    {
+      "bytes": 85,
+      "path": "backend/review/__init__.py",
+      "sha256": "63076aa7729e47b6c6446fe9380b2dba7eb3dbc21376b4204a62e89b1fd2fd52"
+    },
+    {
+      "bytes": 7298,
+      "path": "backend/review/__main__.py",
+      "sha256": "b5bf530d203a6d68989a722d9a15d82eb5875adad2245acfee432625f78684b1"
+    },
+    {
+      "bytes": 5014,
+      "path": "backend/review/models.py",
+      "sha256": "2b47a32d5cfd83e35141b13987f1d83e7f02946bd23cb67b6fbb7933696deac4"
+    },
+    {
+      "bytes": 19999,
+      "path": "backend/review/service.py",
+      "sha256": "1ed8ea67727a22b8df67fa5077d71ee39c43d4e2bac849a9412529ff4c009f7b"
+    },
+    {
+      "bytes": 5002,
+      "path": "backend/review/synthetic_demo.py",
+      "sha256": "8cfcbdfb34eab8ef5e6ef6d86fee942a0b0a8668d55b5e76865f5ab9a866e5ea"
+    },
+    {
+      "bytes": 919,
+      "path": "backend/tests/fixtures/synthetic-manifest.json",
+      "sha256": "a33a4d66553637a3b7b6bc3a1169cb14295d2501e50c71026921d44bb3e5dac7"
+    },
+    {
+      "bytes": 527,
+      "path": "backend/tests/fixtures/synthetic-not-law.txt",
+      "sha256": "bbd0c63319f89502cfea2c0c596a59f175ec2e7484107e232f9d1fed68ea808d"
+    },
+    {
+      "bytes": 13623,
+      "path": "backend/tests/test_evidence_migration.py",
+      "sha256": "5f6a8417230fc1233b51f4e0a0e3576be9509c82b020f59331d3a09907252754"
+    },
+    {
+      "bytes": 12215,
+      "path": "backend/tests/test_evidence_review_stage2h.py",
+      "sha256": "65adb851fa39cd37f2ba8a1364448a589ae88ed948bde963dcfb18fd7798966d"
+    },
+    {
+      "bytes": 550,
+      "path": "backend/tests/test_health.py",
+      "sha256": "9fc1e63d21f63b03012c4cb9a2a0533f40c80a979e31b9b8a65114424d08e2d8"
+    },
+    {
+      "bytes": 25505,
+      "path": "backend/tests/test_ingestion.py",
+      "sha256": "af419fdb4f3b8dc8556236e1a899154f4329393e5eb974a31b548c7b1ac2cd3b"
+    },
+    {
+      "bytes": 5888,
+      "path": "backend/tests/test_legal_text_quality.py",
+      "sha256": "7b843a8c6b2aa2dfb0a6e7cb78c018c99fc0cd321efcd9c9ee21f6647eaf7afb"
+    },
+    {
+      "bytes": 11752,
+      "path": "backend/tests/test_passage_discovery.py",
+      "sha256": "bc42c0c5e63f8bc6c990eb9e3a9ecdad55a8eeec424b1b78a0ba96a105afec84"
+    },
+    {
+      "bytes": 15207,
+      "path": "backend/tests/test_passage_review.py",
+      "sha256": "33986881c4eb2849e6c284538bd5b4dae0ce35b2e679f7ed1a03b81563ba137f"
+    },
+    {
+      "bytes": 2327,
+      "path": "docs/architecture.md",
+      "sha256": "9853d259b431ea9669dda2103d86fa3941c17aa711a46446d85d7e9d1f10d407"
+    },
+    {
+      "bytes": 5413,
+      "path": "docs/evidence-migration.md",
+      "sha256": "a5f6399a532153058c93e68ad37d48bfd919c159f87166f79d651f7594af7304"
+    },
+    {
+      "bytes": 29546,
+      "path": "docs/evidence/v1-preservation.json",
+      "sha256": "ed54a5e7055c6fc5dc04e9f85b24db2f884933790f65e0b0a4b32e37f948cc34"
+    },
+    {
+      "bytes": 12402,
+      "path": "docs/evidence/v2/acquired-legal-source-manifest-stage2c.json",
+      "sha256": "9da8506e0e1bc55d8ae390c39a1680bbcb9c095c85204f47313e1d6977fa596a"
+    },
+    {
+      "bytes": 280858,
+      "path": "docs/evidence/v2/legal-document-ingestion-stage2d.json",
+      "sha256": "5113618a8b668787e114ddf87950ea7f1b178f25ee3df74ea0c4101deac2d0a9"
+    },
+    {
+      "bytes": 15201,
+      "path": "docs/evidence/v2/legal-document-ingestion-stage2d.md",
+      "sha256": "237bebfd55afa022694de56e5db451341874f303f177ecf67efe50ecbb7c51e9"
+    },
+    {
+      "bytes": 5633,
+      "path": "docs/evidence/v2/legal-evidence-review-stage2h.json",
+      "sha256": "aa70098dd9b425de0f3edf682b0b23c00385f3024b2fd443e2f95a838d8f4a98"
+    },
+    {
+      "bytes": 513,
+      "path": "docs/evidence/v2/legal-evidence-review-stage2h.md",
+      "sha256": "162f94de745c19edf1f632b6d07007644be521bb2cd209b52ef3ef545d1ccf76"
+    },
+    {
+      "bytes": 1451,
+      "path": "docs/evidence/v2/legal-passage-discovery-stage2g.json",
+      "sha256": "b05df6dea969284bd241da37f6ce8af01803ab035204f1015eb2268463148299"
+    },
+    {
+      "bytes": 16855,
+      "path": "docs/evidence/v2/legal-passage-discovery-stage2g.md",
+      "sha256": "6f858681a13b8fbe0658b18318f8590fa07818688e150f48da5dbd84ae04bd17"
+    },
+    {
+      "bytes": 41343,
+      "path": "docs/evidence/v2/legal-passage-review-stage2f.json",
+      "sha256": "8bed0976c79fc216438b627c097159aadf6e97850e72200b5200281c4a7dabab"
+    },
+    {
+      "bytes": 16884,
+      "path": "docs/evidence/v2/legal-passage-review-stage2f.md",
+      "sha256": "f4ed7ed877989f6cf4d02eaa10585636c52d86e531765b053595b6ba499a228b"
+    },
+    {
+      "bytes": 62907,
+      "path": "docs/evidence/v2/legal-source-acquisition-stage2c.json",
+      "sha256": "f060225590d88e15acd1d06e33bfcdb85f7999e6d13f206afc2263389462717a"
+    },
+    {
+      "bytes": 14174,
+      "path": "docs/evidence/v2/legal-source-acquisition-stage2c.md",
+      "sha256": "e5687c6497c150dfd68bc78c1f8c6b997a09164784bda193d8f45a91e264d3a7"
+    },
+    {
+      "bytes": 1843242,
+      "path": "docs/evidence/v2/legal-text-quality-stage2e.json",
+      "sha256": "236fec73f5dbcc37e31d253bc916dfd3076f8412cb196c13aba86acb6a07a491"
+    },
+    {
+      "bytes": 23753,
+      "path": "docs/evidence/v2/legal-text-quality-stage2e.md",
+      "sha256": "347dc118bdc978ac7672c4980684ed5e51cee23204cd2d77d1b1136df36633e3"
+    },
+    {
+      "bytes": 9541,
+      "path": "docs/evidence/v2/migration.json",
+      "sha256": "4d978b76c153d3f1c4e483fe02da878af6356e0771cf95d6f4f8ab0b993d331b"
+    },
+    {
+      "bytes": 12605,
+      "path": "docs/evidence/v2/packets/proposal_passage_241f23cc9f3ba925cdd7ba481ebf7892e6f1cdeaa18f74f17f08b3e8163130bb.json",
+      "sha256": "1519bbd06531bb3314b4637275bb73bfd45ddbc460957dd41f42041efcb533eb"
+    },
+    {
+      "bytes": 12179,
+      "path": "docs/evidence/v2/packets/proposal_passage_667c29888c46581982215e00f1d6a49502dd25cc486efc572473d9cd759d2611.json",
+      "sha256": "afd2366f2d24209cc29c4db31da057f335a5b36760308ceef200435296594084"
+    },
+    {
+      "bytes": 11973,
+      "path": "docs/evidence/v2/packets/proposal_passage_6c55f9a7fca605a78983e9cae28fa49712e5973bfc42a4a44e4435ad599de08f.json",
+      "sha256": "5438564eaa4566e7e79c4096c3ff1cef0c5786b83087f62b9ba0b18d078d034f"
+    },
+    {
+      "bytes": 12831,
+      "path": "docs/ingestion-manual.md",
+      "sha256": "870391bfd00c30654c0dcef3daa5d69297646e2d8872bb2f5368419d52aafcb9"
+    },
+    {
+      "bytes": 18891,
+      "path": "docs/legal-source-inventory-stage2b.md",
+      "sha256": "5232f292437a71d9702db84baa3a8568fd0df2295288f12aacff3770bde8307e"
+    },
+    {
+      "bytes": 12782,
+      "path": "docs/proposed-legal-source-manifest-stage2b.json",
+      "sha256": "615340ff2dff99027c9cfcd67cb979d8cd543cc4b0a317df4f0f3d330236a5ee"
+    },
+    {
+      "bytes": 827,
+      "path": "docs/review-presentation-contract.json",
+      "sha256": "18c9246cdce09d7144c299ff476bf8225fbb42f3e2da55addb25b60c48aea166"
+    },
+    {
+      "bytes": 617,
+      "path": "docs/stages/2c.md",
+      "sha256": "54924db6ead8092240bceb30060d82dd95687ce1fbd2dde283cbccba519fef4f"
+    },
+    {
+      "bytes": 619,
+      "path": "docs/stages/2d.md",
+      "sha256": "89c747b377877521ce9ebb301dedf1fcc92ca84f533d8d028f0551d729984ba1"
+    },
+    {
+      "bytes": 610,
+      "path": "docs/stages/2e.md",
+      "sha256": "9fcd6f0f55580d80c10e2f1e2f6bc5b521a0f495ea231f4b9c4d260c0ec42325"
+    },
+    {
+      "bytes": 606,
+      "path": "docs/stages/2f.md",
+      "sha256": "b44e52668303159d99ed023145d9ea56b9d6dd5901e3a06d42c87d509368737f"
+    },
+    {
+      "bytes": 634,
+      "path": "docs/stages/2g.md",
+      "sha256": "608fde6730ddb756365ec77b7408ed79fcecc2893bb0c4918b119121be9a46d2"
+    },
+    {
+      "bytes": 634,
+      "path": "docs/stages/2h.md",
+      "sha256": "f569b757df856b42c6e481ede27370d7133752bef767263543e9c30ae5f7f389"
+    },
+    {
+      "bytes": 893,
+      "path": "frontend/eslint.config.js",
+      "sha256": "77147e96b80864db74088c3defc77a35899bcfdadd32881c95bc98403ca15f98"
+    },
+    {
+      "bytes": 579,
+      "path": "frontend/index.html",
+      "sha256": "55828e81dbdeab8f2bfddbb55bd855bfdf2ad0c0ce694b3b362aab068b848966"
+    },
+    {
+      "bytes": 96630,
+      "path": "frontend/package-lock.json",
+      "sha256": "c10ef9a8ae7ea8099aaaf61ef87068047ab430906771068dda3681d5c5a74d06"
+    },
+    {
+      "bytes": 870,
+      "path": "frontend/package.json",
+      "sha256": "cf0ecf1c49d9559751e49fffcf3cac2d026e278a12b7f1c812a1d6db6dc6605b"
+    },
+    {
+      "bytes": 1727,
+      "path": "frontend/src/App.tsx",
+      "sha256": "3d21f633917080959a5e98bc9f879a091c4c494b1201fafc875a8a66372283ac"
+    },
+    {
+      "bytes": 373,
+      "path": "frontend/src/components/Brand.tsx",
+      "sha256": "38fe2ee8c61ff1408fafc03de1e42ae4f01f2800de34c5ffe5b7288e9c635faa"
+    },
+    {
+      "bytes": 1594,
+      "path": "frontend/src/components/ConnectionStatus.tsx",
+      "sha256": "3805410cec11f695f88d7142e38dfa087066a0f9884cf573bcace2cdddcd7cd8"
+    },
+    {
+      "bytes": 3789,
+      "path": "frontend/src/components/ConversationWorkspace.tsx",
+      "sha256": "eb7f1709fcff9ff0292b87a211fddb6f076c82cc33bb315fbeaa49092838314e"
+    },
+    {
+      "bytes": 604,
+      "path": "frontend/src/components/LegalDisclaimer.tsx",
+      "sha256": "d0b49189ea1c007ce867d5b81b43c6d88ae60db2e910d2125cfd28b4ac81523b"
+    },
+    {
+      "bytes": 1938,
+      "path": "frontend/src/components/Sidebar.tsx",
+      "sha256": "66bf310b20684f1d3c937b69ffbc0cc3c375cd591b62beac755b51ac8e6dbf9b"
+    },
+    {
+      "bytes": 2315,
+      "path": "frontend/src/components/SourcePanel.tsx",
+      "sha256": "b7dbda03023cbd522847ba727806d8b3a2b2f057dc255ced7539e714c0d9bd3c"
+    },
+    {
+      "bytes": 1001,
+      "path": "frontend/src/components/WelcomePanel.tsx",
+      "sha256": "e45bb2e1f032a0092d0476f40ec91817a2697327b4f99e60db71b7ee6ae28e58"
+    },
+    {
+      "bytes": 2509,
+      "path": "frontend/src/hooks/useBackendHealth.ts",
+      "sha256": "9b6c2dc372b349ce8dfc466a31f5ac9c1a1fb7f12f1d46b6e8296254dfeab6b1"
+    },
+    {
+      "bytes": 227,
+      "path": "frontend/src/main.tsx",
+      "sha256": "77aaa85d0a532963cd63d1c6171a833f73b608dd83b4085f855b279dbe922939"
+    },
+    {
+      "bytes": 20447,
+      "path": "frontend/src/styles.css",
+      "sha256": "3a8f3a3a14cfd0116d36686af38b8bf5460ef096a5fe1d6d38dc1f4b842e8bca"
+    },
+    {
+      "bytes": 567,
+      "path": "frontend/tsconfig.json",
+      "sha256": "cf7aa9205fe5729978666aeaaf962dbd0b2127ac2faefab0bbf8120c87423cd7"
+    },
+    {
+      "bytes": 325,
+      "path": "frontend/vite.config.ts",
+      "sha256": "0c36ae7ddeff4a9aef4729fae9c93254b8c4d1199c98f90a75873d29628dd25f"
+    }
+  ],
+  "hash_scope": "SHA-256 of Git staged file contents, excluding Git object headers; non-pinned text may undergo checkout line-ending conversion.",
+  "manifest_path": "docs/publication-manifest.json",
+  "schema_version": 1,
+  "scope": "Proposed public working-tree snapshot; not proof of real-corpus reproduction or approval",
+  "self_hash": "Not embedded: avoid a self-hash cycle"
+}

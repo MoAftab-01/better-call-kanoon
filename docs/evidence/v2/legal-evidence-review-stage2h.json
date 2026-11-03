@@ -1,0 +1,131 @@
+{
+  "audit_limits": [
+    "Append-only through application; local read-only files are not WORM storage.",
+    "Hash chains require a separately trusted fresh checkpoint to detect rollback/rewrite.",
+    "Reviewer identity/time/attestations are operator claims, not identity authentication or trusted timestamping.",
+    "Do not convert agent visual observations into human review attestations."
+  ],
+  "decision_schema_reference": "docs/legal-passage-review-stage2f.json#/record_schemas/decision_request",
+  "decisions": [
+    "pending",
+    "approved",
+    "rejected",
+    "needs_correction"
+  ],
+  "human_inputs_required": [
+    "Explicit authorization for any real write action.",
+    "Exact candidate ID confirmation.",
+    "Reviewer identifier supplied by the actual operator, not a program-generated identity.",
+    "Timezone-aware actual decision time, rationale and pinned evidence references.",
+    "Truthful visual/boundary/qualifier/archival attestations, cross-page attestation if applicable.",
+    "A separately retained trusted latest checkpoint for eligible evidence export."
+  ],
+  "initial_submission": {
+    "required_decision": "pending",
+    "requires_explicit_single_candidate_action": true
+  },
+  "legal_scope": "archival_text_only; current legal applicability and currentness remain unknown",
+  "presentation_json_pointers": [
+    "/candidate_id",
+    "/document",
+    "/label",
+    "/source_pdf/path",
+    "/source_pdf/physical_pages",
+    "/candidate/source_metadata/official_title",
+    "/candidate/source_metadata/source_url",
+    "/candidate/original_identifiers",
+    "/candidate/raw_sha256",
+    "/candidate/processed_sha256",
+    "/candidate/catalog_sha256",
+    "/candidate/qa_sha256",
+    "/candidate/spans",
+    "/exact_passage",
+    "/surrounding_context",
+    "/qa_pages",
+    "/gate_checks/exclusion_reasons",
+    "/human_review_checklist",
+    "/candidate/legal_currentness",
+    "/candidate/source_metadata/legal_applicability",
+    "/limitations"
+  ],
+  "read_only_commands": [
+    "python -B -m backend.discovery preview <ONE-candidate-id>",
+    "python -B -m backend.review list",
+    "python -B -m backend.review verify",
+    "python -B -m backend.review allowlist",
+    "python -B -m backend.review history"
+  ],
+  "real_packets": [
+    {
+      "approved": false,
+      "candidate_id": "passage_6c55f9a7fca605a78983e9cae28fa49712e5973bfc42a4a44e4435ad599de08f",
+      "eligible": false,
+      "label": "PROPOSED / NOT SUBMITTED / NOT APPROVED",
+      "packet_path": "docs/evidence/v2/packets/proposal_passage_6c55f9a7fca605a78983e9cae28fa49712e5973bfc42a4a44e4435ad599de08f.json",
+      "packet_sha256": "5438564eaa4566e7e79c4096c3ff1cef0c5786b83087f62b9ba0b18d078d034f",
+      "submitted": false
+    },
+    {
+      "approved": false,
+      "candidate_id": "passage_667c29888c46581982215e00f1d6a49502dd25cc486efc572473d9cd759d2611",
+      "eligible": false,
+      "label": "PROPOSED / NOT SUBMITTED / NOT APPROVED",
+      "packet_path": "docs/evidence/v2/packets/proposal_passage_667c29888c46581982215e00f1d6a49502dd25cc486efc572473d9cd759d2611.json",
+      "packet_sha256": "afd2366f2d24209cc29c4db31da057f335a5b36760308ceef200435296594084",
+      "submitted": false
+    },
+    {
+      "approved": false,
+      "candidate_id": "passage_241f23cc9f3ba925cdd7ba481ebf7892e6f1cdeaa18f74f17f08b3e8163130bb",
+      "eligible": false,
+      "label": "PROPOSED / NOT SUBMITTED / NOT APPROVED",
+      "packet_path": "docs/evidence/v2/packets/proposal_passage_241f23cc9f3ba925cdd7ba481ebf7892e6f1cdeaa18f74f17f08b3e8163130bb.json",
+      "packet_sha256": "1519bbd06531bb3314b4637275bb73bfd45ddbc460957dd41f42041efcb533eb",
+      "submitted": false
+    }
+  ],
+  "real_review_state": {
+    "allowlist_entries": [],
+    "approved": 0,
+    "decision_time": null,
+    "events": 0,
+    "human_attestations": null,
+    "pending": 0,
+    "rationale": null,
+    "reviewer_id": null,
+    "submitted_candidates": 0
+  },
+  "runtime_changes": [
+    "Separate V2 read-only verification namespace; original Stage2F/2G implementation unchanged."
+  ],
+  "schema_version": 1,
+  "source_pins": {
+    "docs/evidence/v1-preservation.json": "ed54a5e7055c6fc5dc04e9f85b24db2f884933790f65e0b0a4b32e37f948cc34",
+    "docs/evidence/v2/acquired-legal-source-manifest-stage2c.json": "9da8506e0e1bc55d8ae390c39a1680bbcb9c095c85204f47313e1d6977fa596a",
+    "docs/evidence/v2/legal-document-ingestion-stage2d.json": "5113618a8b668787e114ddf87950ea7f1b178f25ee3df74ea0c4101deac2d0a9",
+    "docs/evidence/v2/legal-passage-discovery-stage2g.json": "b05df6dea969284bd241da37f6ce8af01803ab035204f1015eb2268463148299",
+    "docs/evidence/v2/legal-passage-review-stage2f.json": "8bed0976c79fc216438b627c097159aadf6e97850e72200b5200281c4a7dabab",
+    "docs/evidence/v2/legal-source-acquisition-stage2c.json": "f060225590d88e15acd1d06e33bfcdb85f7999e6d13f206afc2263389462717a",
+    "docs/evidence/v2/legal-text-quality-stage2e.json": "236fec73f5dbcc37e31d253bc916dfd3076f8412cb196c13aba86acb6a07a491",
+    "docs/evidence/v2/migration.json": "4d978b76c153d3f1c4e483fe02da878af6356e0771cf95d6f4f8ab0b993d331b"
+  },
+  "stage": "2H publication V2",
+  "state_transitions": {
+    "approved": [
+      "needs_correction",
+      "rejected"
+    ],
+    "needs_correction": [
+      "pending",
+      "rejected"
+    ],
+    "pending": [
+      "approved",
+      "needs_correction",
+      "rejected"
+    ],
+    "rejected": []
+  },
+  "workflow": "One-at-a-time human evidence review using unchanged Stage 2F/2G CLIs.",
+  "write_path_policy": "No real submissions/approvals in this implementation. All write-path tests use isolated SYNTHETIC workspaces."
+}

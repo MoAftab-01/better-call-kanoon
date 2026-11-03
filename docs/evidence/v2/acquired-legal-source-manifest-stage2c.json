@@ -1,0 +1,161 @@
+{
+  "documents": [
+    {
+      "expected_sha256": "67c92f7869420685e6cdc29b1bdde19fff91312b10241b3ed3e1163c5399600b",
+      "file_path": "bns-2023-act-45-original-gazette-250883.pdf",
+      "metadata": {
+        "amendment_version": "Original 2023 enacted Gazette publication; not a subsequently consolidated text. Amendment/corrigendum completeness and current applicability unverified.",
+        "effective_date": null,
+        "enactment_date": "2023-12-25",
+        "instrument_type": "act",
+        "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+        "jurisdiction": "India (Central legislation)",
+        "language": "en",
+        "legal_applicability": null,
+        "official_title": "The Bharatiya Nyaya Sanhita, 2023",
+        "provenance": {
+          "notes": "Original Gazette enactment. The commencement instruments are separate; later amendments, corrigenda, notifications and case-specific applicability remain unverified. Acquisition checks do not independently certify legal validity or currency. Cryptographic PDF signatures not validated. Stage 2A retains user_supplied / not_independently_verified. Dates/authority are content-reviewed supplied metadata. Hindi extraction may contain legacy-font errors; manually inspect PDF.",
+          "supplied_by": "Better Call Kanoon Stage 2C acquisition and PDF-content review",
+          "verification_claim": "unverified",
+          "verification_evidence": "Acquired 2026-10-26T20:23:09.608918+00:00 from https://egazette.gov.in/WriteReadData/2023/250883.pdf; final URL https://egazette.gov.in/WriteReadData/2023/250883.pdf. SHA-256 67c92f7869420685e6cdc29b1bdde19fff91312b10241b3ed3e1163c5399600b; 1382923 bytes; 102 PDF pages. Printed identity/date/authority checks passed; page-specific evidence is in docs/legal-source-acquisition-stage2c.json."
+        },
+        "publication_date": "2023-12-25",
+        "retrieval_date": "2026-10-27",
+        "source_type": "official_gazette",
+        "source_url": "https://egazette.gov.in/WriteReadData/2023/250883.pdf",
+        "state": null
+      }
+    },
+    {
+      "expected_sha256": "5e60e2afe30d0fe7eca4f8126301146b76c86a444e690581f81eb564843517fe",
+      "file_path": "bnss-2023-act-46-original-gazette-250884.pdf",
+      "metadata": {
+        "amendment_version": "Original 2023 enacted Gazette publication; not a subsequently consolidated text. Amendment/corrigendum completeness and current applicability unverified.",
+        "effective_date": null,
+        "enactment_date": "2023-12-25",
+        "instrument_type": "act",
+        "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+        "jurisdiction": "India (Central legislation)",
+        "language": "en",
+        "legal_applicability": null,
+        "official_title": "The Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "provenance": {
+          "notes": "Original Gazette enactment. The commencement instruments are separate; later amendments, corrigenda, notifications and case-specific applicability remain unverified. Acquisition checks do not independently certify legal validity or currency. Cryptographic PDF signatures not validated. Stage 2A retains user_supplied / not_independently_verified. Dates/authority are content-reviewed supplied metadata. Hindi extraction may contain legacy-font errors; manually inspect PDF.",
+          "supplied_by": "Better Call Kanoon Stage 2C acquisition and PDF-content review",
+          "verification_claim": "unverified",
+          "verification_evidence": "Acquired 2026-10-26T20:23:11.589698+00:00 from https://egazette.gov.in/WriteReadData/2023/250884.pdf; final URL https://egazette.gov.in/WriteReadData/2023/250884.pdf. SHA-256 5e60e2afe30d0fe7eca4f8126301146b76c86a444e690581f81eb564843517fe; 2033181 bytes; 249 PDF pages. Printed identity/date/authority checks passed; page-specific evidence is in docs/legal-source-acquisition-stage2c.json."
+        },
+        "publication_date": "2023-12-25",
+        "retrieval_date": "2026-10-27",
+        "source_type": "official_gazette",
+        "source_url": "https://egazette.gov.in/WriteReadData/2023/250884.pdf",
+        "state": null
+      }
+    },
+    {
+      "expected_sha256": "31ee68ea57b5303bf6697b5d8cb2004b9eb9180d7e9cbcbbdbf5bccab7cda5c1",
+      "file_path": "bsa-2023-act-47-original-gazette-250882.pdf",
+      "metadata": {
+        "amendment_version": "Original 2023 enacted Gazette publication; not a subsequently consolidated text. Amendment/corrigendum completeness and current applicability unverified.",
+        "effective_date": "2024-07-01",
+        "enactment_date": "2023-12-25",
+        "instrument_type": "act",
+        "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+        "jurisdiction": "India (Central legislation)",
+        "language": "en",
+        "legal_applicability": null,
+        "official_title": "The Bharatiya Sakshya Adhiniyam, 2023",
+        "provenance": {
+          "notes": "Original Gazette enactment. The commencement instruments are separate; later amendments, corrigenda, notifications and case-specific applicability remain unverified. Acquisition checks do not independently certify legal validity or currency. Cryptographic PDF signatures not validated. Stage 2A retains user_supplied / not_independently_verified. Dates/authority are content-reviewed supplied metadata. Hindi extraction may contain legacy-font errors; manually inspect PDF.",
+          "supplied_by": "Better Call Kanoon Stage 2C acquisition and PDF-content review",
+          "verification_claim": "unverified",
+          "verification_evidence": "Acquired 2026-10-26T20:23:12.881984+00:00 from https://egazette.gov.in/WriteReadData/2023/250882.pdf; final URL https://egazette.gov.in/WriteReadData/2023/250882.pdf. SHA-256 31ee68ea57b5303bf6697b5d8cb2004b9eb9180d7e9cbcbbdbf5bccab7cda5c1; 1218408 bytes; 47 PDF pages. Printed identity/date/authority checks passed; page-specific evidence is in docs/legal-source-acquisition-stage2c.json."
+        },
+        "publication_date": "2023-12-25",
+        "retrieval_date": "2026-10-27",
+        "source_type": "official_gazette",
+        "source_url": "https://egazette.gov.in/WriteReadData/2023/250882.pdf",
+        "state": null
+      }
+    },
+    {
+      "expected_sha256": "dfcd5df23fb711f2996959b13ee6ff6bd32ed38be1e1f2d1c820cbba86e2a8c9",
+      "file_path": "bns-commencement-so-850e-2024-gazette-252353.pdf",
+      "metadata": {
+        "amendment_version": "Original 2024 commencement notification. Subsequent notifications, amendments and corrigenda not exhaustively verified.",
+        "effective_date": null,
+        "enactment_date": null,
+        "instrument_type": "notification",
+        "issuing_authority": "Government of India, Ministry of Home Affairs",
+        "jurisdiction": "India (Central Government notification)",
+        "language": "mul",
+        "legal_applicability": null,
+        "official_title": "NOTIFICATION",
+        "provenance": {
+          "notes": "Appoints 2024-07-01 except BNS section 106(2). Later commencement/status of that subsection remains unknown. Acquisition checks do not independently certify legal validity or currency. Cryptographic PDF signatures not validated. Stage 2A retains user_supplied / not_independently_verified. Dates/authority are content-reviewed supplied metadata. Hindi extraction may contain legacy-font errors; manually inspect PDF.",
+          "supplied_by": "Better Call Kanoon Stage 2C acquisition and PDF-content review",
+          "verification_claim": "unverified",
+          "verification_evidence": "Acquired 2026-10-26T20:23:13.572162+00:00 from https://egazette.gov.in/WriteReadData/2024/252353.pdf; final URL https://egazette.gov.in/WriteReadData/2024/252353.pdf. SHA-256 dfcd5df23fb711f2996959b13ee6ff6bd32ed38be1e1f2d1c820cbba86e2a8c9; 922134 bytes; 2 PDF pages. Printed identity/date/authority checks passed; page-specific evidence is in docs/legal-source-acquisition-stage2c.json."
+        },
+        "publication_date": "2024-02-24",
+        "retrieval_date": "2026-10-27",
+        "source_type": "official_gazette",
+        "source_url": "https://egazette.gov.in/WriteReadData/2024/252353.pdf",
+        "state": null
+      }
+    },
+    {
+      "expected_sha256": "0db8a86a0cf41fbf5ee304ee84b8b145da0bd523af510baf351d79d051ef657d",
+      "file_path": "bnss-commencement-so-848e-2024-gazette-252354.pdf",
+      "metadata": {
+        "amendment_version": "Original 2024 commencement notification. Subsequent notifications, amendments and corrigenda not exhaustively verified.",
+        "effective_date": null,
+        "enactment_date": null,
+        "instrument_type": "notification",
+        "issuing_authority": "Government of India, Ministry of Home Affairs",
+        "jurisdiction": "India (Central Government notification)",
+        "language": "mul",
+        "legal_applicability": null,
+        "official_title": "NOTIFICATION",
+        "provenance": {
+          "notes": "Appoints 2024-07-01 except the First Schedule entry relating to BNS section 106(2); this does not exclude BNSS section 106(2). Later status remains unknown. Acquisition checks do not independently certify legal validity or currency. Cryptographic PDF signatures not validated. Stage 2A retains user_supplied / not_independently_verified. Dates/authority are content-reviewed supplied metadata. Hindi extraction may contain legacy-font errors; manually inspect PDF.",
+          "supplied_by": "Better Call Kanoon Stage 2C acquisition and PDF-content review",
+          "verification_claim": "unverified",
+          "verification_evidence": "Acquired 2026-10-26T20:23:15.115602+00:00 from https://egazette.gov.in/WriteReadData/2024/252354.pdf; final URL https://egazette.gov.in/WriteReadData/2024/252354.pdf. SHA-256 0db8a86a0cf41fbf5ee304ee84b8b145da0bd523af510baf351d79d051ef657d; 924297 bytes; 2 PDF pages. Printed identity/date/authority checks passed; page-specific evidence is in docs/legal-source-acquisition-stage2c.json."
+        },
+        "publication_date": "2024-02-24",
+        "retrieval_date": "2026-10-27",
+        "source_type": "official_gazette",
+        "source_url": "https://egazette.gov.in/WriteReadData/2024/252354.pdf",
+        "state": null
+      }
+    },
+    {
+      "expected_sha256": "fde9e9722eb4c01375525c2a30442903371913f4199b8cef1d031535d88228e7",
+      "file_path": "bsa-commencement-so-849e-2024-gazette-252352.pdf",
+      "metadata": {
+        "amendment_version": "Original 2024 commencement notification. Subsequent notifications, amendments and corrigenda not exhaustively verified.",
+        "effective_date": "2024-07-01",
+        "enactment_date": null,
+        "instrument_type": "notification",
+        "issuing_authority": "Government of India, Ministry of Home Affairs",
+        "jurisdiction": "India (Central Government notification)",
+        "language": "mul",
+        "legal_applicability": null,
+        "official_title": "NOTIFICATION",
+        "provenance": {
+          "notes": "Appoints 2024-07-01; no provision-specific carve-out in this notification. This is not a finding of universal applicability or unchanged current law. Acquisition checks do not independently certify legal validity or currency. Cryptographic PDF signatures not validated. Stage 2A retains user_supplied / not_independently_verified. Dates/authority are content-reviewed supplied metadata. Hindi extraction may contain legacy-font errors; manually inspect PDF.",
+          "supplied_by": "Better Call Kanoon Stage 2C acquisition and PDF-content review",
+          "verification_claim": "unverified",
+          "verification_evidence": "Acquired 2026-10-26T20:23:15.869012+00:00 from https://egazette.gov.in/WriteReadData/2024/252352.pdf; final URL https://egazette.gov.in/WriteReadData/2024/252352.pdf. SHA-256 fde9e9722eb4c01375525c2a30442903371913f4199b8cef1d031535d88228e7; 922833 bytes; 2 PDF pages. Printed identity/date/authority checks passed; page-specific evidence is in docs/legal-source-acquisition-stage2c.json."
+        },
+        "publication_date": "2024-02-24",
+        "retrieval_date": "2026-10-27",
+        "source_type": "official_gazette",
+        "source_url": "https://egazette.gov.in/WriteReadData/2024/252352.pdf",
+        "state": null
+      }
+    }
+  ],
+  "schema_version": 1
+}
