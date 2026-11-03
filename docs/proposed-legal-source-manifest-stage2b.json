@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "documents": [
+    {
+      "file_path": "acts/bns-2023-original-gazette.pdf",
+      "metadata": {
+        "official_title": "The Bharatiya Nyaya Sanhita, 2023",
+        "instrument_type": "act",
+        "jurisdiction": "India (Central legislation)",
+        "state": null,
+        "retrieval_date": null,
+        "enactment_date": "2023-12-25",
+        "publication_date": "2023-12-25",
+        "effective_date": null,
+        "amendment_version": "Proposed original enactment Gazette text, not a current consolidated edition. Post-enactment amendment completeness is unverified.",
+        "legal_applicability": null,
+        "language": "en",
+        "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+        "source_url": "https://egazette.gov.in/WriteReadData/2023/250883.pdf",
+        "source_type": "official_gazette",
+        "provenance": {
+          "supplied_by": "Better Call Kanoon Stage 2B source-discovery research; pending manual approval",
+          "verification_claim": "unverified",
+          "verification_evidence": "Act 45 of 2023. Official MHA-indexed Gazette header: https://www.mha.gov.in/sites/default/files/250883_english_01042024.pdf . India Code text inspected remotely: https://www.indiacode.nic.in/indiacode/bitstream/123456789/20062/1/a202345.pdf . Gazette identity CG-DL-E-25122023-250883. Source-level findings and access failures: docs/legal-source-inventory-stage2b.md.",
+          "notes": "Research checked on 2026-10-26 (Asia/Kolkata); no source PDF saved locally, no hash or signature verified, and retrieval_date remains null until acquisition. Enacted by Parliament of India; issuing_authority records the Gazette publishing department, not the administering ministry. Live Gazette access failed; recover and inspect the exact file before using this proposal. S.O. 850(E), dated 2024-02-23, appointed 2024-07-01 except section 106(2). Later commencement of that subsection remains unverified as of research on 2026-10-26."
+        }
+      },
+      "expected_sha256": null
+    },
+    {
+      "file_path": "acts/bnss-2023-original-gazette.pdf",
+      "metadata": {
+        "official_title": "The Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "instrument_type": "act",
+        "jurisdiction": "India (Central legislation)",
+        "state": null,
+        "retrieval_date": null,
+        "enactment_date": "2023-12-25",
+        "publication_date": "2023-12-25",
+        "effective_date": null,
+        "amendment_version": "Proposed original enactment Gazette text, not a current consolidated edition. Post-enactment amendment completeness is unverified.",
+        "legal_applicability": null,
+        "language": "en",
+        "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+        "source_url": "https://egazette.gov.in/WriteReadData/2023/250884.pdf",
+        "source_type": "official_gazette",
+        "provenance": {
+          "supplied_by": "Better Call Kanoon Stage 2B source-discovery research; pending manual approval",
+          "verification_claim": "unverified",
+          "verification_evidence": "Act 46 of 2023. Official MHA-indexed Gazette header: https://www.mha.gov.in/sites/default/files/250884_2_english_01042024.pdf . India Code text inspected remotely: https://www.indiacode.nic.in/indiacode/bitstream/123456789/20335/1/a2023-46.pdf . Gazette identity CG-DL-E-25122023-250884. Source-level findings and access failures: docs/legal-source-inventory-stage2b.md.",
+          "notes": "Research checked on 2026-10-26 (Asia/Kolkata); no source PDF saved locally, no hash or signature verified, and retrieval_date remains null until acquisition. Enacted by Parliament of India; issuing_authority records the Gazette publishing department, not the administering ministry. Live Gazette access failed; recover and inspect the exact file before using this proposal. S.O. 848(E), dated 2024-02-23, appointed 2024-07-01 except the First Schedule entry relating to BNS section 106(2); this is not BNSS section 106(2). Section 1(2) extent qualifications and section 531 savings also require review. Later changes remain unverified."
+        }
+      },
+      "expected_sha256": null
+    },
+    {
+      "file_path": "acts/bsa-2023-original-gazette.pdf",
+      "metadata": {
+        "official_title": "The Bharatiya Sakshya Adhiniyam, 2023",
+        "instrument_type": "act",
+        "jurisdiction": "India (Central legislation)",
+        "state": null,
+        "retrieval_date": null,
+        "enactment_date": "2023-12-25",
+        "publication_date": "2023-12-25",
+        "effective_date": "2024-07-01",
+        "amendment_version": "Proposed original enactment Gazette text, not a current consolidated edition. Post-enactment amendment completeness is unverified.",
+        "legal_applicability": null,
+        "language": "en",
+        "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+        "source_url": "https://egazette.gov.in/WriteReadData/2023/250882.pdf",
+        "source_type": "official_gazette",
+        "provenance": {
+          "supplied_by": "Better Call Kanoon Stage 2B source-discovery research; pending manual approval",
+          "verification_claim": "unverified",
+          "verification_evidence": "Act 47 of 2023. Official MHA-indexed Gazette header: https://www.mha.gov.in/sites/default/files/250882_english_01042024.pdf . India Code text inspected remotely: https://www.indiacode.nic.in/indiacode/bitstream/123456789/20063/1/aa202347.pdf . Gazette identity CG-DL-E-25122023-250882. Source-level findings and access failures: docs/legal-source-inventory-stage2b.md.",
+          "notes": "Research checked on 2026-10-26 (Asia/Kolkata); no source PDF saved locally, no hash or signature verified, and retrieval_date remains null until acquisition. Enacted by Parliament of India; issuing_authority records the Gazette publishing department, not the administering ministry. Live Gazette access failed; recover and inspect the exact file before using this proposal. S.O. 849(E), dated 2024-02-23, appointed 2024-07-01 without a provision-specific carve-out in that notification. Section 1(2) application and section 170 savings still require review; case-specific applicability is not determined."
+        }
+      },
+      "expected_sha256": null
+    },
+    {
+      "file_path": "notifications/bns-commencement-so-850-e-2024.pdf",
+      "metadata": {
+        "official_title": "NOTIFICATION",
+        "instrument_type": "notification",
+        "jurisdiction": "India (Central Government notification)",
+        "state": null,
+        "retrieval_date": null,
+        "enactment_date": null,
+        "publication_date": "2024-02-24",
+        "effective_date": null,
+        "amendment_version": "Original commencement notification, not an amendment Act. Subsequent notifications/current status not exhaustively verified.",
+        "legal_applicability": null,
+        "language": "mul",
+        "issuing_authority": "Government of India, Ministry of Home Affairs",
+        "source_url": "https://egazette.gov.in/WriteReadData/2024/252353.pdf",
+        "source_type": "official_gazette",
+        "provenance": {
+          "supplied_by": "Better Call Kanoon Stage 2B source-discovery research; pending manual approval",
+          "verification_claim": "unverified",
+          "verification_evidence": "S.O. 850(E), dated 2024-02-23, under section 1(2) of Act 45 of 2023; F. No. 1/3/2023-Judicial Cell-I. Official indexed operative text: https://www.mha.gov.in/sites/default/files/BhartiyaNyayaSanhita_24022024.pdf . Gazette identity CG-DL-E-24022024-252353. See docs/legal-source-inventory-stage2b.md for cover-date corroboration and failed live access.",
+          "notes": "Printed instrument heading is NOTIFICATION; catalogue identity is S.O. 850(E). Notification date 2024-02-23 differs from Gazette publication 2024-02-24. Research checked 2026-10-26; local retrieval, byte hash and signature checks pending. mul denotes the Hindi/English Gazette; confirm both pages at acquisition. S.O. 850(E), dated 2024-02-23, appointed 2024-07-01 except section 106(2). Later commencement of that subsection remains unverified as of research on 2026-10-26. effective_date is null because one scalar date would conceal the commencement exception; the qualified appointed date is recorded here."
+        }
+      },
+      "expected_sha256": null
+    },
+    {
+      "file_path": "notifications/bnss-commencement-so-848-e-2024.pdf",
+      "metadata": {
+        "official_title": "NOTIFICATION",
+        "instrument_type": "notification",
+        "jurisdiction": "India (Central Government notification)",
+        "state": null,
+        "retrieval_date": null,
+        "enactment_date": null,
+        "publication_date": "2024-02-24",
+        "effective_date": null,
+        "amendment_version": "Original commencement notification, not an amendment Act. Subsequent notifications/current status not exhaustively verified.",
+        "legal_applicability": null,
+        "language": "mul",
+        "issuing_authority": "Government of India, Ministry of Home Affairs",
+        "source_url": "https://egazette.gov.in/WriteReadData/2024/252354.pdf",
+        "source_type": "official_gazette",
+        "provenance": {
+          "supplied_by": "Better Call Kanoon Stage 2B source-discovery research; pending manual approval",
+          "verification_claim": "unverified",
+          "verification_evidence": "S.O. 848(E), dated 2024-02-23, under section 1(3) of Act 46 of 2023; F. No. 1/3/2023-Judicial Cell-I. Official indexed operative text: https://www.mha.gov.in/sites/default/files/BharatiyaNagarikSurakshaSanhita_24022024.pdf . Gazette identity CG-DL-E-24022024-252354. See docs/legal-source-inventory-stage2b.md for cover-date corroboration and failed live access.",
+          "notes": "Printed instrument heading is NOTIFICATION; catalogue identity is S.O. 848(E). Notification date 2024-02-23 differs from Gazette publication 2024-02-24. Research checked 2026-10-26; local retrieval, byte hash and signature checks pending. mul denotes the Hindi/English Gazette; confirm both pages at acquisition. S.O. 848(E), dated 2024-02-23, appointed 2024-07-01 except the First Schedule entry relating to BNS section 106(2); this is not BNSS section 106(2). Section 1(2) extent qualifications and section 531 savings also require review. Later changes remain unverified. effective_date is null because one scalar date would conceal the commencement exception; the qualified appointed date is recorded here."
+        }
+      },
+      "expected_sha256": null
+    },
+    {
+      "file_path": "notifications/bsa-commencement-so-849-e-2024.pdf",
+      "metadata": {
+        "official_title": "NOTIFICATION",
+        "instrument_type": "notification",
+        "jurisdiction": "India (Central Government notification)",
+        "state": null,
+        "retrieval_date": null,
+        "enactment_date": null,
+        "publication_date": "2024-02-24",
+        "effective_date": "2024-07-01",
+        "amendment_version": "Original commencement notification, not an amendment Act. Subsequent notifications/current status not exhaustively verified.",
+        "legal_applicability": null,
+        "language": "mul",
+        "issuing_authority": "Government of India, Ministry of Home Affairs",
+        "source_url": "https://egazette.gov.in/WriteReadData/2024/252352.pdf",
+        "source_type": "official_gazette",
+        "provenance": {
+          "supplied_by": "Better Call Kanoon Stage 2B source-discovery research; pending manual approval",
+          "verification_claim": "unverified",
+          "verification_evidence": "S.O. 849(E), dated 2024-02-23, under section 1(3) of Act 47 of 2023; F. No. 1/3/2023-Judicial Cell-I. Official indexed operative text: https://www.mha.gov.in/sites/default/files/BharatiyaSakshyaAdhiniyam_24022024.pdf . Gazette identity CG-DL-E-24022024-252352. See docs/legal-source-inventory-stage2b.md for cover-date corroboration and failed live access.",
+          "notes": "Printed instrument heading is NOTIFICATION; catalogue identity is S.O. 849(E). Notification date 2024-02-23 differs from Gazette publication 2024-02-24. Research checked 2026-10-26; local retrieval, byte hash and signature checks pending. mul denotes the Hindi/English Gazette; confirm both pages at acquisition. S.O. 849(E), dated 2024-02-23, appointed 2024-07-01 without a provision-specific carve-out in that notification. Section 1(2) application and section 170 savings still require review; case-specific applicability is not determined. effective_date records the appointed Act commencement date."
+        }
+      },
+      "expected_sha256": null
+    }
+  ]
+}
