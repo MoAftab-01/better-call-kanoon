@@ -1,0 +1,28 @@
+{
+  "contract_version": "publication-v2",
+  "presentation_json_pointers": [
+    "/candidate_id",
+    "/document",
+    "/label",
+    "/source_pdf/path",
+    "/source_pdf/physical_pages",
+    "/candidate/source_metadata/official_title",
+    "/candidate/source_metadata/source_url",
+    "/candidate/original_identifiers",
+    "/candidate/raw_sha256",
+    "/candidate/processed_sha256",
+    "/candidate/catalog_sha256",
+    "/candidate/qa_sha256",
+    "/candidate/spans",
+    "/exact_passage",
+    "/surrounding_context",
+    "/qa_pages",
+    "/gate_checks/exclusion_reasons",
+    "/human_review_checklist",
+    "/candidate/legal_currentness",
+    "/candidate/source_metadata/legal_applicability",
+    "/limitations"
+  ],
+  "schema_version": 1,
+  "scope": "Synthetic or separately verified proposal presentation; never approval"
+}
