@@ -1,141 +1,170 @@
 # Better Call Kanoon
-
 **Your AI Guide to Indian Law**
 
-Stage 1A provides a minimal FastAPI backend. Stage 1B adds a responsive
-React + TypeScript + Vite workspace with plain CSS and Lucide icons.
+A locally hosted English legal research workspace built with FastAPI, React,
+TypeScript and Vite. It now supports end-to-end chat over a small, explicitly
+bounded archival corpus. It describes source documents; it does not determine
+current law or provide personalized legal advice.
 
-The frontend is a preview: AI answers, legal retrieval, citations, microphone
-input, and voice calls are unavailable. You can draft a question or choose a
-starter topic, but sending is disabled. Drafts stay in memory in the current tab;
-they are not sent or saved and disappear on reload.
+## What works
 
-## Backend endpoints
+- BM25 search over complete, source-bound English commencement paragraphs for
+  BNS S.O. 850(E), BNSS S.O. 848(E), and BSA S.O. 849(E), when the separate exact
+  source bundle is present.
+- Original PDF/processed-record hashes, page IDs, normalized line ranges, QA
+  exclusions and V1/V2 candidate bindings are checked before sources are used.
+- Optional Groq inference selects relevant evidence IDs. The server constructs
+  answers from exact complete source quotations and validates citations.
+  Unconstrained model prose is deliberately not published as a legal answer.
+- Without Groq configuration, deterministic extractive chat still works.
+  Without adequate evidence, the assistant abstains instead of inventing law.
+- Browser-only bounded conversation history, loading/error/retry controls,
+  Enter/Shift+Enter, clear conversation and answer-specific source cards.
+- Existing health APIs, ingestion and evidence-review contracts remain intact.
 
-| Method | Path | JSON response |
-| --- | --- | --- |
-| GET | `/` | `{"message":"Welcome to Better Call Kanoon"}` |
-| GET | `/api/health` | `{"status":"healthy","service":"better-call-kanoon"}` |
+No FAISS/embedding model is configured or downloaded. Retrieval reports BM25,
+not hybrid search. RRF has a tested utility but is not an active semantic engine.
+Voice, telephony, multilingual answering, general legal coverage and current-law
+certification remain future work. All three existing proposals remain unapproved.
 
 ## Windows PowerShell setup
 
-Prerequisites: Python 3.12 and Node.js 24 with npm (verified with Python 3.12.10,
-Node.js 24.14.0, and npm 11.9.0). Use `npm.cmd` in PowerShell so the commands work
-without changing script execution policy.
-
-Run these commands from the repository root. Reuse the root `.venv` when it
-already exists; otherwise create it with the installed Python 3.12 interpreter.
-Activation is unnecessary because the commands use the virtual environment's
-Python executable directly.
+Use Python 3.12, Node.js 24 and npm. Run from the repository root:
 
 ```powershell
-# Run from the repository root.
-
-if (-not (Test-Path -LiteralPath '.\.venv')) {
-    python -m venv .venv
-}
-
-if (-not (Test-Path -LiteralPath '.\.venv\Scripts\python.exe')) {
-    throw 'The root .venv does not contain a Python executable.'
-}
-
-& '.\.venv\Scripts\python.exe' --version
-& '.\.venv\Scripts\python.exe' -m pip install -r .\backend\requirements.txt
-npm.cmd --prefix .\frontend ci
+if (-not (Test-Path '.\.venv\Scripts\python.exe')) { py -3.12 -m venv .venv }
+.\.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
+npm.cmd --prefix frontend ci
 ```
 
-## Run the backend — terminal 1
+No new runtime dependency was needed for chat. The browser tests use installed
+Chrome/Edge and Node's built-in WebSocket client. Backend requirements are not
+fully locked; verification uses the installed environment, not a promise that
+all future dependency resolutions will behave identically.
 
-From the repository root:
+## Backend - terminal 1
+
+Groq is optional. Set these **only in the backend terminal** if desired:
 
 ```powershell
-# Run from the repository root.
-& '.\.venv\Scripts\python.exe' -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000 --reload
+$env:GROQ_API_KEY = [System.Net.NetworkCredential]::new('', (Read-Host 'Groq API key' -AsSecureString)).Password
+$env:GROQ_MODEL = Read-Host 'An available Groq chat model ID supporting JSON object mode'
+.\.venv\Scripts\python.exe -B -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --no-access-log
 ```
 
-The server listens at `http://127.0.0.1:8000`. Press `Ctrl+C` to stop it.
+To run without Groq, omit the two environment assignments. There is no hardcoded
+model default. A missing/invalid model or key selects extractive mode; an
+unsupported configured model returns a safe configuration error. See
+[Groq's API reference](https://console.groq.com/docs/api-reference) and your
+account's available models. The tracked [.env.example](.env.example) is a
+placeholder template, **not automatically loaded**. Never put a key in VITE_*
+variables, source code, a committed file or browser storage.
 
-## Run the frontend — terminal 2
+## Frontend - terminal 2
 
 ```powershell
-# Run from the repository root.
-npm.cmd --prefix .\frontend run dev
+npm.cmd --prefix frontend run dev
 ```
 
-Open `http://127.0.0.1:5173`. Vite forwards `/api` requests to
-`http://127.0.0.1:8000`, so the existing backend needs no CORS or API changes.
-Port 5173 is fixed: if it is occupied, stop your previous frontend server rather
-than silently switching ports. Press `Ctrl+C` to stop the frontend.
+Open **http://127.0.0.1:5173**. Backend: **http://127.0.0.1:8000**.
+Vite proxies /api locally. Both servers bind to loopback.
 
-The status indicator validates the real `/api/health` response. It checks on
-page load, every 15 seconds, and when you select Refresh or Retry. Requests time
-out after 5 seconds. Backend connectivity does not enable AI answers.
-
-## Manual endpoint checks
-
-With the server running, open another PowerShell window and run:
+If either port belongs to another application, leave that application alone.
+Choose free alternate ports in separate terminals:
 
 ```powershell
-Invoke-RestMethod -Uri 'http://127.0.0.1:8000/' | ConvertTo-Json -Compress
-Invoke-RestMethod -Uri 'http://127.0.0.1:8000/api/health' | ConvertTo-Json -Compress
+# Backend terminal:
+.\.venv\Scripts\python.exe -B -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8001 --no-access-log
+# Frontend terminal:
+$env:KANOON_BACKEND_PORT = '8001'
+npm.cmd --prefix frontend run dev -- --port 5174
 ```
 
-The results should match the JSON responses in the table above.
+KANOON_BACKEND_PORT is a Vite development-server setting, not an API key or a
+client-controlled source path. Production hosting/routing is not implemented.
 
-## Verification commands
+## Evidence and index
 
-From the repository root:
+A public clone contains source, tests, QA/provenance metadata and unapproved
+proposal packets. It does **not** contain the six original PDFs or six processed
+records. Place the separate original bundle at its recorded paths under ignored
+backend/data/; consult [the evidence migration guide](docs/evidence-migration.md).
+Re-ingesting a PDF does not guarantee the same processed hash because extraction
+versions and ingestion timestamps matter.
 
 ```powershell
-& '.\.venv\Scripts\python.exe' -m pytest backend/tests -v
-npm.cmd --prefix .\frontend run typecheck
-npm.cmd --prefix .\frontend run build
-npm.cmd --prefix .\frontend run lint
+.\.venv\Scripts\python.exe -B -m backend.publication metadata
+# Requires exact source bundle; fails closed if absent or stale:
+.\.venv\Scripts\python.exe -B -m backend.publication verify
+.\.venv\Scripts\python.exe -B -m backend.retrieval check
+.\.venv\Scripts\python.exe -B -m backend.retrieval build --output backend/data/chat-index/local-v1.json
 ```
 
-The two health tests use FastAPI's `TestClient` to check HTTP 200 responses and the
-exact JSON payloads. No running server is required.
+The last command writes a NEW hash-only manifest, refusing overwrite. The BM25
+index itself is built in memory at the first chat/status request. Restart after
+adding the bundle. Every search rechecks live source bindings, including after a
+model call. Malformed, mismatched, excluded or instruction-like passages are
+quarantined. No HTTP request can choose source paths. No indexing operation
+writes approvals or review events.
 
-The production build is written to `frontend/dist`. Production hosting and API
-routing are outside this stage; the configured proxy is for Vite development.
-No API keys or other credentials belong in frontend code or `VITE_` variables.
+## API and supported questions
 
-## Manual browser checklist
+- GET / and GET /api/health retain their existing response contracts.
+- GET /api/chat/status reports corpus, retrieval and configuration readiness.
+- POST /api/chat accepts message (1-2,000 characters), optional conversation_id,
+  and at most six recent user/assistant turns (1,200 characters each).
+- Responses include answer, conversation ID, evidence status, citations, source
+  hashes/page/line metadata, provider/generation status and uncertainty.
+- /docs exposes OpenAPI schemas. Request body cap: 16,000 bytes. Local rate cap:
+  30 chat requests/minute per server process. Whole request timeout: 25 seconds.
 
-- With both servers running, confirm **Backend connected** and the welcome,
-  conversation, source, voice, and disclaimer sections.
-- Refresh the connection and observe its checking state. Stop your backend
-  server: within 15 seconds plus the request timeout, the status should become
-  **Backend disconnected** without crashing. Restart it and select **Retry**.
-- Type a question or select a topic. Only the draft should change. Sending,
-  microphone input, and voice calls stay disabled, even with a connected backend.
-- Confirm there are no generated answers, conversations, or citations. The
-  sources panel explicitly says legal retrieval is unavailable.
-- Reload: the draft should clear. In browser Network tools, question drafts
-  should never produce an API request; the only application API call is health.
-- Test desktop, tablet, and narrow mobile widths (including 320px). Sections
-  should reflow without horizontal scrolling.
-- Use Tab and Shift+Tab to reach the skip link, navigation, connection refresh,
-  topic buttons, and text area. Check visible focus outlines and anchor links.
+Try: 'What does the BNS commencement notification state?', 'What exception appears
+in S.O. 850(E)?', 'What does the BNSS notification say about the First Schedule?',
+or 'What is stated in the BSA commencement notification?'
 
-Better Call Kanoon is a legal-information guide, not a licensed lawyer. Consult
-a qualified legal professional for advice about your specific situation.
+Consumer, tenancy, employment, current applicability and personalized-rights
+questions are unsupported. Unclear follow-ups should repeat the notification
+name; history is untrusted context, not an authority source.
+ARCHIVAL_UNVERIFIED means identifiable archival bytes, not legal correctness.
+INSUFFICIENT_EVIDENCE means abstention. This release never emits VERIFIED_REVIEWED:
+indexing and model selection cannot promote a proposed passage to approval.
 
-## Stage 2A: offline document ingestion
+## Privacy and local-only security
 
-The backend now includes a separate local CLI for user-supplied PDF/TXT documents
-and explicit metadata manifests. It preserves provenance, unknown dates, source
-hashes, physical PDF pages, and extraction uncertainty. It does not download or
-verify documents, determine applicable law, or connect ingestion to the frontend.
+Messages remain in browser memory (40 messages); six recent turns are sent with
+each request. Questions reach the backend and, when Groq is configured and
+evidence exists, the question, history and selected evidence are sent to Groq.
+The backend does not persist conversations. Provider handling/retention is
+governed separately by Groq; no zero-retention claim is made. Clear/reload removes
+local history but cannot undo an external transmission already made.
 
-See the [manual ingestion guide](docs/ingestion-manual.md) for the synthetic
-fixture, exact PowerShell commands, metadata contract, output format, and limits.
+Logs record request IDs, status codes, citation counts and durations, not prompts
+or credentials. Responses use no-store caching. Groq uses certificate validation,
+fixed HTTPS destinations, trust_env=False, bounded output and limited transient
+retries. The model selects only server-issued IDs; it cannot supply source URLs
+or legal claims. This does not prove legal truth or solve every injection attack.
 
-## Versioned evidence publication
+**Local-only MVP:** do not expose it publicly without authentication, per-user
+rate limits, request/concurrency budgets and deployment hardening. Speak to a
+qualified legal professional about your circumstances.
 
-The [architecture](docs/architecture.md) and [V1-to-V2 migration guide](docs/evidence-migration.md)
-explain the publication integration scope. Public metadata and synthetic tests
-are independently checkable; real-corpus verification requires the exact separate
-PDF/processed bundle. No legal passage is approved and current applicability is
-unknown. Sanitized reports under `docs/evidence/v2/` have new bindings and IDs;
-original V1 evidence is preserved privately, not overwritten.
+## Tests
+
+```powershell
+$run = 'backend/data/test-runs/mvp-' + [guid]::NewGuid().ToString('N').Substring(0,8)
+.\.venv\Scripts\python.exe -B -m pytest backend/tests -q --basetemp $run -p no:cacheprovider
+npm.cmd --prefix frontend run lint
+npm.cmd --prefix frontend run typecheck
+npm.cmd --prefix frontend run build
+```
+
+All automated provider calls are mocked; tests never spend Groq credits.
+See [the MVP architecture and browser verification guide](docs/working-mvp.md)
+for installed-Chrome E2E tests and exact mocked-provider setup.
+See [the ingestion manual](docs/ingestion-manual.md) for synthetic PDF/TXT use.
+
+Original V1/V2 reports, identities and the migration publication manifest remain
+unchanged historical artifacts from commit b08da7a. That manifest describes the
+migration snapshot, not a current full-file manifest after these MVP changes.
+Historical stage documents can describe earlier unavailable features; this
+README and the MVP guide describe current application behavior.
