@@ -6,9 +6,12 @@ import Sidebar from './components/Sidebar'
 import SourcePanel from './components/SourcePanel'
 import WelcomePanel from './components/WelcomePanel'
 import { useBackendHealth } from './hooks/useBackendHealth'
+import { useState } from 'react'
+import type { Answer } from './chat'
 
 export default function App() {
   const { connection, retry } = useBackendHealth()
+  const [selectedAnswer, setSelectedAnswer] = useState<Answer | null>(null)
 
   return (
     <>
@@ -30,8 +33,8 @@ export default function App() {
               </div>
             )}
             <div className="workspace-grid">
-              <ConversationWorkspace />
-              <SourcePanel />
+              <ConversationWorkspace connected={connection.state === 'connected'} onSelect={setSelectedAnswer} />
+              <SourcePanel answer={selectedAnswer} />
             </div>
             <LegalDisclaimer />
           </main>

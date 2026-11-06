@@ -6,8 +6,8 @@ export default function LegalDisclaimer() {
       <Info size={16} aria-hidden="true" />
       <div>
         <h2>Information to help you understand. Not a substitute for a lawyer.</h2>
-        <p>Better Call Kanoon is being built as a legal-information guide, not a licensed lawyer.
-          For advice about your situation, consult a qualified legal professional.</p>
+        <p>Better Call Kanoon describes archival text, not current law or personalized legal advice.
+          Questions reach your local backend and, when configured, Groq. Consult a qualified legal professional for your situation.</p>
       </div>
       <span className="footer-wordmark" aria-hidden="true">Kanoon<span>.</span></span>
     </footer>
