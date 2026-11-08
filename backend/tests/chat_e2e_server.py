@@ -29,3 +29,10 @@ async def mock_groq(request):
 
 settings = Settings("SYNTHETIC_E2E_KEY_NOT_REAL", "SYNTHETIC_E2E_NOT_LIVE")
 app = create_app(ChatService(settings=settings, provider=GroqProvider(settings, httpx.MockTransport(mock_groq))))
+
+
+@app.middleware("http")
+async def synthetic_marker(request, call_next):
+    response = await call_next(request)
+    response.headers["X-Kanoon-Synthetic-Provider"] = "true"
+    return response

@@ -57,6 +57,14 @@ Start the real backend and Vite as described in the README. Then:
 node frontend/tests/browser.mjs
 ```
 
+The browser suite refuses a genuinely configured provider before sending chat
+requests. Mocked mode additionally requires the test server's synthetic-transport
+response marker. The guard can be tested without any server or API calls:
+
+```powershell
+node --test frontend/tests/provider-guard.test.mjs
+```
+
 This citation exercise requires the separate exact local source bundle. It tests
 real browser requests, BNS/BNSS qualifiers, server quote hashes, source links,
 source selection, Enter/Shift+Enter, clear, mobile layout and connection recovery.

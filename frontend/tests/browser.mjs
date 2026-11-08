@@ -8,6 +8,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { randomUUID, createHash } from 'node:crypto'
 import assert from 'node:assert/strict'
+import { requireTestProvider } from './provider-guard.mjs'
 
 const root = resolve(import.meta.dirname, '../..')
 const output = join(root, 'frontend/.qa')
@@ -17,7 +18,9 @@ assert(existsSync(binary), 'Set CHROME_BINARY to an existing local Chrome/Edge i
 const mocked = process.argv.includes('--mock-provider')
 const backendUrl = process.env.CHAT_E2E_BACKEND_URL || 'http://127.0.0.1:8000'
 const frontendUrl = process.env.CHAT_E2E_FRONTEND_URL || 'http://127.0.0.1:5173'
-const status = await fetch(backendUrl + '/api/chat/status').then(r => r.json())
+const statusResponse = await fetch(backendUrl + '/api/chat/status')
+const status = await statusResponse.json()
+requireTestProvider(status, statusResponse.headers.get('x-kanoon-synthetic-provider'), mocked)
 assert(status.retrieval.passages > 0, 'Citation E2E requires the separately acquired local evidence bundle.')
 await mkdir(output, { recursive: true })
 await mkdir(profile, { recursive: true })
