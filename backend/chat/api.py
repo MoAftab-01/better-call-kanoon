@@ -1,6 +1,8 @@
 import asyncio
 from collections import deque
 import logging
+import os
+import secrets
 import threading
 import time
 from uuid import uuid4
@@ -8,6 +10,7 @@ from uuid import uuid4
 from fastapi import Depends, FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from starlette.concurrency import run_in_threadpool
 
 from .models import ChatRequest, ChatResponse
@@ -16,6 +19,9 @@ from .service import ChatService
 
 logger = logging.getLogger("kanoon.chat")
 ERRORS = {
+    "access_required": "Enter the private demo access token supplied by the operator.",
+    "deployment_not_configured": "Public chat is disabled until the operator configures access protection.",
+    "service_busy": "Two research requests are already running. Retry shortly.",
     "local_rate_limited": "Local request limit reached. Wait one minute before retrying.",
     "request_too_large": "The request body exceeds the 16,000-byte limit. Shorten the recent history or question.",
     "provider_timeout": "Groq timed out. Retry shortly; no answer was fabricated.",
@@ -31,6 +37,19 @@ def create_app(service=None):
     app = FastAPI(title="Better Call Kanoon", description="Local archival research; no current-law certification.")
     app.state.chat = service
     lock, arrivals = threading.Lock(), deque()
+    environment = os.environ.get("KANOON_ENV", "local")
+    if environment not in {"local", "production"}:
+        raise ValueError("KANOON_ENV must be local or production")
+    production = environment == "production"
+    access_token = os.environ.get("KANOON_ACCESS_TOKEN", "")
+    auth_ready = len(access_token) >= 32 and access_token != os.environ.get("GROQ_API_KEY", "")
+    origins = [s.strip() for s in os.environ.get("KANOON_ALLOWED_ORIGINS", "").split(",") if s.strip()]
+    from urllib.parse import urlparse
+    if any(urlparse(s).scheme != "https" or not urlparse(s).netloc or urlparse(s).path not in ("", "/") or
+           urlparse(s).username or urlparse(s).query or urlparse(s).fragment for s in origins):
+        raise ValueError("Production CORS origins must be explicit HTTPS origins")
+    origins = [s.rstrip("/") for s in origins]
+    active = 0
 
     def get_service():
         with lock:
@@ -47,13 +66,38 @@ def create_app(service=None):
 
     @app.middleware("http")
     async def privacy_headers(request, call_next):
+        nonlocal active
         # Bound actual streamed body bytes, including chunked requests, before JSON parsing.
-        if request.url.path == "/api/chat":
+        guarded = request.url.path == "/api/chat" and request.method == "POST"
+        if guarded:
+            if production:
+                if not auth_ready:
+                    return error("deployment_not_configured", 503)
+                supplied = request.headers.get("Authorization", "")
+                if not secrets.compare_digest(supplied.encode(), ("Bearer " + access_token).encode()):
+                    return error("access_required", 401)
+            with lock:
+                if active >= 2:
+                    return error("service_busy", 429, 10)
+                active += 1
+        try:
+            return await bounded_request(request, call_next, guarded)
+        finally:
+            if guarded:
+                with lock:
+                    active -= 1
+
+    async def bounded_request(request, call_next, guarded):
+        if guarded:
             body = bytearray()
-            async for chunk in request.stream():
-                body.extend(chunk)
-                if len(body) > 16000:
-                    return error("request_too_large", 413)
+            try:
+                async with asyncio.timeout(10):
+                    async for chunk in request.stream():
+                        body.extend(chunk)
+                        if len(body) > 16000:
+                            return error("request_too_large", 413)
+            except TimeoutError:
+                return error("request_body_timeout", 408)
             request._body = bytes(body)
         response = await call_next(request)
         response.headers["Cache-Control"] = "no-store"
@@ -73,9 +117,20 @@ def create_app(service=None):
     def health():
         return {"status": "healthy", "service": "better-call-kanoon"}
 
+    @app.get("/api/ready")
+    def ready(chat: ChatService = Depends(get_service)):
+        data = chat.status()
+        corpus = data["retrieval"]["passages"] > 0
+        configured = not production or auth_ready
+        return JSONResponse(status_code=200 if configured else 503, content={
+            "status": "ready" if configured else "blocked", "corpus_available": corpus,
+            "research_ready": corpus and configured, "authentication_required": production,
+            "legal_currentness": "unknown"})
+
     @app.get("/api/chat/status")
     def status(chat: ChatService = Depends(get_service)):
-        return chat.status()
+        return dict(**chat.status(), authentication_required=production,
+                    deployment_ready=not production or auth_ready)
 
     @app.post("/api/chat", response_model=ChatResponse)
     async def chat(request: ChatRequest, chat: ChatService = Depends(get_service)):
@@ -103,4 +158,9 @@ def create_app(service=None):
             logger.error("chat_failed request_id=%s code=internal_error", trace)
             return error("internal_error", 500)
 
+    # Outermost CORS also covers early authentication/size-limit failures.
+    if origins:
+        app.add_middleware(CORSMiddleware, allow_origins=origins,
+            allow_methods=["GET", "POST"], allow_headers=["Content-Type", "Authorization"],
+            allow_credentials=False)
     return app

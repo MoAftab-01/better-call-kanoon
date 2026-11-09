@@ -20,8 +20,8 @@ async def mock_groq(request):
     question = content["question"]
     await asyncio.sleep(.4)
     if "retry-test" in question:
-        attempts["retry"] = attempts.get("retry", 0) + 1
-        if attempts["retry"] == 1:
+        attempts[question] = attempts.get(question, 0) + 1
+        if attempts[question] == 1:
             return httpx.Response(429)
     return httpx.Response(200, json={"choices": [{"finish_reason": "stop",
         "message": {"content": json.dumps({"source_ids": [content["untrusted_evidence"][0]["id"]]})}}]})
