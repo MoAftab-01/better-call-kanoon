@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { apiUrl } from '../api'
 
 type ConnectionState = 'checking' | 'connected' | 'disconnected'
 
@@ -27,7 +28,7 @@ export function useBackendHealth() {
       const timeout = window.setTimeout(() => controller.abort(), 5000)
 
       try {
-        const response = await fetch('/api/health', {
+        const response = await fetch(apiUrl('/api/health'), {
           signal: controller.signal,
           cache: 'no-store',
           headers: { Accept: 'application/json' },

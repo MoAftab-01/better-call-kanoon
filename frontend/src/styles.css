@@ -291,3 +291,12 @@ details summary { cursor:pointer; line-height:1.8; }
 .citation-card dd { margin:4px 0 12px; overflow-wrap:anywhere; color:#aeb6c3; }
 .send-button:not(:disabled) { background:#d8b469; color:#17202c; cursor:pointer; }
 @media(max-width:600px) { .message-list { padding:12px; max-height:550px; } .chat-message { padding:12px; } .chat-message.user { margin-left:10px; } }
+/* Optional browser speech remains usable without changing the typed composer. */
+.browser-voice { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); font-size: .78rem; color: var(--muted); }
+.voice-consent { display: flex; align-items: flex-start; gap: 8px; margin: 10px 0; }
+.voice-consent input { flex: 0 0 auto; margin-top: 3px; accent-color: #c9a55a; }
+.browser-voice button, .source-select { display: inline-flex; align-items: center; gap: 6px; }
+.access-token { display: grid; gap: 7px; font-size: .8rem; margin-bottom: 16px; }
+.access-token input { width: 100%; min-width: 0; background: #111822; color: #f4f1e9; border: 1px solid #7e7358; border-radius: 6px; padding: 9px; }
+.browser-voice input:focus-visible, .access-token input:focus-visible { outline: 2px solid #e8c88a; outline-offset: 4px; }
+.citation-card blockquote { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 420px; overflow-y: auto; }

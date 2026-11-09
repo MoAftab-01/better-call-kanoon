@@ -16,6 +16,7 @@ const profile = join(root, 'backend/data/test-runs', 'chrome-' + randomUUID().sl
 const binary = process.env.CHROME_BINARY || 'C:/Program Files/Google/Chrome/Application/chrome.exe'
 assert(existsSync(binary), 'Set CHROME_BINARY to an existing local Chrome/Edge installation.')
 const mocked = process.argv.includes('--mock-provider')
+const mockSpeech = process.argv.includes('--mock-speech')
 const backendUrl = process.env.CHAT_E2E_BACKEND_URL || 'http://127.0.0.1:8000'
 const frontendUrl = process.env.CHAT_E2E_FRONTEND_URL || 'http://127.0.0.1:5173'
 const statusResponse = await fetch(backendUrl + '/api/chat/status')
@@ -102,10 +103,52 @@ try {
   const target = await rpc('Target.createTarget', { url: 'about:blank' }, true)
   session = (await rpc('Target.attachToTarget', { targetId: target.targetId, flatten: true }, true)).sessionId
   await rpc('Page.enable'); await rpc('Runtime.enable'); await rpc('Network.enable')
+  if (mockSpeech) await rpc('Page.addScriptToEvaluateOnNewDocument', { source: `
+    class SyntheticRecognition {
+      constructor(){window.__recognition=this}
+      start(){this.started=true}
+      stop(){this.stopped=true;this.onend?.()}
+      abort(){this.aborted=true;this.onend?.()}
+    }
+    window.SpeechRecognition=SyntheticRecognition;
+    Object.defineProperty(window,'speechSynthesis',{value:{cancel(){window.__speechCancelled=true},speak(u){window.__spoken=u.text}},configurable:true});
+  ` })
+  if (process.argv.includes('--no-speech')) await rpc('Page.addScriptToEvaluateOnNewDocument', { source: `
+    Object.defineProperty(window,'SpeechRecognition',{value:undefined,configurable:true});
+    Object.defineProperty(window,'webkitSpeechRecognition',{value:undefined,configurable:true});
+    Object.defineProperty(window,'speechSynthesis',{value:undefined,configurable:true});
+  ` })
   await rpc('Emulation.setDeviceMetricsOverride', { width: 1280, height: 960, deviceScaleFactor: 1, mobile: false })
   await rpc('Page.navigate', { url: frontendUrl })
   await until('document.querySelector(".connection-connected") && document.querySelector("#answer-availability")?.textContent.includes("Extractive") || document.querySelector("#answer-availability")?.textContent.includes("Groq selects")', 'health and chat readiness')
   check('frontend load, backend health and chat readiness')
+  if (process.argv.includes('--no-speech')) {
+    assert((await evaluate('document.querySelector(".browser-voice").textContent')).includes('unavailable'))
+    check('browser speech APIs absent: explicit typed-chat fallback')
+  }
+  if (mockSpeech) {
+    assert(await evaluate('document.querySelector(".browser-voice button").disabled'))
+    await evaluate('document.querySelector(".voice-consent input").click()')
+    await evaluate('document.querySelector(".browser-voice button").click()')
+    await until('document.querySelector(".browser-voice").textContent.includes("Listening")', 'recording indicator')
+    const before = responses.length
+    await evaluate(`window.__recognition.onresult({results:[[{transcript:'BNS notification'}]]}); window.__recognition.onend()`)
+    assert.equal(await evaluate('document.querySelector("#legal-question").value'), 'BNS notification')
+    assert.equal(responses.length, before)
+    check('synthetic browser speech: explicit consent, recording indicator and transcript draft without auto-submit')
+    await evaluate('document.querySelector(".browser-voice button").click();window.__recognition.onerror({error:"not-allowed"});window.__recognition.onend()')
+    await until('document.querySelector(".browser-voice").textContent.includes("permission denied")', 'permission fallback')
+    await evaluate('document.querySelector(".browser-voice button").click()')
+    await until('document.querySelector(".browser-voice button").textContent.includes("Stop recording")', 'stop control')
+    await evaluate('document.querySelector(".browser-voice button").click()')
+    assert(await evaluate('window.__recognition.stopped'))
+    await until('document.querySelector(".browser-voice button").textContent.includes("Dictate")', 'recording ended')
+    await evaluate('document.querySelector(".browser-voice button").click()')
+    await until('document.querySelectorAll(".browser-voice button").length===2', 'cancel control')
+    await evaluate('document.querySelectorAll(".browser-voice button")[1].click()')
+    assert(await evaluate('window.__recognition.aborted && window.__recognition.onresult===null'))
+    check('synthetic browser speech: permission denial, stop and cancellation preserve typed fallback')
+  }
   const bns = await ask('What does the BNS commencement notification state?')
   assert.equal(bns.status, 200);assert.equal(bns.body.evidence_status, 'ARCHIVAL_UNVERIFIED')
   assert.equal(bns.body.provider.status, mocked ? 'completed' : 'not_configured')
@@ -117,6 +160,14 @@ try {
   assert.equal(await evaluate('document.querySelector(".citation-card a").href'), citation.source_url + '#page=2')
   assert(!(await evaluate('document.querySelector(".message-list").textContent')).includes('VERIFIED REVIEWED'))
   results.citations_verified++;check('real POST, answer, complete BNS exception, server citation binding and official PDF link')
+  if (mockSpeech) {
+    await evaluate('Array.from(document.querySelectorAll("button")).find(b=>b.textContent.includes("Read aloud")).click()')
+    assert((await evaluate('window.__spoken')).includes('except the provision of sub-section (2) of section 106'))
+    await until('Array.from(document.querySelectorAll("button")).some(b=>b.textContent.includes("Stop reading"))', 'speech stop control')
+    await evaluate('Array.from(document.querySelectorAll("button")).find(b=>b.textContent.includes("Stop reading")).click()')
+    assert(await evaluate('window.__speechCancelled'))
+    check('synthetic browser synthesis: exact response read aloud and stop; no audible output claimed')
+  }
   const bnss = await ask('What does the BNSS commencement notification say about the First Schedule?', true)
   const schedule = bnss.body.citations.find(c => c.instrument === 'S.O. 848(E)')
   assert(schedule && schedule.quote.includes('First Schedule') && schedule.quote.includes('section 106(2)'))
@@ -124,6 +175,23 @@ try {
   await evaluate('document.querySelectorAll(".source-select")[0].click()')
   assert((await evaluate('document.querySelector(".citation-card h3").textContent')).includes('850'))
   check('selected-answer source association')
+  await clear()
+  const act = await ask('BNS section 15')
+  const judge = act.body.citations.find(c => c.printed_number_unverified === '15')
+  assert(judge && judge.pdf_page === 11 && judge.attribution === 'document_only')
+  assert.equal(createHash('sha256').update(judge.context_text).digest('hex'), judge.context_text_sha256)
+  assert((await evaluate('document.querySelector(".citation-card").textContent')).includes('not visually approved'))
+  results.citations_verified++;check('expanded BNS archival selection, document-only attribution and exact page context')
+  await clear()
+  const bnssAct = await ask('BNSS section 25')
+  const sentences = bnssAct.body.citations.find(c => c.printed_number_unverified === '25')
+  assert(sentences && sentences.pdf_page === 10 && sentences.quote.includes('twenty years') && sentences.quote.includes('(3)'))
+  results.citations_verified++;check('expanded BNSS selection preserves proviso and final subsection')
+  await clear()
+  const bsaAct = await ask('BSA section 109')
+  const burden = bsaAct.body.citations.find(c => c.printed_number_unverified === '109')
+  assert(burden && burden.pdf_page === 33 && burden.quote.includes('Illustrations.') && burden.quote.includes('(b)'))
+  results.citations_verified++;check('expanded BSA selection retains illustrations and archival label')
   await clear();assert.equal(await evaluate('document.querySelectorAll(".citation-card").length'), 0)
   const insufficient = await ask('What can I do about a defective consumer product?')
   assert.equal(insufficient.body.evidence_status, 'INSUFFICIENT_EVIDENCE');assert.deepEqual(insufficient.body.citations, [])
@@ -137,7 +205,7 @@ try {
     await clear(); await pause(900)
     assert.equal(await evaluate('document.querySelectorAll(".chat-message").length'), 0)
     check('loading indicator, duplicate-send guard and clear cancels late response')
-    const retry = await ask('BNS commencement notification retry-test')
+    const retry = await ask('BNS commencement notification retry-test ' + randomUUID())
     assert.equal(retry.status, 429)
     await until('document.querySelector(".chat-error")', 'provider error')
     const count = responses.length
@@ -158,9 +226,9 @@ try {
   await rpc('Emulation.setDeviceMetricsOverride', { width: 320, height: 850, deviceScaleFactor: 1, mobile: true })
   await pause(300)
   assert(await evaluate('document.documentElement.scrollWidth <= innerWidth'), 'no mobile horizontal overflow')
-  assert(await evaluate('document.querySelector(".mic-button").disabled && document.querySelector(".voice-button").disabled'))
+  assert(await evaluate('document.querySelector(".browser-voice") && document.querySelector(".voice-button").disabled'))
   await writeFile(join(output, 'chat-mobile-' + (mocked ? 'mocked' : 'extractive') + '.png'), Buffer.from((await rpc('Page.captureScreenshot', { format: 'png' })).data, 'base64'))
-  check('320px mobile layout, citation rendering and disabled voice controls')
+  check('320px mobile layout, citation rendering, browser voice explanation and disabled telephone calls')
   await rpc('Fetch.enable', { patterns: [{ urlPattern: '*api/health*', requestStage: 'Request' }] })
   await evaluate('document.querySelector(".connection-retry").click()')
   await until('document.querySelector(".connection-disconnected")', 'disconnected state')

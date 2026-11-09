@@ -1,8 +1,11 @@
+import { apiUrl } from './api'
 export interface Citation {
   id: string; candidate_id: string; document_id: string; title: string; instrument: string
   source_url: string | null; issuing_authority: string | null; publication_date: string | null
   pdf_page: number; start_line: number; end_line: number; quote: string
   raw_sha256: string; processed_sha256: string; text_sha256: string
+  printed_number_unverified?: string | null; qa_flags?: string[]; context_text?: string
+  context_text_sha256?: string; version_description?: string
 }
 export interface Answer {
   answer: string; conversation_id: string
@@ -12,6 +15,7 @@ export interface Answer {
 }
 export interface ChatStatus {
   available: boolean; answer_mode: string; provider_configured: boolean
+  authentication_required?: boolean
   retrieval: { passages: number; mode: string; detail: string }
 }
 export interface Message { id: string; role: 'user' | 'assistant'; content: string; result?: Answer }
@@ -24,9 +28,9 @@ export function officialSource(url: string | null): string | undefined {
     return parsed.href
   } catch { return undefined }
 }
-export async function sendQuestion(message: string, conversationId: string | null, messages: Message[], signal: AbortSignal): Promise<Answer> {
-  const response = await fetch('/api/chat', {
-    method: 'POST', signal, headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+export async function sendQuestion(message: string, conversationId: string | null, messages: Message[], signal: AbortSignal, accessToken = ''): Promise<Answer> {
+  const response = await fetch(apiUrl('/api/chat'), {
+    method: 'POST', signal, headers: { 'Content-Type': 'application/json', Accept: 'application/json', ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}) },
     body: JSON.stringify({ message, conversation_id: conversationId,
       history: messages.slice(-6).map(m => ({ role: m.role, content: m.content.slice(0, 1200) })) }),
   })
