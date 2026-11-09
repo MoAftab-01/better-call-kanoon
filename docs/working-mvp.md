@@ -1,5 +1,9 @@
 # Working archival-chat MVP
 
+Historical initial chat slice. The [completion sprint](completion-sprint.md)
+supersedes the three-paragraph, BM25-only and unavailable-voice limits below.
+The original evidence bindings and review restrictions remain unchanged.
+
 The current architecture adds backend/retrieval and backend/chat without changing
 Stage 2A/2E/2F/2G or V2 schemas, algorithms, policies, reports or source files.
 

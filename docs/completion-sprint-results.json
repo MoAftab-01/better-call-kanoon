@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-10",
+  "index_version": "6cc6f59ef5d2799570881a1182e36f1e2d36056a7055fac3cb675ca2532a9823",
+  "limitations": [
+    "Developer-authored regression set, not held out or expert-labelled",
+    "Citation validity measures byte bindings, not legal correctness",
+    "No independent currentness verification",
+    "Provider latency and native voice quality not measured"
+  ],
+  "provider_calls": 0,
+  "results": [
+    {
+      "abstention_cases": 9,
+      "cases": 28,
+      "citation_validity": 1.0,
+      "citations_checked": 61,
+      "latency_median_ms": 424.26,
+      "latency_p95_ms": 919.51,
+      "mode": "bm25",
+      "mrr": 0.9649122807017544,
+      "ndcg_at_5": 0.9736842105263158,
+      "recall_at_5": 1.0,
+      "supported_cases": 19,
+      "unsupported_answer_abstention": 1
+    },
+    {
+      "abstention_cases": 9,
+      "cases": 28,
+      "citation_validity": 1.0,
+      "citations_checked": 61,
+      "latency_median_ms": 477.28999999999996,
+      "latency_p95_ms": 938.09,
+      "mode": "hybrid",
+      "mrr": 0.9736842105263158,
+      "ndcg_at_5": 0.9805752501879714,
+      "recall_at_5": 1.0,
+      "supported_cases": 19,
+      "unsupported_answer_abstention": 1
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Developer-authored archival regression set; not a legal correctness or currentness benchmark. Expected printed numeric starts are extraction references, not approved attribution. Not held out during implementation.",
+  "selected_pages": 194,
+  "selections": 555,
+  "semantic_version": "203a93edf7735ba9b7f73ca1f617b1e1ceaf8bf840e26ce9b73abf6456a15314",
+  "source_pages": 404
+}
