@@ -1,186 +1,142 @@
-# Public corpus and lightweight deployment
+# Public BM25 deployment preparation
 
-Status: **CONDITIONAL GO FOR DEPLOYMENT PREPARATION; NO-GO FOR PUBLIC CORPUS RELEASE**.
-The code works with an explicitly approved artifact. No real publication decision,
-legal-evidence approval, push or deployment has been made.
+Status: READY_FOR_HUMAN_PUBLICATION_REVIEW; no actual corpus publication, push or deployment.
+The source-specific rights assessment and A-L approval dossier are in
+[publication-review.md](publication-review.md), with metadata in
+[publication-review.json](publication-review.json). Older unsigned decisions are
+no longer accepted in production. Candidate-v2 remains immutable offline input.
 
-## Recovery and artifacts
+## Runtime boundaries
 
-The interrupted work was recovered on feat/working-legal-chat-mvp at 414537f:
-four tracked files were modified and nine new Python files were present. The
-implementation, tests and private candidate-v1 were preserved. Completion adds
-deployment packaging/configuration, visible public citation provenance, stronger
-publication gates, measurements and documentation. Candidate-v1 is an earlier
-unpublished artifact; candidate-v2 supersedes its publication contract. Neither
-was edited in place. Original PDFs, processed records and V1/V2 reviews are separate.
+Private local research: CORPUS_KIND=private, optional PRIVATE_CORPUS_ROOT,
+RETRIEVAL_MODE=auto/hybrid/bm25. Public production never imports that private path.
+Public: KANOON_ENV=production, CORPUS_KIND=public, RETRIEVAL_MODE=bm25. No model,
+FAISS, Sentence Transformers, PDF parser, review ledger or download is needed.
 
-The reviewable metadata inventory is [public-corpus-candidate.json](public-corpus-candidate.json).
-It contains no extracted corpus text. The local candidate directory is
-backend/data/public-corpus/candidate-v2, with a sibling candidate-v2.zip.
-Both remain ignored and unpublished. Its three files are manifest.json,
-corpus.json and NOTICE.md. The compressed package is 378,552 bytes; the unpacked
-files total 1,530,922 bytes. The manifest SHA-256 is
-`bbbc799f2583145c0ac704c518cfe2f5d0049d490994d7e0cbabf19df47c1fa6`.
+Public production requires all of the following, supplied separately after review:
 
-The candidate contains 555 unreviewed selections with context from 194 pages:
-BNS Act 45/2023 (204), BNSS Act 46/2023 (259), BSA Act 47/2023 (89), and one
-complete English paragraph from each commencement notification S.O. 850(E),
-848(E), 849(E). All six source documents account for 404 original physical pages.
-Official URLs, original PDF hashes, titles, authorities, dates and edition
-descriptions are recorded in the inventory. These are original publications,
-not consolidated or proven-current editions.
+- PUBLIC_CORPUS_DIR: exact delivered subset, not the full unreviewed candidate.
+- PUBLIC_CORPUS_MANIFEST_SHA256: independently reviewed schema-2 manifest hash.
+- PUBLIC_CORPUS_APPROVAL_FILE: external signed decision outside the corpus folder.
+- PUBLIC_CORPUS_APPROVAL_SHA256: independently retained latest authorized receipt hash.
+- PUBLIC_CORPUS_SIGNER_PUBLIC_KEY: independently provisioned reviewer's raw Ed25519
+  public key, 64 lowercase hex characters. It is not read from the candidate/receipt.
+- KANOON_ACCESS_TOKEN: distinct 32+ character secret, never the Groq key.
+- KANOON_ALLOWED_ORIGINS: explicit HTTPS frontend origins; no wildcard/credentials.
 
-## Publication assessment: conditional, not clearance
+The signed receipt covers the exact manifest and every original PDF/shard hash,
+with one include/exclude/revoke decision per source. Unsigned, unauthorized,
+missing, revoked, corrupted, stale or extra-file inputs fail closed. Excluded
+shards must be absent, and are never opened by the runtime. The manifest itself
+retains excluded-source identity/hash metadata, but no excluded text.
 
-Do not assume official government documents are public domain. The official
-[Copyright Office statute](https://copyright.gov.in/Documents/Notification/Copyright_Act_1957.pdf)
-was inspected with certificate-verified HTTPS; the relevant passage is on physical
-page 25. SHA-256: ac3ec4fd5e04cb4cb87cc10e2568f027c1dd9ede572dccf617a34fb1f6feb8c9.
+Schema 1 is inspection-only. An offline preview cannot be exposed through HTTP.
+GET /api/health preserves its original contract. GET /api/ready returns 503 and
+research_ready=false for unapproved/missing/invalid inputs; chat returns 503.
+Tampering/revocation after startup invalidates search and citations. Legal-evidence
+approval is separate and remains empty. No legal currentness inference is made.
 
-Section 52(1)(q)(i) addresses Gazette matter other than Acts; subclause (ii)
-conditions Act reproduction on accompanying commentary or other original matter.
-The candidate therefore distinguishes the notification and Act sources and adds
-source-specific editorial notes and attribution. **Adding those notes is not proof
-that all applicable statutory, website-use, copyright or publication conditions
-have been satisfied.** The cited official compilation is not an assurance about
-later changes, third-party rights, all possible interpretations, or other terms.
-The [e-Gazette information page](https://egazette.gov.in/Aboutus.aspx) was also
-checked; free access is not treated as a redistribution license. No blanket
-open-license/public-domain claim is made. Applicable terms and the precise payload
-still require an identified human publication review; if that review cannot
-establish a safe basis, do not release the corpus.
-
-There is no new legal text in Git or the runtime code package. Do not remove a
-pending label, invent a reviewer, or create a real approval to make readiness pass.
-Publication permission is independent of legal correctness, visual approval and
-current applicability. All real legal-review events and allowlist entries stay zero.
-
-The candidate omits raw PDFs, private processed records, private catalogue/QA
-hashes and candidate IDs, review stores, private diagnostics, workstation paths,
-user conversations, embedding weights and private indexes. Only source-derived
-text, public provenance and quality flags are retained. Full-page textual context
-can include public official names/addresses and detached marginal headings; that
-context also needs publication/privacy review. Scanned signature images and private
-user data are not included. No source text was corrected or silently repaired.
-
-The preparer verifies all source bindings and reuses Stage 2F validation and hard
-exclusions. It excludes uncertain Hindi glyph mapping, forms/tables, marginal
-association failures and unsafe boundaries. Existing softer warnings remain
-visible. Automatic eligibility is not visual verification; the 12-page release
-sample does not certify the whole corpus. BNS section 106(2) and the BNSS First
-Schedule entry exception remain separate, complete original notification text.
-
-## Configuration and approval boundary
-
-Local research: CORPUS_KIND=private; PRIVATE_CORPUS_ROOT is an optional explicit
-workspace containing its own exact private bundle. RETRIEVAL_MODE=bm25 guarantees
-no semantic initialization even if a model path is set. RETRIEVAL_MODE=auto or
-hybrid retains the optional local model path/fallback behavior.
-
-Production: KANOON_ENV=production, CORPUS_KIND=public, RETRIEVAL_MODE=bm25.
-Production rejects private mode. It never falls back to private files.
-
-Public mode requires:
-
-- PUBLIC_CORPUS_DIR: directory with exactly the three manifest-controlled files.
-- PUBLIC_CORPUS_MANIFEST_SHA256: independently reviewed exact manifest hash.
-- PUBLIC_CORPUS_APPROVAL_FILE: a separate publication decision, **outside** that directory.
-- PUBLIC_CORPUS_APPROVAL_SHA256: an independently pinned hash of that decision.
-
-No real decision is included or generated. After explicit user approval, an
-authorized operator can record a decision with these fields (this is a schema
-description, not an approval): purpose=`corpus_publication_only; not legal evidence approval`,
-decision=`approved_for_publication`, manifest_sha256, approved_by, timezone-aware
-approved_at, substantive rationale, rights_review=`applicable terms and statutory conditions reviewed`,
-and safety_review=`exact payload reviewed; no private data`. Review includes the
-actual rights conditions, provenance, privacy and intended hosting use, not just
-presence of editorial notes. Pin both hashes through deployment configuration.
-This is an operator trust boundary, not cryptographic identity authentication or
-a legal opinion. The legal-evidence ledger is neither consulted nor modified.
-
-Missing approval, incorrect hashes, corruption, unexpected corpus files, unsafe
-paths/characters or stale source bindings fail closed. GET /api/ready returns 503
-and chat status available=false when the public index is unavailable. GET
-/api/health retains its original response. Tampering after startup invalidates
-search and citations. The offline inspection/measurement mode cannot serve through
-HTTP, even if accidentally injected into an application instance.
-
-## Manual verification (PowerShell)
+## Offline PowerShell review (does not approve)
 
 ```powershell
-$candidate = 'backend/data/public-corpus/candidate-v2'
+$candidate = 'backend/data/public-corpus/candidate-v3'
 $pin = (Get-FileHash "$candidate/manifest.json" -Algorithm SHA256).Hash.ToLower()
+Get-ChildItem $candidate -File | Get-FileHash -Algorithm SHA256
 .\.venv\Scripts\python.exe -B -m backend.public_corpus inspect --directory $candidate --sha256 $pin --query 'BNS section 15'
+.\.venv\Scripts\python.exe -B -m backend.public_corpus review-candidate --directory $candidate --sha256 $pin
 .\.venv\Scripts\python.exe -B -m backend.public_corpus measure --directory $candidate --sha256 $pin
-# Preparation always requires a NEW ignored directory; it never overwrites artifacts:
-# .\.venv\Scripts\python.exe -B -m backend.public_corpus prepare --output backend/data/public-corpus/<NEW-name>
-$run = 'backend/data/test-runs/public-' + [guid]::NewGuid().ToString('N').Substring(0,8)
-New-Item -ItemType Directory -Path (Split-Path $run) -Force | Out-Null
-.\.venv\Scripts\python.exe -B -m pytest backend/tests -q --basetemp $run -p no:cacheprovider
+# Compare the proposed public metadata manifest to the candidate, byte-for-byte:
+(Get-FileHash docs/publication-candidate-manifest.json).Hash -eq (Get-FileHash "$candidate/manifest.json").Hash
+# New source-sharded version only; refuses any existing destination:
+# .\.venv\Scripts\python.exe -B -m backend.public_corpus shard-candidate --directory backend/data/public-corpus/candidate-v2 --sha256 bbbc799f2583145c0ac704c518cfe2f5d0049d490994d7e0cbabf19df47c1fa6 --output backend/data/public-corpus/<NEW-name>
+.\.venv\Scripts\python.exe -B -m backend.review verify
+.\.venv\Scripts\python.exe -B -m backend.review allowlist
+.\.venv\Scripts\python.exe -B -m backend.publication verify
+.\.venv\Scripts\python.exe -B -m pytest backend/tests -q -p no:cacheprovider
 npm.cmd --prefix frontend run lint
 npm.cmd --prefix frontend run typecheck
 npm.cmd --prefix frontend run build
 ```
 
-Offline results explicitly say preview_only=true and publication_approved=false.
-No publication decision is synthesized for real data. Browser production-path
-testing uses backend.tests.public_corpus_e2e_server and frontend/tests/public-runtime.mjs:
-these are labelled SYNTHETIC-only fixtures, disable Groq, and require a synthetic
-server marker before sending requests. Never deploy that test server.
+The review command emits a large JSON report: 555 passage checks and 194 context
+checks. It verifies all 404 source pages but makes no visual-correctness claim.
+Review the 12 sampled pages and the remaining 543 selections using the original
+local PDFs; filenames/hashes are in the source inventory. Open originals locally
+with a trusted PDF viewer; do not upload private artifacts to an online viewer.
 
-Measured on local Windows/Python 3.12.10 with all 555 selections: 0.6593 s startup,
-62.488 MiB peak resident, 56.258 MiB resident after nine queries; median 134.656 ms,
-maximum 163.032 ms for BNS section 15. HTTP dependency imports are included. No
-Torch, FAISS, Sentence Transformers, PDF parser, private review/catalogue module or
-model download occurs in this public path. This is a single-machine offline
-measurement, not Linux, Render Free or a sustained-load guarantee. Corpora are
-bounded to six sources, 404 page contexts, 1,000 selections and 4 MiB per data file.
+## Authorized delivery, only AFTER human permission
 
-## Deployment preparation only
+No real receipt or signing credential has been created. An authorized human must
+resolve rights questions and sign externally using their own existing key. The
+protocol and receipt schema are in the dossier. This is not a signing CLI.
+The following is a future delivery procedure, not authorization to execute it:
 
-render.yaml disables automatic deploys and selects the public BM25 runtime.
-The minimal source ZIP contains 16 runtime/config files plus its inventory;
-it contains neither corpus text nor approval records. backend/requirements-runtime.txt
-pins the tested four direct HTTP/Pydantic dependencies, without PDF/ML/test packages.
-The version file selects Python 3.12; Render resolves its latest patch, which still
-needs a clean Linux/deployment verification. Local tests used 3.12.10, not that
-future hosting environment. Free-tier fit is plausible from local footprint,
-but **not certified**. No hosting resources were created.
+```powershell
+# Provision trusted values through an independent operator channel, not candidate files:
+# $env:PUBLIC_CORPUS_SIGNER_PUBLIC_KEY = '<reviewed raw public key hex>'
+# $receipt = '<externally supplied signed publication decision>'
+# $receiptPin = '<independently retained latest decision SHA256>'
+# .\.venv\Scripts\python.exe -B -m backend.public_corpus deliver --directory $candidate --sha256 $pin --decision $receipt --decision-sha256 $receiptPin --output backend/data/deployment/<NEW-approved-subset>
+```
 
-After publication approval, deliver only the approved three corpus files and the
-separately reviewed decision using an explicitly approved deployment-artifact step.
-The current code package/blueprint will remain unready without them. Do not copy
-backend/data wholesale or fetch private files in a build hook. Render's ephemeral
-filesystem cannot be used as permanent publication storage; reviewed files must
-be supplied reproducibly for each approved build. This delivery/publishing step
-is intentionally not automated before approval.
+Delivery verifies the entire local candidate, authenticates the receipt and copies
+only manifest.json, NOTICE.md and included source shards into a NEW ignored local
+directory. It never overwrites or uploads. Revalidation catches concurrent changes.
+No private PDF, processed record, audit or index is needed in the delivered runtime.
+Keep the signed receipt separate. Hash pins are independent control-plane inputs,
+not values automatically trusted from files. Failed preparation can leave an
+unpublished partial destination: inspect it; do not serve or overwrite it.
 
-Use one uvicorn worker, port $PORT, health path /api/health, and verify research_ready
-on /api/ready separately. KANOON_ACCESS_TOKEN must be a distinct random 32+ character
-secret; KANOON_ALLOWED_ORIGINS must list the actual HTTPS frontend origins. Basic
-limits remain 30 requests/minute/process, two concurrent chats, 16,000-byte bodies,
-10-second body reads and 25-second answer timeout. A shared demo token is not
-per-user identity or a distributed quota system.
+Revocation/rollback requires a new authorized decision and independently updated
+latest receipt pin, a new subset directory and explicit restart. Removing/changing
+the live receipt fails closed without waiting for re-indexing. This mechanism is
+not a global revocation registry and cannot protect against an operator deliberately
+reverting both files and trusted pins. Never restore old pins automatically.
 
-Vercel project root frontend; frontend/vercel.json configures Vite build/dist.
-Set public VITE_API_BASE_URL to the real HTTPS backend origin. Never put bearer
-tokens or Groq secrets in VITE_* variables. The demo token is entered at runtime
-and held in browser memory. Optional GROQ_API_KEY and GROQ_MODEL stay backend-only;
-they are absent locally, so live inference remains unverified. Mocked timeout,
-error and evidence-ID validation tests remain in the full suite.
+## Hosting configuration (not deployed)
 
-Original V1/V2 reports, hashes and approval state remain untouched. The previous
-54-file runtime report describes the historical package, not this minimal runtime.
-No claim of comprehensive coverage, legal correctness or legal currentness is made.
+render.yaml: single Uvicorn worker, $PORT, minimal pinned runtime requirements,
+public BM25, automatic deployment off, secret/trust values sync:false. The explicit
+runtime ZIP includes 17 source/configuration files plus artifact-inventory.json;
+no corpus, receipt, signing key, private source, model or diagnostic is included.
+The separate frontend uses frontend/vercel.json: Vite build, dist output, frontend
+project root. Set VITE_API_BASE_URL to the approved backend HTTPS origin. Secrets
+must never use VITE_*; demo access is entered interactively and held in memory.
 
-Final local verification: 305 backend tests passed (one existing Starlette/HTTPX
-deprecation warning), frontend lint/TypeScript/build passed, three provider guard
-tests passed, 14 synthetic-voice and 12 unsupported-voice private browser checks
-passed, and five synthetic-public production browser checks passed. The isolated
-16-file runtime answered synthetic data without private or ML modules and became
-unready when its synthetic publication decision was removed. The candidate's
-28-case developer regression set retained Recall@5 1.0, MRR 0.9649, nDCG@5 0.9737,
-61/61 byte-valid citations and 9/9 abstentions. This was not an independent legal
-accuracy benchmark. All 129 baseline protected files and 80 archived V1 files
-remain unchanged; both real audit chains and empty allowlists pass. See
-[machine-readable verification](public-corpus-verification.json).
+After separately approved deployment, approved artifact files must be supplied
+reproducibly on every build. Do not copy backend/data wholesale or put private
+acquisition in a build hook. The corpus location and external receipt location
+must match the explicitly configured paths. No public download URL or deployment
+artifact publication was created in this task. The ignored local code ZIP is an
+inspectable source artifact, not an autonomous installer or deployed service.
+
+[Render Free documentation](https://render.com/docs/free) states idle spin-down
+and ephemeral filesystem limitations, and discourages production use. Free is a
+preview target, not a verified production SLA or capacity claim. Cold-start time
+on the provider includes platform spin-up beyond our Python timing. The local
+Windows measurements in [results](publication-release-results.json) do not prove
+Linux/Render capacity; verify a clean target build, memory, readiness and limits
+before any release. [Render Blueprint reference](https://render.com/docs/blueprint-spec)
+and [Vercel Vite guidance](https://vercel.com/docs/frameworks/frontend/vite) were
+checked; no hosting API, account or deployment mutation was used.
+
+Production controls: 30 research requests/minute/process, two concurrent requests,
+16,000-byte body, bounded history/question, 25-second request deadline, Groq timeout
+from backend settings, server-only source-ID selection and exact server citations.
+The shared demo token is an access barrier, not per-user identity or distributed
+rate limiting. Scaling workers needs a separately designed shared limit policy.
+
+GROQ_API_KEY and GROQ_MODEL are optional backend-only environment variables.
+Both are absent in process/user/machine configuration in this review. Extraction
+works without them; live Groq and real browser audio remain unverified. Do not
+fabricate a live answer or treat mock provider/voice tests as hardware checks.
+
+## Browser verification
+
+backend.tests.public_corpus_e2e_server is SYNTHETIC-only, generates ephemeral
+software-test keys, disables Groq and advertises a synthetic marker. Never deploy
+it or its receipt. frontend/tests/public-runtime.mjs verifies authorized public
+citations, provenance, access protection and mobile rendering against it.
+backend.tests.chat_e2e_server uses a marked mock provider and real local archival
+retrieval for broader browser checks. Neither test writes real review events.
+See measured results for exact check counts and limitations.

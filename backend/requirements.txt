@@ -4,3 +4,4 @@ httpx
 pytest
 pydantic>=2.9,<3
 pymupdf>=1.26,<2
+cryptography==50.0.2

@@ -44,6 +44,12 @@ class Source(Record):
     provenance: Literal['official_gazette_identity_checked_at_preparation']
     legal_currentness: Literal['unknown'] = 'unknown'
 
+    @model_validator(mode='after')
+    def identity(self):
+        if self.document_id != 'doc_' + self.raw_sha256:
+            raise ValueError('Source identity must bind original PDF bytes')
+        return self
+
 
 class Page(Record):
     document_id: DocumentID
@@ -124,10 +130,18 @@ class File(Record):
     bytes: int = Field(ge=1, le=4*1024*1024, strict=True)
 
 
+class SourceArtifact(Record):
+    document_id: DocumentID
+    raw_sha256: Hash
+    filename: str = Field(pattern=r'^(?:corpus|source_[0-9a-f]{64})\.json$')
+    passage_count: int = Field(ge=1, le=1000, strict=True)
+
+
 class Manifest(Record):
-    schema_version: Literal[1]
+    schema_version: Literal[1, 2]
     status: Literal['candidate; publication requires a separate operator decision']
-    files: dict[Literal['corpus.json', 'NOTICE.md'], File]
+    files: dict[str, File] = Field(min_length=2, max_length=7)
+    sources: list[SourceArtifact] = Field(default_factory=list, max_length=6)
     source_count: int = Field(ge=1, le=6, strict=True)
     passage_count: int = Field(ge=1, le=1000, strict=True)
     policy: Literal['single-page-archival-public-v1']
@@ -136,16 +150,44 @@ class Manifest(Record):
     exclusions: list[str] = Field(min_length=1, max_length=30)
     legal_currentness: Literal['unknown']
 
+    @model_validator(mode='after')
+    def inventory(self):
+        if self.schema_version == 1:
+            if self.sources or set(self.files) != {'corpus.json', 'NOTICE.md'}:
+                raise ValueError('Invalid legacy inventory')
+        else:
+            ids = {s.document_id for s in self.sources}
+            names = {s.filename for s in self.sources}
+            if (len(ids) != self.source_count or len(names) != self.source_count or
+                    len(self.sources) != self.source_count or
+                    set(self.files) != {'NOTICE.md', *names} or
+                    sum(s.passage_count for s in self.sources) != self.passage_count or
+                    any(s.document_id != 'doc_' + s.raw_sha256 for s in self.sources)):
+                raise ValueError('Invalid source-level inventory')
+        return self
+
+
+class SourceDecision(Record):
+    document_id: DocumentID
+    raw_sha256: Hash
+    artifact_sha256: Hash
+    decision: Literal['include', 'exclude', 'revoke']
+    rationale: str = Field(min_length=20, max_length=2000)
+
 
 class PublicationDecision(Record):
+    schema_version: Literal[2]
     purpose: Literal['corpus_publication_only; not legal evidence approval']
-    decision: Literal['approved_for_publication']
+    decision: Literal['approved_for_publication', 'revoked']
     manifest_sha256: Hash
     approved_by: str = Field(min_length=1, max_length=150)
     approved_at: datetime
     rationale: str = Field(min_length=20, max_length=2000)
     rights_review: Literal['applicable terms and statutory conditions reviewed']
     safety_review: Literal['exact payload reviewed; no private data']
+    sources: list[SourceDecision] = Field(min_length=1, max_length=6)
+    signer_key_id: Hash
+    signature: str = Field(pattern=r'^[0-9a-f]{128}$')
 
     @model_validator(mode='after')
     def aware_time(self):

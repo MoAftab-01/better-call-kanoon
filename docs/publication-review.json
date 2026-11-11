@@ -1,0 +1,500 @@
+{
+  "candidate_v2": {
+    "archive_bytes": 378552,
+    "archive_sha256": "5ca56186069798608b85413d85aa288bd32d59a1d3e7c2ab591f5d4fcdb58ed0",
+    "manifest_sha256": "bbbc799f2583145c0ac704c518cfe2f5d0049d490994d7e0cbabf19df47c1fa6",
+    "preserved": true
+  },
+  "candidate_v3": {
+    "archive_bytes": 377414,
+    "archive_sha256": "a6ae506e1d388da35f0a66400399728f3903016c5fdc8498a00c2c698b8556ba",
+    "files": {
+      "NOTICE.md": {
+        "bytes": 2721,
+        "sha256": "487f5ba69824e436bba3ab60fef2ace82e06a58bc3c22bda71f6bb43b76901f8"
+      },
+      "manifest.json": {
+        "bytes": 3484,
+        "sha256": "b3adbfb0230fa86aac586604be73b91ebcb7a3f9d91ec65082aa6a1f6c1ba740"
+      },
+      "source_0db8a86a0cf41fbf5ee304ee84b8b145da0bd523af510baf351d79d051ef657d.json": {
+        "bytes": 3744,
+        "sha256": "187fb13bf4194bb8373db22519410ecca6853152b2f3b27eb7516f46a66fe60f"
+      },
+      "source_31ee68ea57b5303bf6697b5d8cb2004b9eb9180d7e9cbcbbdbf5bccab7cda5c1.json": {
+        "bytes": 223322,
+        "sha256": "d3bf344356e326e23148a09ed1e39df6b7992f40b9f32bb2bb738c37a4be75e5"
+      },
+      "source_5e60e2afe30d0fe7eca4f8126301146b76c86a444e690581f81eb564843517fe.json": {
+        "bytes": 757476,
+        "sha256": "0ae5699c128556d0b30ba14807f222679519bb242aa594e8cfb07de1867adbed"
+      },
+      "source_67c92f7869420685e6cdc29b1bdde19fff91312b10241b3ed3e1163c5399600b.json": {
+        "bytes": 536836,
+        "sha256": "b10ccaac4ecf072bdc8382299e18d730bb666056266666ec433befcd9e0fe066"
+      },
+      "source_dfcd5df23fb711f2996959b13ee6ff6bd32ed38be1e1f2d1c820cbba86e2a8c9.json": {
+        "bytes": 3587,
+        "sha256": "b4cf7b6454b66c2f9011504ec779827bfec179efa2f326773dee41408e52eafd"
+      },
+      "source_fde9e9722eb4c01375525c2a30442903371913f4199b8cef1d031535d88228e7.json": {
+        "bytes": 3490,
+        "sha256": "10f8b0d08db40b7ce097e4d1eaef2a2aea27965e6526abaa791d5906aed48240"
+      }
+    },
+    "manifest_sha256": "b3adbfb0230fa86aac586604be73b91ebcb7a3f9d91ec65082aa6a1f6c1ba740",
+    "passages": 555,
+    "publication_approved": false,
+    "published": false,
+    "quarantined": 0,
+    "source_count": 6,
+    "unpacked_bytes": 1534660
+  },
+  "official_evidence": [
+    {
+      "bytes": 1730543,
+      "sha256": "ac3ec4fd5e04cb4cb87cc10e2568f027c1dd9ede572dccf617a34fb1f6feb8c9",
+      "status": 200,
+      "url": "https://copyright.gov.in/Documents/Notification/Copyright_Act_1957.pdf"
+    },
+    {
+      "bytes": 55277,
+      "sha256": "94c8cdc5633c50cfb1e56e4b8e5b7ead3aed18a4d23d5e293063e654f4522cbd",
+      "status": 200,
+      "url": "https://copyright.gov.in/Copyright_Act_1957/chapter_xi.html"
+    },
+    {
+      "bytes": 8154,
+      "sha256": "8621ee690f41c6546c5ce79091d49f49838e991986e21e646f9bfd8f3bed938a",
+      "status": 200,
+      "url": "https://egazette.gov.in/Aboutus.aspx"
+    },
+    {
+      "bytes": 66436,
+      "sha256": "b38c29108bcde84ac423803f8968200c926bde1599de242981ff7da4b5dc276b",
+      "status": 200,
+      "url": "https://egazette.gov.in/"
+    },
+    {
+      "failure": "ReadTimeout",
+      "url": "https://www.indiacode.nic.in/copyright.html"
+    },
+    {
+      "bytes": 92885,
+      "sha256": "a3b044fc32fb58011c5d59bd0a76236f8ca1dac40135fa89cd2018db0461f935",
+      "status": 200,
+      "url": "https://copyright.gov.in/documents/handbook.html"
+    },
+    {
+      "error": "ReadTimeout",
+      "url": "https://www.indiacode.nic.in/bitstream/123456789/1367/1/a195714.pdf"
+    },
+    {
+      "bytes": 3490,
+      "sha256": "f69ec9c7d598b2859ac983ef6adb3a865e7037b097cbc06d8f32582679309483",
+      "status": 500,
+      "url": "https://egazette.gov.in/WebsitePolicy.aspx"
+    }
+  ],
+  "outstanding_questions": [
+    "Are current statutory provisions and applicable website-use obligations sufficient for this exact web/cache/download/commercial use?",
+    "Does each Act accompanying note and citation delivery satisfy the original-matter condition?",
+    "Must permission be sought from the Controller or rights holder for the intended publication method?",
+    "Can the remaining 543 selections and full contexts be accepted after visual review?",
+    "Have later amendments, corrigenda and commencement changes been checked? This release does not establish them."
+  ],
+  "preservation": {
+    "physical_pages": 404,
+    "private_selections": 555,
+    "processed_records": 6,
+    "protected_baseline_paths": 129,
+    "raw_pdfs": 6,
+    "real_allowlist_entries": 0,
+    "real_approvals": 0,
+    "real_publication_approvals": 0,
+    "real_review_events": 0,
+    "real_submissions": 0,
+    "v1_archive_files": 80,
+    "v1_v2_chains": "PASS"
+  },
+  "publication_approved": false,
+  "published": false,
+  "quality": {
+    "automatic_quarantine_count": 0,
+    "contexts": 194,
+    "hard_excluded_original_pages": 152,
+    "mechanically_bound_selections": 555,
+    "page_warning_counts": {
+      "possible_page_boundary_continuation": 129,
+      "repeated_line_candidate": 191,
+      "sorted_extraction_differs": 194,
+      "unbalanced_delimiters_candidate": 191,
+      "unusual_whitespace_candidate": 4,
+      "within_page_repetition_candidate": 34
+    },
+    "per_selection_audit": "Private ignored audit records every passage/page binding and findings; no source text included in this public report.",
+    "physical_pages": 404,
+    "release_usable_without_approval": 0,
+    "visual_sample": {
+      "human_approvals": 0,
+      "method": "First, middle (floor n/2), last selection in page/line order for each Act; all three notification paragraphs.",
+      "observations": [
+        {
+          "human_approval": false,
+          "instrument": "S.O. 848(E)",
+          "lines": [
+            8,
+            11
+          ],
+          "observation": "Agent compared selected text with original PDF rendering; no observed wording omission in this sample. Typographic styles and spatial layout are not retained.",
+          "passage_id": "public_2f65a875ead0f9c269a8a21e11fb3d33812d38c98ac0d8175a45bbaedcb3eba5",
+          "physical_page": 2
+        },
+        {
+          "human_approval": false,
+          "instrument": "Act 47/2023",
+          "lines": [
+            7,
+            36
+          ],
+          "observation": "Agent compared selected text with original PDF rendering; no observed wording omission in this sample. Typographic styles and spatial layout are not retained.",
+          "passage_id": "public_a9a0da0f7bafb73b03ba2d00c9c85b57c8c992827e2a58e67124da85977e49a9",
+          "physical_page": 6
+        },
+        {
+          "human_approval": false,
+          "instrument": "Act 47/2023",
+          "lines": [
+            18,
+            20
+          ],
+          "observation": "Agent compared selected text with original PDF rendering; no observed wording omission in this sample. Typographic styles and spatial layout are not retained.",
+          "passage_id": "public_603b100ecfda4798b74fb91b9d2b725a79ee0bfa691674533d172c1e7fb6198b",
+          "physical_page": 33
+        },
+        {
+          "human_approval": false,
+          "instrument": "Act 47/2023",
+          "lines": [
+            24,
+            31
+          ],
+          "observation": "Agent compared selected text with original PDF rendering; no observed wording omission in this sample. Typographic styles and spatial layout are not retained.",
+          "passage_id": "public_085ece720c99be38095698f7a9b6c1d7cf9bd4634862ad503521600c07b8c7c2",
+          "physical_page": 44
+        },
+        {
+          "human_approval": false,
+          "instrument": "Act 46/2023",
+          "lines": [
+            12,
+            18
+          ],
+          "observation": "Agent compared selected text with original PDF rendering; no observed wording omission in this sample. Typographic styles and spatial layout are not retained.",
+          "passage_id": "public_a34d90ced96f87cf1c99e0804575e4da91d8aea861e2eef8030d44ac79e21c32",
+          "physical_page": 4
+        },
+        {
+          "human_approval": false,
+          "instrument": "Act 46/2023",
+          "lines": [
+            7,
+            10
+          ],
+          "observation": "Agent compared selected text with original PDF rendering; no observed wording omission in this sample. Typographic styles and spatial layout are not retained.",
+          "passage_id": "public_433596549986d8a387515deb32ceaf6095d78a597922f54511ca946f0636e488",
+          "physical_page": 83
+        },
+        {
+          "human_approval": false,
+          "instrument": "Act 46/2023",
+          "lines": [
+            20,
+            43
+          ],
+          "observation": "Agent compared selected text with original PDF rendering; no observed wording omission in this sample. Typographic styles and spatial layout are not retained.",
+          "passage_id": "public_f84d9cb6234ffee8b624a986c148c02d04e9c67b394276a3fb19c99e1f87a50a",
+          "physical_page": 154
+        },
+        {
+          "human_approval": false,
+          "instrument": "Act 45/2023",
+          "lines": [
+            6,
+            15
+          ],
+          "observation": "Agent compared selected text with original PDF rendering; no observed wording omission in this sample. Typographic styles and spatial layout are not retained.",
+          "passage_id": "public_113680a06dee84d219e2e9e6658fe4792179560b611d4f763dc5f1e4717fec23",
+          "physical_page": 8
+        },
+        {
+          "human_approval": false,
+          "instrument": "Act 45/2023",
+          "lines": [
+            31,
+            37
+          ],
+          "observation": "Agent compared selected text with original PDF rendering; no observed wording omission in this sample. Typographic styles and spatial layout are not retained.",
+          "passage_id": "public_450189311f13877a46addc31aded305a1320f0ab8de2153e3ba8d13e171e632c",
+          "physical_page": 53
+        },
+        {
+          "human_approval": false,
+          "instrument": "Act 45/2023",
+          "lines": [
+            6,
+            20
+          ],
+          "observation": "Agent compared selected text with original PDF rendering; no observed wording omission in this sample. Typographic styles and spatial layout are not retained.",
+          "passage_id": "public_f86adbe52c2f4516a421106f8f05539a03b40e4b6ef0187d97590395a5a8c230",
+          "physical_page": 99
+        },
+        {
+          "human_approval": false,
+          "instrument": "S.O. 850(E)",
+          "lines": [
+            8,
+            11
+          ],
+          "observation": "Agent compared selected text with original PDF rendering; no observed wording omission in this sample. Typographic styles and spatial layout are not retained.",
+          "passage_id": "public_04db84de2059356e1728747ec926f85b621ba33c75cb3b917d2c47f724f06ee8",
+          "physical_page": 2
+        },
+        {
+          "human_approval": false,
+          "instrument": "S.O. 849(E)",
+          "lines": [
+            8,
+            10
+          ],
+          "observation": "Agent compared selected text with original PDF rendering; no observed wording omission in this sample. Typographic styles and spatial layout are not retained.",
+          "passage_id": "public_723f5eeef5bb572ed00eb585074688c3f679d1d1b52a552e42fc88750126896c",
+          "physical_page": 2
+        }
+      ],
+      "pages": 12,
+      "remaining_not_visually_certified": 543,
+      "selections": 12
+    }
+  },
+  "review_date": "2026-11-12",
+  "rights_matrix": [
+    {
+      "access_date": "2026-11-12",
+      "attribution_and_notices": "Keep title, authority, official URL, original hash, edition, limitations, NOTICE and source-specific original commentary with citations.",
+      "caching": "Not cleared separately; transient-storage exceptions were not assumed to license a persistent corpus.",
+      "commentary_condition": "Adequacy of accompanying original matter and its delivery requires legal review.",
+      "commercial_public_web_use": "Not cleared. Do not infer a commercial/noncommercial licence from free access or commentary.",
+      "contexts": 66,
+      "document_id": "doc_67c92f7869420685e6cdc29b1bdde19fff91312b10241b3ed3e1163c5399600b",
+      "downloadable_distribution": "Not approved; source-text ZIP remains ignored and local.",
+      "evidence_urls": [
+        "https://copyright.gov.in/Copyright_Act_1957/chapter_xi.html",
+        "https://copyright.gov.in/Documents/Notification/Copyright_Act_1957.pdf",
+        "https://copyright.gov.in/documents/handbook.html",
+        "https://egazette.gov.in/Aboutus.aspx",
+        "https://egazette.gov.in/WriteReadData/2023/250883.pdf"
+      ],
+      "excerpts": "Conditional statutory reproduction/publication basis for review; exact proposed English excerpts remain unpublished.",
+      "full_text": "Not proposed. Full PDF, images, Hindi and nonselected pages excluded; rights not cleared.",
+      "hosting": "Conditional proposed use, not independently cleared against all website/contract conditions.",
+      "instrument": "Act 45/2023",
+      "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+      "legal_currentness": "unknown",
+      "metadata": "Source attribution and factual provenance proposed; not a licence for text or official endorsement.",
+      "official_source_url": "https://egazette.gov.in/WriteReadData/2023/250883.pdf",
+      "official_title": "The Bharatiya Nyaya Sanhita, 2023",
+      "physical_pages": 102,
+      "publication_approved": false,
+      "publication_date": "2023-12-25",
+      "raw_sha256": "67c92f7869420685e6cdc29b1bdde19fff91312b10241b3ed3e1163c5399600b",
+      "recommended_status": "REQUIRES_LEGAL_REVIEW",
+      "selections": 204,
+      "status_meaning": "Review recommendation only; no grant of publication permission or legal-evidence approval.",
+      "statutory_basis": "Copyright Act 1957 section 52(1)(q)(ii)",
+      "uncertainty": "Current statutory completeness, applicable portal conditions, intended use and any independent rights require reviewer confirmation. Accompanying commentary is not a conclusive clearance.",
+      "website_conditions": "eGazette describes free access and Controller copyright; no blanket reuse licence was established. India Code migration is not permission for eGazette bytes."
+    },
+    {
+      "access_date": "2026-11-12",
+      "attribution_and_notices": "Keep title, authority, official URL, original hash, edition, limitations, NOTICE and source-specific original commentary with citations.",
+      "caching": "Not cleared separately; transient-storage exceptions were not assumed to license a persistent corpus.",
+      "commentary_condition": "Adequacy of accompanying original matter and its delivery requires legal review.",
+      "commercial_public_web_use": "Not cleared. Do not infer a commercial/noncommercial licence from free access or commentary.",
+      "contexts": 96,
+      "document_id": "doc_5e60e2afe30d0fe7eca4f8126301146b76c86a444e690581f81eb564843517fe",
+      "downloadable_distribution": "Not approved; source-text ZIP remains ignored and local.",
+      "evidence_urls": [
+        "https://copyright.gov.in/Copyright_Act_1957/chapter_xi.html",
+        "https://copyright.gov.in/Documents/Notification/Copyright_Act_1957.pdf",
+        "https://copyright.gov.in/documents/handbook.html",
+        "https://egazette.gov.in/Aboutus.aspx",
+        "https://egazette.gov.in/WriteReadData/2023/250884.pdf"
+      ],
+      "excerpts": "Conditional statutory reproduction/publication basis for review; exact proposed English excerpts remain unpublished.",
+      "full_text": "Not proposed. Full PDF, images, Hindi and nonselected pages excluded; rights not cleared.",
+      "hosting": "Conditional proposed use, not independently cleared against all website/contract conditions.",
+      "instrument": "Act 46/2023",
+      "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+      "legal_currentness": "unknown",
+      "metadata": "Source attribution and factual provenance proposed; not a licence for text or official endorsement.",
+      "official_source_url": "https://egazette.gov.in/WriteReadData/2023/250884.pdf",
+      "official_title": "The Bharatiya Nagarik Suraksha Sanhita, 2023",
+      "physical_pages": 249,
+      "publication_approved": false,
+      "publication_date": "2023-12-25",
+      "raw_sha256": "5e60e2afe30d0fe7eca4f8126301146b76c86a444e690581f81eb564843517fe",
+      "recommended_status": "REQUIRES_LEGAL_REVIEW",
+      "selections": 259,
+      "status_meaning": "Review recommendation only; no grant of publication permission or legal-evidence approval.",
+      "statutory_basis": "Copyright Act 1957 section 52(1)(q)(ii)",
+      "uncertainty": "Current statutory completeness, applicable portal conditions, intended use and any independent rights require reviewer confirmation. Accompanying commentary is not a conclusive clearance.",
+      "website_conditions": "eGazette describes free access and Controller copyright; no blanket reuse licence was established. India Code migration is not permission for eGazette bytes."
+    },
+    {
+      "access_date": "2026-11-12",
+      "attribution_and_notices": "Keep title, authority, official URL, original hash, edition, limitations, NOTICE and source-specific original commentary with citations.",
+      "caching": "Not cleared separately; transient-storage exceptions were not assumed to license a persistent corpus.",
+      "commentary_condition": "Adequacy of accompanying original matter and its delivery requires legal review.",
+      "commercial_public_web_use": "Not cleared. Do not infer a commercial/noncommercial licence from free access or commentary.",
+      "contexts": 29,
+      "document_id": "doc_31ee68ea57b5303bf6697b5d8cb2004b9eb9180d7e9cbcbbdbf5bccab7cda5c1",
+      "downloadable_distribution": "Not approved; source-text ZIP remains ignored and local.",
+      "evidence_urls": [
+        "https://copyright.gov.in/Copyright_Act_1957/chapter_xi.html",
+        "https://copyright.gov.in/Documents/Notification/Copyright_Act_1957.pdf",
+        "https://copyright.gov.in/documents/handbook.html",
+        "https://egazette.gov.in/Aboutus.aspx",
+        "https://egazette.gov.in/WriteReadData/2023/250882.pdf"
+      ],
+      "excerpts": "Conditional statutory reproduction/publication basis for review; exact proposed English excerpts remain unpublished.",
+      "full_text": "Not proposed. Full PDF, images, Hindi and nonselected pages excluded; rights not cleared.",
+      "hosting": "Conditional proposed use, not independently cleared against all website/contract conditions.",
+      "instrument": "Act 47/2023",
+      "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+      "legal_currentness": "unknown",
+      "metadata": "Source attribution and factual provenance proposed; not a licence for text or official endorsement.",
+      "official_source_url": "https://egazette.gov.in/WriteReadData/2023/250882.pdf",
+      "official_title": "The Bharatiya Sakshya Adhiniyam, 2023",
+      "physical_pages": 47,
+      "publication_approved": false,
+      "publication_date": "2023-12-25",
+      "raw_sha256": "31ee68ea57b5303bf6697b5d8cb2004b9eb9180d7e9cbcbbdbf5bccab7cda5c1",
+      "recommended_status": "REQUIRES_LEGAL_REVIEW",
+      "selections": 89,
+      "status_meaning": "Review recommendation only; no grant of publication permission or legal-evidence approval.",
+      "statutory_basis": "Copyright Act 1957 section 52(1)(q)(ii)",
+      "uncertainty": "Current statutory completeness, applicable portal conditions, intended use and any independent rights require reviewer confirmation. Accompanying commentary is not a conclusive clearance.",
+      "website_conditions": "eGazette describes free access and Controller copyright; no blanket reuse licence was established. India Code migration is not permission for eGazette bytes."
+    },
+    {
+      "access_date": "2026-11-12",
+      "attribution_and_notices": "Keep title, authority, official URL, original hash, edition, limitations, NOTICE and source-specific original commentary with citations.",
+      "caching": "Not cleared separately; transient-storage exceptions were not assumed to license a persistent corpus.",
+      "commentary_condition": "Act-specific commentary condition is not automatically imported into the non-Act clause; attribution and limitations remain mandatory project policy.",
+      "commercial_public_web_use": "Not cleared. Do not infer a commercial/noncommercial licence from free access or commentary.",
+      "contexts": 1,
+      "document_id": "doc_0db8a86a0cf41fbf5ee304ee84b8b145da0bd523af510baf351d79d051ef657d",
+      "downloadable_distribution": "Not approved; source-text ZIP remains ignored and local.",
+      "evidence_urls": [
+        "https://copyright.gov.in/Copyright_Act_1957/chapter_xi.html",
+        "https://copyright.gov.in/Documents/Notification/Copyright_Act_1957.pdf",
+        "https://copyright.gov.in/documents/handbook.html",
+        "https://egazette.gov.in/Aboutus.aspx",
+        "https://egazette.gov.in/WriteReadData/2024/252354.pdf"
+      ],
+      "excerpts": "Conditional statutory reproduction/publication basis for review; exact proposed English excerpts remain unpublished.",
+      "full_text": "Not proposed. Full PDF, images, Hindi and nonselected pages excluded; rights not cleared.",
+      "hosting": "Conditional proposed use, not independently cleared against all website/contract conditions.",
+      "instrument": "S.O. 848(E)",
+      "issuing_authority": "Government of India, Ministry of Home Affairs",
+      "legal_currentness": "unknown",
+      "metadata": "Source attribution and factual provenance proposed; not a licence for text or official endorsement.",
+      "official_source_url": "https://egazette.gov.in/WriteReadData/2024/252354.pdf",
+      "official_title": "NOTIFICATION",
+      "physical_pages": 2,
+      "publication_approved": false,
+      "publication_date": "2024-02-24",
+      "raw_sha256": "0db8a86a0cf41fbf5ee304ee84b8b145da0bd523af510baf351d79d051ef657d",
+      "recommended_status": "ELIGIBLE_FOR_HUMAN_APPROVAL",
+      "selections": 1,
+      "status_meaning": "Review recommendation only; no grant of publication permission or legal-evidence approval.",
+      "statutory_basis": "Copyright Act 1957 section 52(1)(q)(i)",
+      "uncertainty": "Current statutory completeness, applicable portal conditions, intended use and any independent rights require reviewer confirmation. Gazette non-Act identity supports the statutory route, but does not approve this payload.",
+      "website_conditions": "eGazette describes free access and Controller copyright; no blanket reuse licence was established. India Code migration is not permission for eGazette bytes."
+    },
+    {
+      "access_date": "2026-11-12",
+      "attribution_and_notices": "Keep title, authority, official URL, original hash, edition, limitations, NOTICE and source-specific original commentary with citations.",
+      "caching": "Not cleared separately; transient-storage exceptions were not assumed to license a persistent corpus.",
+      "commentary_condition": "Act-specific commentary condition is not automatically imported into the non-Act clause; attribution and limitations remain mandatory project policy.",
+      "commercial_public_web_use": "Not cleared. Do not infer a commercial/noncommercial licence from free access or commentary.",
+      "contexts": 1,
+      "document_id": "doc_fde9e9722eb4c01375525c2a30442903371913f4199b8cef1d031535d88228e7",
+      "downloadable_distribution": "Not approved; source-text ZIP remains ignored and local.",
+      "evidence_urls": [
+        "https://copyright.gov.in/Copyright_Act_1957/chapter_xi.html",
+        "https://copyright.gov.in/Documents/Notification/Copyright_Act_1957.pdf",
+        "https://copyright.gov.in/documents/handbook.html",
+        "https://egazette.gov.in/Aboutus.aspx",
+        "https://egazette.gov.in/WriteReadData/2024/252352.pdf"
+      ],
+      "excerpts": "Conditional statutory reproduction/publication basis for review; exact proposed English excerpts remain unpublished.",
+      "full_text": "Not proposed. Full PDF, images, Hindi and nonselected pages excluded; rights not cleared.",
+      "hosting": "Conditional proposed use, not independently cleared against all website/contract conditions.",
+      "instrument": "S.O. 849(E)",
+      "issuing_authority": "Government of India, Ministry of Home Affairs",
+      "legal_currentness": "unknown",
+      "metadata": "Source attribution and factual provenance proposed; not a licence for text or official endorsement.",
+      "official_source_url": "https://egazette.gov.in/WriteReadData/2024/252352.pdf",
+      "official_title": "NOTIFICATION",
+      "physical_pages": 2,
+      "publication_approved": false,
+      "publication_date": "2024-02-24",
+      "raw_sha256": "fde9e9722eb4c01375525c2a30442903371913f4199b8cef1d031535d88228e7",
+      "recommended_status": "ELIGIBLE_FOR_HUMAN_APPROVAL",
+      "selections": 1,
+      "status_meaning": "Review recommendation only; no grant of publication permission or legal-evidence approval.",
+      "statutory_basis": "Copyright Act 1957 section 52(1)(q)(i)",
+      "uncertainty": "Current statutory completeness, applicable portal conditions, intended use and any independent rights require reviewer confirmation. Gazette non-Act identity supports the statutory route, but does not approve this payload.",
+      "website_conditions": "eGazette describes free access and Controller copyright; no blanket reuse licence was established. India Code migration is not permission for eGazette bytes."
+    },
+    {
+      "access_date": "2026-11-12",
+      "attribution_and_notices": "Keep title, authority, official URL, original hash, edition, limitations, NOTICE and source-specific original commentary with citations.",
+      "caching": "Not cleared separately; transient-storage exceptions were not assumed to license a persistent corpus.",
+      "commentary_condition": "Act-specific commentary condition is not automatically imported into the non-Act clause; attribution and limitations remain mandatory project policy.",
+      "commercial_public_web_use": "Not cleared. Do not infer a commercial/noncommercial licence from free access or commentary.",
+      "contexts": 1,
+      "document_id": "doc_dfcd5df23fb711f2996959b13ee6ff6bd32ed38be1e1f2d1c820cbba86e2a8c9",
+      "downloadable_distribution": "Not approved; source-text ZIP remains ignored and local.",
+      "evidence_urls": [
+        "https://copyright.gov.in/Copyright_Act_1957/chapter_xi.html",
+        "https://copyright.gov.in/Documents/Notification/Copyright_Act_1957.pdf",
+        "https://copyright.gov.in/documents/handbook.html",
+        "https://egazette.gov.in/Aboutus.aspx",
+        "https://egazette.gov.in/WriteReadData/2024/252353.pdf"
+      ],
+      "excerpts": "Conditional statutory reproduction/publication basis for review; exact proposed English excerpts remain unpublished.",
+      "full_text": "Not proposed. Full PDF, images, Hindi and nonselected pages excluded; rights not cleared.",
+      "hosting": "Conditional proposed use, not independently cleared against all website/contract conditions.",
+      "instrument": "S.O. 850(E)",
+      "issuing_authority": "Government of India, Ministry of Home Affairs",
+      "legal_currentness": "unknown",
+      "metadata": "Source attribution and factual provenance proposed; not a licence for text or official endorsement.",
+      "official_source_url": "https://egazette.gov.in/WriteReadData/2024/252353.pdf",
+      "official_title": "NOTIFICATION",
+      "physical_pages": 2,
+      "publication_approved": false,
+      "publication_date": "2024-02-24",
+      "raw_sha256": "dfcd5df23fb711f2996959b13ee6ff6bd32ed38be1e1f2d1c820cbba86e2a8c9",
+      "recommended_status": "ELIGIBLE_FOR_HUMAN_APPROVAL",
+      "selections": 1,
+      "status_meaning": "Review recommendation only; no grant of publication permission or legal-evidence approval.",
+      "statutory_basis": "Copyright Act 1957 section 52(1)(q)(i)",
+      "uncertainty": "Current statutory completeness, applicable portal conditions, intended use and any independent rights require reviewer confirmation. Gazette non-Act identity supports the statutory route, but does not approve this payload.",
+      "website_conditions": "eGazette describes free access and Controller copyright; no blanket reuse licence was established. India Code migration is not permission for eGazette bytes."
+    }
+  ],
+  "schema_version": 1
+}

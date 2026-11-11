@@ -50,8 +50,9 @@ class ChatService:
         return citations
 
     async def answer(self, request):
-        if getattr(self.index,'public_runtime',False) and getattr(self.index,'preview',False):
-            raise ProviderError('corpus_not_approved',503)
+        if getattr(self.index,'public_runtime',False):
+            if getattr(self.index,'preview',False) or not await run_in_threadpool(self.index.valid):
+                raise ProviderError('corpus_not_approved',503)
         identifier = request.conversation_id or uuid4()
         hits = await run_in_threadpool(self.index.search, request.message,
             limit=request.top_k, source_ids=request.source_ids)

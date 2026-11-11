@@ -27,3 +27,5 @@ services:
         value: ./publication-approval.json
       - key: PUBLIC_CORPUS_APPROVAL_SHA256
         sync: false
+      - key: PUBLIC_CORPUS_SIGNER_PUBLIC_KEY
+        sync: false

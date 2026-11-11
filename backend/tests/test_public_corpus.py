@@ -10,7 +10,11 @@ from backend.tests.public_corpus_fixtures import fixture,repin
 
 
 @pytest.fixture
-def corpus(tmp_path):return fixture(tmp_path/'SYNTHETIC-CORPUS-NOT-LAW')
+def corpus(tmp_path,monkeypatch):
+    from backend.tests.public_corpus_fixtures import test_key
+    result=fixture(tmp_path/'SYNTHETIC-CORPUS-NOT-LAW')
+    monkeypatch.setenv('PUBLIC_CORPUS_SIGNER_PUBLIC_KEY',test_key(result[0]).public_key().public_bytes_raw().hex())
+    return result
 
 
 def test_exact_manifest_and_provenance(corpus):

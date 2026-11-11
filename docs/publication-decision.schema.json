@@ -1,0 +1,136 @@
+{
+  "$defs": {
+    "SourceDecision": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Artifact Sha256",
+          "type": "string"
+        },
+        "decision": {
+          "enum": [
+            "include",
+            "exclude",
+            "revoke"
+          ],
+          "title": "Decision",
+          "type": "string"
+        },
+        "document_id": {
+          "pattern": "^doc_[0-9a-f]{64}$",
+          "title": "Document Id",
+          "type": "string"
+        },
+        "rationale": {
+          "maxLength": 2000,
+          "minLength": 20,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "raw_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Raw Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "document_id",
+        "raw_sha256",
+        "artifact_sha256",
+        "decision",
+        "rationale"
+      ],
+      "title": "SourceDecision",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "approved_at": {
+      "format": "date-time",
+      "title": "Approved At",
+      "type": "string"
+    },
+    "approved_by": {
+      "maxLength": 150,
+      "minLength": 1,
+      "title": "Approved By",
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "approved_for_publication",
+        "revoked"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "manifest_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Manifest Sha256",
+      "type": "string"
+    },
+    "purpose": {
+      "const": "corpus_publication_only; not legal evidence approval",
+      "title": "Purpose",
+      "type": "string"
+    },
+    "rationale": {
+      "maxLength": 2000,
+      "minLength": 20,
+      "title": "Rationale",
+      "type": "string"
+    },
+    "rights_review": {
+      "const": "applicable terms and statutory conditions reviewed",
+      "title": "Rights Review",
+      "type": "string"
+    },
+    "safety_review": {
+      "const": "exact payload reviewed; no private data",
+      "title": "Safety Review",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 2,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "signature": {
+      "pattern": "^[0-9a-f]{128}$",
+      "title": "Signature",
+      "type": "string"
+    },
+    "signer_key_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Signer Key Id",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/SourceDecision"
+      },
+      "maxItems": 6,
+      "minItems": 1,
+      "title": "Sources",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "purpose",
+    "decision",
+    "manifest_sha256",
+    "approved_by",
+    "approved_at",
+    "rationale",
+    "rights_review",
+    "safety_review",
+    "sources",
+    "signer_key_id",
+    "signature"
+  ],
+  "title": "PublicationDecision",
+  "type": "object"
+}

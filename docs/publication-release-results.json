@@ -1,0 +1,166 @@
+{
+  "baseline_head": "378ad07e3cfa991ed32a2b6a7604d793865e296d",
+  "blockers": [
+    "Source-specific signed human publication authorization and independent trust anchors are absent.",
+    "Rights, website/contract conditions and Act commentary sufficiency need human/legal resolution.",
+    "543 remaining selections and page-wide context need further visual review; legal currentness remains unknown.",
+    "Target Linux/Render cold start, capacity and actual approved artifact delivery/deployment remain unverified.",
+    "Live Groq key/model and real microphone/audio acceptance remain unavailable."
+  ],
+  "branch": "feat/working-legal-chat-mvp",
+  "changed_files": [
+    ".env.example",
+    "backend/chat/service.py",
+    "backend/public_corpus/__main__.py",
+    "backend/public_corpus/models.py",
+    "backend/public_corpus/runtime.py",
+    "backend/public_corpus/authorization.py",
+    "backend/public_corpus/candidate_review.py",
+    "backend/public_corpus/delivery.py",
+    "backend/requirements-runtime.txt",
+    "backend/requirements.txt",
+    "backend/tests/public_corpus_e2e_server.py",
+    "backend/tests/public_corpus_fixtures.py",
+    "backend/tests/test_public_corpus.py",
+    "backend/tests/test_public_authorization.py",
+    "docs/deployment-publication.json",
+    "docs/public-corpus-deployment.md",
+    "docs/publication-candidate-manifest.json",
+    "docs/publication-decision.schema.json",
+    "docs/publication-review.json",
+    "docs/publication-review.md",
+    "docs/publication-release-results.json",
+    "render.yaml"
+  ],
+  "date": "2026-11-12",
+  "groq": {
+    "checked_scopes": [
+      "process",
+      "user",
+      "machine"
+    ],
+    "configured": false,
+    "live_inference": "NOT RUN; key/model missing"
+  },
+  "measurements": {
+    "candidate_preview": {
+      "forbidden_imports": [],
+      "iterations": 9,
+      "latency_max_ms": 452.753,
+      "latency_median_ms": 270.3,
+      "memory": {
+        "method": "Windows GetProcessMemoryInfo",
+        "peak_resident_mib": 61.957,
+        "resident_mib": 55.043
+      },
+      "mode": "bm25",
+      "passages": 555,
+      "preview_only": true,
+      "publication_approved": false,
+      "query": "BNS section 15",
+      "query_hits": 1,
+      "scope": "Fresh-process offline candidate with HTTP dependencies; not Render/Linux capacity certification",
+      "startup_seconds": 0.8958
+    },
+    "linux_render_certified": false,
+    "synthetic_signed": {
+      "iterations": 9,
+      "memory": {
+        "method": "Windows GetProcessMemoryInfo",
+        "peak_resident_mib": 53.492,
+        "resident_mib": 49.527
+      },
+      "passages": 1,
+      "scope": "Fresh-process SYNTHETIC one-selection signed runtime with HTTP/crypto imports; NOT real corpus authorization",
+      "search_and_citation_max_ms": 12.768,
+      "search_and_citation_median_ms": 11.64,
+      "sources": 1,
+      "startup_seconds": 0.6338
+    }
+  },
+  "native_voice": "Manual microphone/accuracy/audible playback not verified; synthetic and unsupported-API flows pass",
+  "preservation": {
+    "candidate_v2_unchanged": true,
+    "physical_pages": 404,
+    "private_index_digest": "6cc6f59ef5d2799570881a1182e36f1e2d36056a7055fac3cb675ca2532a9823",
+    "private_selections": 555,
+    "processed_records": 6,
+    "protected_hashes_matched": 129,
+    "raw_pdfs": 6,
+    "real_allowlist_entries": 0,
+    "real_approvals": 0,
+    "real_events": 0,
+    "real_publication_approvals": 0,
+    "real_submissions": 0,
+    "v1_archive_hashes_matched": 80,
+    "v1_chain": "PASS",
+    "v1_packets_unchanged": true,
+    "v2_chain": "PASS",
+    "v2_mapping": "PASS",
+    "v2_proposed_packets": 3
+  },
+  "publication": {
+    "approved": false,
+    "deployed": false,
+    "published": false,
+    "pushed": false,
+    "release_usable_without_approval": 0,
+    "rights_review": "Acts require legal review; notifications eligible for human review, not automatically licensed."
+  },
+  "runtime_package": {
+    "approval_included": false,
+    "corpus_included": false,
+    "exact_citation": "PASS",
+    "inventory_files": 1,
+    "isolated_environment": "PASS; only declared minimal requirements installed; no pytest/PDF/ML dependencies",
+    "missing_corpus_chat": 503,
+    "missing_corpus_readiness": 503,
+    "private_dependency": false,
+    "private_sources_included": false,
+    "production_cors": "PASS",
+    "published": false,
+    "runtime_files": 17,
+    "synthetic_authenticated_chat": 200,
+    "synthetic_signed_readiness": 200,
+    "unauthorized_request": 401,
+    "zip_bytes": 21282,
+    "zip_sha256": "7a53faf8b170380075419971c5263538e0c1bf5dd46286af97639e62e3e7135c"
+  },
+  "schema_version": 1,
+  "tests": {
+    "backend": {
+      "failed": 0,
+      "passed": 328,
+      "seconds": 141.0,
+      "warning": "Existing StarletteDeprecationWarning: httpx with TestClient deprecated; not suppressed.",
+      "warnings": 1
+    },
+    "browser_mocked_provider_synthetic_speech": {
+      "checks": 16,
+      "source_bindings": 5
+    },
+    "browser_mocked_provider_unsupported_speech": {
+      "checks": 13,
+      "source_bindings": 5
+    },
+    "browser_signed_public_synthetic": {
+      "checks": 5,
+      "live_groq": false
+    },
+    "frontend_lint": "PASS",
+    "frontend_production_build": "PASS",
+    "frontend_typescript": "PASS",
+    "initial_issues_resolved": [
+      "npm.ps1 blocked by existing PowerShell policy; npm.cmd passes without policy changes.",
+      "New revocation test exposed HTTP 200 empty response; production now returns 503 for invalid public authorization.",
+      "New test read guard initially applied to offline preparation; limited assertion to runtime, preserving excluded-source protection.",
+      "New candidate private-path regex initially matched escaped JSON newlines; corrected before creating candidate-v3."
+    ],
+    "provider_guard_tests": 3,
+    "publication_authorization": {
+      "passed": 23,
+      "scope": "SYNTHETIC only; signatures, source inclusion/exclusion/revocation, stale pins, QA quarantine"
+    }
+  },
+  "verdict": "READY_FOR_HUMAN_PUBLICATION_REVIEW"
+}

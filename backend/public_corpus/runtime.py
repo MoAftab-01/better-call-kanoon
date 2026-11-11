@@ -10,7 +10,7 @@ import re
 import time
 
 from backend.retrieval.scoring import BM25, query_policy, tokens
-from .models import Corpus, Manifest, PublicationDecision, sha
+from .models import Corpus, Manifest, sha
 
 
 def unique(pairs):
@@ -43,7 +43,7 @@ def parse(data):
         raise ValueError('Public JSON exceeds supported nesting') from None
 
 
-def load(directory, expected_sha256, decision_file=None, decision_sha256=None, *, preview=False):
+def metadata(directory, expected_sha256, decision_file=None, decision_sha256=None, *, preview=False, trusted_key=None):
     if not re.fullmatch(r'[0-9a-f]{64}',expected_sha256 or ''):
         raise ValueError('Explicit publication manifest pin required')
     root = Path(directory)
@@ -51,30 +51,51 @@ def load(directory, expected_sha256, decision_file=None, decision_sha256=None, *
     if sha(payload) != expected_sha256:
         raise ValueError('Publication manifest hash mismatch')
     manifest = Manifest.model_validate(parse(payload))
-    if set(manifest.files) != {'corpus.json','NOTICE.md'}:
-        raise ValueError('Complete publication inventory required')
-    if {p.name for p in root.iterdir()} != {'manifest.json',*manifest.files}:
-        raise ValueError('Unauthorized corpus files')
+    included = {s.document_id for s in manifest.sources}
     if not preview:
         if not decision_file or not re.fullmatch(r'[0-9a-f]{64}',decision_sha256 or ''):
             raise ValueError('Explicit separately pinned publication decision required')
-        decision = read(decision_file, 8192)
+        decision = read(decision_file, 32768)
         if sha(decision) != decision_sha256:
             raise ValueError('Publication decision hash mismatch')
-        record = PublicationDecision.model_validate(parse(decision))
-        if record.manifest_sha256 != expected_sha256:
-            raise ValueError('Publication decision covers another corpus')
+        from .authorization import authorize
+        included = authorize(parse(decision), manifest, expected_sha256, trusted_key)
+    names = set(manifest.files) if preview or manifest.schema_version == 1 else {
+        'NOTICE.md', *(s.filename for s in manifest.sources if s.document_id in included)}
+    return root,manifest,names,included
+
+
+def load(directory, expected_sha256, decision_file=None, decision_sha256=None, *, preview=False, trusted_key=None):
+    root,manifest,names,included = metadata(directory,expected_sha256,decision_file,decision_sha256,
+        preview=preview,trusted_key=trusted_key)
+    if {p.name for p in root.iterdir()} != {'manifest.json',*names}:
+        raise ValueError('Unauthorized or excluded corpus files')
     blobs = {}
-    for name,entry in manifest.files.items():
+    for name in sorted(names):
+        entry = manifest.files[name]
         blob = read(root/name,4*1024*1024)
         if len(blob) != entry.bytes or sha(blob) != entry.sha256:
             raise ValueError('Corpus file hash/size mismatch')
         blobs[name] = blob
     if not blobs['NOTICE.md'].strip():
         raise ValueError('Publication commentary/notice required')
-    corpus = Corpus.model_validate(parse(blobs['corpus.json']))
-    if len(corpus.sources) != manifest.source_count or len(corpus.passages) != manifest.passage_count:
-        raise ValueError('Publication inventory count differs')
+    if manifest.schema_version == 1:
+        corpus = Corpus.model_validate(parse(blobs['corpus.json']))
+        if len(corpus.sources) != manifest.source_count or len(corpus.passages) != manifest.passage_count:
+            raise ValueError('Publication inventory count differs')
+    else:
+        shards = []
+        for entry in sorted(manifest.sources, key=lambda s:s.document_id):
+            if entry.document_id not in included:
+                continue  # Excluded bytes are neither read nor parsed.
+            shard = Corpus.model_validate(parse(blobs[entry.filename]))
+            if (len(shard.sources) != 1 or shard.sources[0].document_id != entry.document_id or
+                    shard.sources[0].raw_sha256 != entry.raw_sha256 or len(shard.passages) != entry.passage_count):
+                raise ValueError('Source shard identity/count mismatch')
+            shards.append(shard)
+        corpus = Corpus(schema_version=1,sources=[s for c in shards for s in c.sources],
+            pages=[p for c in shards for p in c.pages],passages=[p for c in shards for p in c.passages],
+            legal_currentness='unknown',review_approval='none; publication permission is not legal evidence approval')
     return manifest,corpus
 
 

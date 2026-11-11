@@ -21,6 +21,7 @@
     "backend/chat/provider.py",
     "backend/chat/service.py",
     "backend/public_corpus/__init__.py",
+    "backend/public_corpus/authorization.py",
     "backend/public_corpus/models.py",
     "backend/public_corpus/runtime.py",
     "backend/requirements-runtime.txt",
