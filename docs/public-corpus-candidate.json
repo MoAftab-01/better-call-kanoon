@@ -1,0 +1,118 @@
+{
+  "archive_bytes": 378552,
+  "archive_sha256": "5ca56186069798608b85413d85aa288bd32d59a1d3e7c2ab591f5d4fcdb58ed0",
+  "date": "2026-11-12",
+  "exclusions": [
+    "raw PDFs",
+    "private processed records",
+    "review events and approval stores",
+    "private catalogue hashes and candidate IDs",
+    "workstation paths and diagnostic metadata",
+    "user conversations",
+    "embeddings and private indexes",
+    "hard-excluded pages and uncertain cross-page joins"
+  ],
+  "files": {
+    "NOTICE.md": {
+      "bytes": 2393,
+      "sha256": "8a863d3c8879787f8c859ce02033179c006705f44100e458cfd3c1fa5d7f4e90"
+    },
+    "corpus.json": {
+      "bytes": 1527630,
+      "sha256": "65f2060c5e8485b7998aacf8e7e9fb580a9e07200a1ba9589d7954964873a95d"
+    }
+  },
+  "manifest_sha256": "bbbc799f2583145c0ac704c518cfe2f5d0049d490994d7e0cbabf19df47c1fa6",
+  "pages": 194,
+  "passages": 555,
+  "publication_approved": false,
+  "rights_assessment": "CONDITIONAL; commentary alone is not rights clearance",
+  "schema_version": 1,
+  "sources": [
+    {
+      "document_id": "doc_0db8a86a0cf41fbf5ee304ee84b8b145da0bd523af510baf351d79d051ef657d",
+      "edition": "original Gazette commencement notification",
+      "instrument": "S.O. 848(E)",
+      "issuing_authority": "Government of India, Ministry of Home Affairs",
+      "kind": "notification",
+      "legal_currentness": "unknown",
+      "physical_pages": 2,
+      "provenance": "official_gazette_identity_checked_at_preparation",
+      "publication_date": "2024-02-24",
+      "raw_sha256": "0db8a86a0cf41fbf5ee304ee84b8b145da0bd523af510baf351d79d051ef657d",
+      "source_url": "https://egazette.gov.in/WriteReadData/2024/252354.pdf",
+      "title": "NOTIFICATION"
+    },
+    {
+      "document_id": "doc_31ee68ea57b5303bf6697b5d8cb2004b9eb9180d7e9cbcbbdbf5bccab7cda5c1",
+      "edition": "original enacted Gazette publication; not consolidated",
+      "instrument": "Act 47/2023",
+      "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+      "kind": "act",
+      "legal_currentness": "unknown",
+      "physical_pages": 47,
+      "provenance": "official_gazette_identity_checked_at_preparation",
+      "publication_date": "2023-12-25",
+      "raw_sha256": "31ee68ea57b5303bf6697b5d8cb2004b9eb9180d7e9cbcbbdbf5bccab7cda5c1",
+      "source_url": "https://egazette.gov.in/WriteReadData/2023/250882.pdf",
+      "title": "The Bharatiya Sakshya Adhiniyam, 2023"
+    },
+    {
+      "document_id": "doc_5e60e2afe30d0fe7eca4f8126301146b76c86a444e690581f81eb564843517fe",
+      "edition": "original enacted Gazette publication; not consolidated",
+      "instrument": "Act 46/2023",
+      "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+      "kind": "act",
+      "legal_currentness": "unknown",
+      "physical_pages": 249,
+      "provenance": "official_gazette_identity_checked_at_preparation",
+      "publication_date": "2023-12-25",
+      "raw_sha256": "5e60e2afe30d0fe7eca4f8126301146b76c86a444e690581f81eb564843517fe",
+      "source_url": "https://egazette.gov.in/WriteReadData/2023/250884.pdf",
+      "title": "The Bharatiya Nagarik Suraksha Sanhita, 2023"
+    },
+    {
+      "document_id": "doc_67c92f7869420685e6cdc29b1bdde19fff91312b10241b3ed3e1163c5399600b",
+      "edition": "original enacted Gazette publication; not consolidated",
+      "instrument": "Act 45/2023",
+      "issuing_authority": "Ministry of Law and Justice (Legislative Department), Government of India",
+      "kind": "act",
+      "legal_currentness": "unknown",
+      "physical_pages": 102,
+      "provenance": "official_gazette_identity_checked_at_preparation",
+      "publication_date": "2023-12-25",
+      "raw_sha256": "67c92f7869420685e6cdc29b1bdde19fff91312b10241b3ed3e1163c5399600b",
+      "source_url": "https://egazette.gov.in/WriteReadData/2023/250883.pdf",
+      "title": "The Bharatiya Nyaya Sanhita, 2023"
+    },
+    {
+      "document_id": "doc_dfcd5df23fb711f2996959b13ee6ff6bd32ed38be1e1f2d1c820cbba86e2a8c9",
+      "edition": "original Gazette commencement notification",
+      "instrument": "S.O. 850(E)",
+      "issuing_authority": "Government of India, Ministry of Home Affairs",
+      "kind": "notification",
+      "legal_currentness": "unknown",
+      "physical_pages": 2,
+      "provenance": "official_gazette_identity_checked_at_preparation",
+      "publication_date": "2024-02-24",
+      "raw_sha256": "dfcd5df23fb711f2996959b13ee6ff6bd32ed38be1e1f2d1c820cbba86e2a8c9",
+      "source_url": "https://egazette.gov.in/WriteReadData/2024/252353.pdf",
+      "title": "NOTIFICATION"
+    },
+    {
+      "document_id": "doc_fde9e9722eb4c01375525c2a30442903371913f4199b8cef1d031535d88228e7",
+      "edition": "original Gazette commencement notification",
+      "instrument": "S.O. 849(E)",
+      "issuing_authority": "Government of India, Ministry of Home Affairs",
+      "kind": "notification",
+      "legal_currentness": "unknown",
+      "physical_pages": 2,
+      "provenance": "official_gazette_identity_checked_at_preparation",
+      "publication_date": "2024-02-24",
+      "raw_sha256": "fde9e9722eb4c01375525c2a30442903371913f4199b8cef1d031535d88228e7",
+      "source_url": "https://egazette.gov.in/WriteReadData/2024/252352.pdf",
+      "title": "NOTIFICATION"
+    }
+  ],
+  "unpacked_bytes": 1530922
+}

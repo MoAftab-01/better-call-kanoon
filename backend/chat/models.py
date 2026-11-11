@@ -52,10 +52,10 @@ class Citation(StrictModel):
     end_line: int
     quote: str
     raw_sha256: str
-    processed_sha256: str
+    processed_sha256: str | None
     text_sha256: str
-    catalog_sha256: str
-    qa_sha256: str
+    catalog_sha256: str | None
+    qa_sha256: str | None
     evidence_status: Literal["ARCHIVAL_UNVERIFIED"] = "ARCHIVAL_UNVERIFIED"
     attribution: Literal["document_only", "printed_label"] = "document_only"
     printed_number_unverified: str | None = None
@@ -63,6 +63,8 @@ class Citation(StrictModel):
     context_text: str = ""
     context_text_sha256: str = ""
     version_description: str = "original archival source; currentness unknown"
+    publication_manifest_sha256: str | None = None
+    publication_commentary: str | None = None
 
 
 class ProviderStatus(StrictModel):

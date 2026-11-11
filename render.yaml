@@ -1,0 +1,29 @@
+# Preparation only. Initial deployment and corpus publication need explicit approval.
+services:
+  - type: web
+    name: better-call-kanoon-api
+    runtime: python
+    plan: free
+    autoDeployTrigger: off
+    buildCommand: python -m pip install -r backend/requirements-runtime.txt
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT --workers 1 --no-access-log
+    healthCheckPath: /api/health
+    envVars:
+      - key: KANOON_ENV
+        value: production
+      - key: CORPUS_KIND
+        value: public
+      - key: RETRIEVAL_MODE
+        value: bm25
+      - key: KANOON_ACCESS_TOKEN
+        sync: false
+      - key: KANOON_ALLOWED_ORIGINS
+        sync: false
+      - key: PUBLIC_CORPUS_DIR
+        value: ./public-corpus
+      - key: PUBLIC_CORPUS_MANIFEST_SHA256
+        sync: false
+      - key: PUBLIC_CORPUS_APPROVAL_FILE
+        value: ./publication-approval.json
+      - key: PUBLIC_CORPUS_APPROVAL_SHA256
+        sync: false

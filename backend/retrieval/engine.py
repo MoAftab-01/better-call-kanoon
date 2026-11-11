@@ -3,9 +3,7 @@
 No embeddings are downloaded. Every search revalidates source bindings. Indexing
 is not approval; this release exports no VERIFIED_REVIEWED evidence.
 """
-from collections import Counter
 from dataclasses import dataclass
-import math
 import hashlib
 import json
 import os
@@ -17,52 +15,7 @@ from backend.review.models import Candidate
 from backend.review.service import exclusion_reasons, span_text, validate_candidate
 
 ROOT = Path(__file__).resolve().parents[2]
-STOP = set("a an the of in on at to for and or is are was were does do what when which this that it its said me my please tell about".split())
-TOPICS = {
-    "bns": ("bharatiya nyaya sanhita", "850"),
-    "bnss": ("bharatiya nagarik suraksha sanhita", "848"),
-    "bsa": ("bharatiya sakshya adhiniyam", "849"),
-}
-INJECTION = re.compile(r"ignore\s+(?:all\s+)?(?:previous|prior|system)|system\s*(?:prompt|message)|reveal\s+(?:secrets|keys)|\[/?INST\]|<\|(?:system|assistant)", re.I)
-OUTSIDE = re.compile(r"\b(consumer|tenant|tenancy|landlord|rental|employment|employer|salary|workplace|divorce|tax|copyright)\b", re.I)
-
-
-def tokens(text):
-    words = re.findall(r"[a-z]+|\d+", text.lower())
-    result = [w for w in words if w not in STOP]
-    for short, names in TOPICS.items():
-        if short in result or any(name in text.lower() for name in names):
-            result.append("topic_" + short)
-    return result
-
-
-def reciprocal_rank_fusion(rankings, k=60):
-    scores = Counter()
-    for ranking in rankings:
-        for rank, identifier in enumerate(dict.fromkeys(ranking), 1):
-            scores[identifier] += 1 / (k + rank)
-    return sorted(scores, key=lambda key: (-scores[key], key))
-
-
-class BM25:
-    def __init__(self, texts):
-        self.documents = [Counter(tokens(text)) for text in texts]
-        self.lengths = [sum(d.values()) for d in self.documents]
-        self.average = sum(self.lengths) / max(len(texts), 1)
-        self.frequency = Counter(t for doc in self.documents for t in doc)
-
-    def scores(self, query):
-        result = []
-        for doc, length in zip(self.documents, self.lengths, strict=True):
-            score = 0.0
-            for term in set(tokens(query)):
-                tf = doc[term]
-                if tf:
-                    df = self.frequency[term]
-                    idf = math.log(1 + (len(self.documents) - df + .5) / (df + .5))
-                    score += idf * tf * 2.5 / (tf + 1.5 * (.25 + .75 * length / max(self.average, 1)))
-            result.append(score)
-        return result
+from .scoring import BM25, INJECTION, OUTSIDE, tokens, reciprocal_rank_fusion
 
 
 @dataclass(frozen=True)
@@ -75,12 +28,16 @@ class Passage:
     printed_number: str | None = None
     qa_flags: tuple[str, ...] = ()
 
+    @property
+    def identifier(self):
+        return self.candidate.candidate_id
+
 
 class ArchivalIndex:
     mode = "bm25"
     semantic_status = "unavailable: no configured local embedding model; no downloads attempted"
 
-    def __init__(self, root=ROOT, loader=verify_metadata, *, expand=True, semantic=None):
+    def __init__(self, root=ROOT, loader=verify_metadata, *, expand=True, semantic=None, retrieval_mode=None):
         self.root = Path(root)
         self.loader = loader
         self.passages = []
@@ -143,8 +100,11 @@ class ArchivalIndex:
         self.bm25 = BM25([p.search_text for p in self.passages])
         self.version = hashlib.sha256(json.dumps(["archival-single-page-v1",
             [p.candidate.candidate_id for p in self.passages]], separators=(",", ":")).encode()).hexdigest()
+        selected_mode = retrieval_mode or os.environ.get("RETRIEVAL_MODE", "auto")
+        if selected_mode not in {"auto", "bm25", "hybrid"}:
+            raise ValueError("Unsupported retrieval mode")
         model_path = os.environ.get("KANOON_EMBEDDING_MODEL_PATH", "")
-        if semantic is not None or (model_path and self.passages):
+        if selected_mode != "bm25" and (semantic is not None or (model_path and self.passages)):
             try:
                 from .semantic import LocalSemantic
                 self.semantic = semantic or LocalSemantic(model_path, self.passages)

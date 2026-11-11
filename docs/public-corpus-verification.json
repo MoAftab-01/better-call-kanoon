@@ -1,0 +1,81 @@
+{
+  "backend_tests": 305,
+  "backend_warnings": [
+    "Existing Starlette/HTTPX deprecation"
+  ],
+  "benchmark": {
+    "abstention_cases": 9,
+    "abstention_count": 9,
+    "cases": 28,
+    "legal_correctness_not_evaluated": true,
+    "mode": "bm25",
+    "mrr": 0.9649122807017544,
+    "ndcg_at_5": 0.9736842105263158,
+    "preview_only": true,
+    "publication_approved": false,
+    "recall_at_5": 1.0,
+    "valid_citations": 61
+  },
+  "date": "2026-11-12",
+  "evidence": {
+    "audit_chains": "PASS",
+    "physical_pages": 404,
+    "private_selections": 555,
+    "protected_files": 129,
+    "real_approvals": 0,
+    "real_review_events": 0,
+    "source_documents": 6,
+    "v1_archive_files": 80,
+    "verified_allowlist_entries": 0
+  },
+  "frontend": {
+    "lint": "PASS",
+    "private_browser_synthetic_voice_checks": 14,
+    "private_browser_unsupported_voice_checks": 12,
+    "production_build": "PASS",
+    "provider_guard_tests": 3,
+    "synthetic_public_browser_checks": 5,
+    "typescript": "PASS"
+  },
+  "limitations": [
+    "No live Groq key/model",
+    "No real corpus publication decision",
+    "No deployment or Linux/Render capacity test",
+    "No native hardware voice acceptance",
+    "Windows measurements only; not a latency SLA"
+  ],
+  "measurement": {
+    "forbidden_imports": [],
+    "iterations": 9,
+    "latency_max_ms": 163.032,
+    "latency_median_ms": 134.656,
+    "memory": {
+      "method": "Windows GetProcessMemoryInfo",
+      "peak_resident_mib": 62.488,
+      "resident_mib": 56.258
+    },
+    "mode": "bm25",
+    "passages": 555,
+    "preview_only": true,
+    "publication_approved": false,
+    "query": "BNS section 15",
+    "query_hits": 1,
+    "scope": "Fresh-process offline candidate with HTTP dependencies; not Render/Linux capacity certification",
+    "startup_seconds": 0.6593
+  },
+  "publication_assessment": "CONDITIONAL; commentary alone is not comprehensive rights clearance",
+  "recovered": {
+    "modified_tracked": 4,
+    "new_python_files": 9
+  },
+  "runtime": {
+    "archive_bytes": 19415,
+    "archive_sha256": "dc8ebf90c185adc1e25de2d162bf77436e7544741f428ffa7f6fd88e5188d832",
+    "files": 16,
+    "isolated_synthetic_smoke": "PASS",
+    "private_or_ml_imports": false,
+    "real_corpus_approved": false
+  },
+  "schema_version": 1,
+  "verdict": "CONDITIONAL GO FOR DEPLOYMENT PREPARATION; NO-GO FOR PUBLIC CORPUS RELEASE"
+}

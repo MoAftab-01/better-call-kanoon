@@ -3,7 +3,8 @@ export interface Citation {
   id: string; candidate_id: string; document_id: string; title: string; instrument: string
   source_url: string | null; issuing_authority: string | null; publication_date: string | null
   pdf_page: number; start_line: number; end_line: number; quote: string
-  raw_sha256: string; processed_sha256: string; text_sha256: string
+  raw_sha256: string; processed_sha256: string | null; text_sha256: string
+  publication_manifest_sha256?: string | null; publication_commentary?: string | null
   printed_number_unverified?: string | null; qa_flags?: string[]; context_text?: string
   context_text_sha256?: string; version_description?: string
 }

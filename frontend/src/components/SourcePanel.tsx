@@ -15,9 +15,10 @@ export default function SourcePanel({ answer }: { answer: Answer | null }) {
               <details><summary>Exact cited text</summary><blockquote>{c.quote}</blockquote></details>
               {c.printed_number_unverified && <p>Printed numeric start: {c.printed_number_unverified}. Document-only attribution; section boundaries are automated and not visually approved.</p>}
               {c.version_description && <p>{c.version_description}</p>}
+              {c.publication_commentary && <p className="publication-commentary">{c.publication_commentary}</p>}
               {!!c.qa_flags?.length && <details><summary>Extraction quality warnings</summary><ul>{c.qa_flags.map(f => <li key={f}>{f.replaceAll('_', ' ')}</li>)}</ul><p>These warnings remain unresolved. Matching extracted text does not prove visual correctness.</p></details>}
               {c.context_text && <details><summary>Original surrounding context</summary><blockquote>{c.context_text}</blockquote><p>Context SHA-256: {c.context_text_sha256}</p></details>}
-              <details><summary>Evidence binding</summary><dl><dt>Document</dt><dd>{c.document_id}</dd><dt>Candidate (not approved)</dt><dd>{c.candidate_id}</dd><dt>Raw PDF SHA-256</dt><dd>{c.raw_sha256}</dd><dt>Processed SHA-256</dt><dd>{c.processed_sha256}</dd><dt>Exact text SHA-256</dt><dd>{c.text_sha256}</dd></dl></details>
+              <details><summary>Evidence binding</summary><dl><dt>Document</dt><dd>{c.document_id}</dd><dt>Source reference (not evidence approval)</dt><dd>{c.candidate_id}</dd><dt>Raw PDF SHA-256</dt><dd>{c.raw_sha256}</dd>{c.processed_sha256 && <><dt>Processed SHA-256</dt><dd>{c.processed_sha256}</dd></>}<dt>Exact text SHA-256</dt><dd>{c.text_sha256}</dd>{c.publication_manifest_sha256 && <><dt>Publication manifest SHA-256</dt><dd>{c.publication_manifest_sha256}</dd></>}</dl></details>
             </article>)}
         <p className="source-unavailable">Source identity does not prove legal correctness or current applicability. Existing proposals remain unapproved.</p>
       </div>

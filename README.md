@@ -31,6 +31,12 @@ evaluation, deployment preparation and honest remaining blockers.
 
 ## Windows PowerShell setup
 
+For the separate, approval-gated public BM25 runtime, candidate inventory and
+deployment configuration, see [public corpus deployment](docs/public-corpus-deployment.md).
+Candidate preparation is complete; real corpus publication and deployment still
+require explicit approval and applicable-rights review. No private evidence is
+bundled into that runtime, and it fails closed without a separately pinned decision.
+
 Use Python 3.12, Node.js 24 and npm. Run from the repository root:
 
 ```powershell

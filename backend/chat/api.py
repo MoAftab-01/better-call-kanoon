@@ -19,6 +19,7 @@ from .service import ChatService
 
 logger = logging.getLogger("kanoon.chat")
 ERRORS = {
+    "corpus_not_approved": "The public corpus has not been approved for serving.",
     "access_required": "Enter the private demo access token supplied by the operator.",
     "deployment_not_configured": "Public chat is disabled until the operator configures access protection.",
     "service_busy": "Two research requests are already running. Retry shortly.",
@@ -122,9 +123,10 @@ def create_app(service=None):
         data = chat.status()
         corpus = data["retrieval"]["passages"] > 0
         configured = not production or auth_ready
-        return JSONResponse(status_code=200 if configured else 503, content={
-            "status": "ready" if configured else "blocked", "corpus_available": corpus,
-            "research_ready": corpus and configured, "authentication_required": production,
+        ready = configured and (data['available'] or not getattr(chat.index,'public_runtime',False))
+        return JSONResponse(status_code=200 if ready else 503, content={
+            "status": "ready" if ready else "blocked", "corpus_available": corpus,
+            "research_ready": corpus and configured and data['available'], "authentication_required": production,
             "legal_currentness": "unknown"})
 
     @app.get("/api/chat/status")
