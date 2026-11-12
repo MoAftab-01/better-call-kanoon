@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.qa/
+tests/
+.env
+.env.*
+.git/
+*.tsbuildinfo

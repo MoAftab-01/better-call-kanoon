@@ -300,3 +300,19 @@ details summary { cursor:pointer; line-height:1.8; }
 .access-token input { width: 100%; min-width: 0; background: #111822; color: #f4f1e9; border: 1px solid #7e7358; border-radius: 6px; padding: 9px; }
 .browser-voice input:focus-visible, .access-token input:focus-visible { outline: 2px solid #e8c88a; outline-offset: 4px; }
 .citation-card blockquote { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 420px; overflow-y: auto; }
+
+
+.publication-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding: 20px;
+  border: 1px solid #806b3f;
+  border-radius: 12px;
+  background: #25241f;
+  color: #eee4ca;
+}
+.publication-notice > svg { flex-shrink: 0; margin-top: 3px; color: #e6c677; }
+.publication-notice h2 { margin: 0 0 8px; font-size: 1rem; }
+.publication-notice p { margin: 0; line-height: 1.65; overflow-wrap: anywhere; }

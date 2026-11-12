@@ -1,0 +1,193 @@
+{
+  "artifact": {
+    "approval_records_included": false,
+    "backend_source_files": 17,
+    "bytes": 70562,
+    "crc_and_hashes": "PASS",
+    "credentials_included": false,
+    "frontend_source_files": 24,
+    "inventory_files": 1,
+    "path": "backend/data/deployment/public-no-corpus-website-20261112.zip",
+    "private_evidence_included": false,
+    "published": false,
+    "sha256": "a387e00e00b1dbf9d028d062cdbac9383274169c19fd7c6ca074f1a986b26d63",
+    "source_files": 41,
+    "source_text_included": false,
+    "test_servers_included": false
+  },
+  "baseline_head": "07ff401cbda87b480d2ce968243f1b58064d688c",
+  "behavior": {
+    "available": false,
+    "fabricated_answers": false,
+    "fabricated_citations": false,
+    "health": 200,
+    "legal_questions_submittable": false,
+    "private_fallback": false,
+    "public_passages": 0,
+    "publication_gate_weakened": false,
+    "research_readiness": 503,
+    "research_state": "publication_pending"
+  },
+  "branch": "feat/working-legal-chat-mvp",
+  "changed_files": [
+    ".gitignore",
+    "README.md",
+    "backend/chat/api.py",
+    "backend/chat/service.py",
+    "backend/tests/public_website_e2e_server.py",
+    "backend/tests/test_public_website.py",
+    "docs/deployment-publication.json",
+    "docs/public-corpus-deployment.md",
+    "docs/public-website-deployment.md",
+    "docs/public-website-results.json",
+    "frontend/.vercelignore",
+    "frontend/package.json",
+    "frontend/scripts/check-hosted-env.mjs",
+    "frontend/src/App.tsx",
+    "frontend/src/chat.ts",
+    "frontend/src/components/BrowserVoice.tsx",
+    "frontend/src/components/ConversationWorkspace.tsx",
+    "frontend/src/components/LegalDisclaimer.tsx",
+    "frontend/src/components/SourcePanel.tsx",
+    "frontend/src/components/WelcomePanel.tsx",
+    "frontend/src/hooks/useBackendHealth.ts",
+    "frontend/src/hooks/useResearchStatus.ts",
+    "frontend/src/styles.css",
+    "frontend/tests/hosted-env.test.mjs",
+    "frontend/tests/public-runtime.mjs",
+    "frontend/vercel.json",
+    "render.yaml"
+  ],
+  "cold_start": {
+    "iterations": 9,
+    "node": "24.14.0",
+    "peak_resident_mib": 48.66,
+    "platform": "Windows",
+    "python": "3.12.10",
+    "resident_mib": 48.656,
+    "scope": "Fresh process with minimal runtime environment and TestClient HTTP imports/routes, not actual Render/Linux/network cold-start certification",
+    "startup_seconds": 1.1331,
+    "status_latency_max_ms": 4.007,
+    "status_latency_median_ms": 3.273
+  },
+  "date": "2026-11-12",
+  "dependency_audit": {
+    "critical": 0,
+    "full_npm_moderate_findings": 10,
+    "high": 0,
+    "production_npm_advisories": 0,
+    "scope": "ESLint/TypeScript-ESLint development tooling via minimatch; not served static runtime. Trusted source/configuration inputs only; risk unresolved; no forced overrides or major downgrades.",
+    "unique_underlying_advisory": "https://github.com/advisories/GHSA-g3hv-75wg-m249"
+  },
+  "deployment": {
+    "automatic_backend_deploys": false,
+    "backend_workers": 1,
+    "cloud_deployed": false,
+    "guide": "docs/public-website-deployment.md",
+    "hosted_validation": "Local source/config/build/route validation; no account-aware platform validation or live target smoke test",
+    "merged": false,
+    "mode": "public/bm25",
+    "pr_created": false,
+    "publication_pins": "Intentionally absent",
+    "pushed": false,
+    "render_config": "render.yaml",
+    "vercel_config": "frontend/vercel.json"
+  },
+  "groq": {
+    "backend_env_file_exists": false,
+    "checked_scopes": [
+      "process",
+      "user",
+      "machine"
+    ],
+    "configured": false,
+    "connect_timeout_seconds": 5,
+    "live_request": "NOT RUN: credentials absent",
+    "provider_timeout_seconds": 18,
+    "required_configuration": [
+      "GROQ_API_KEY",
+      "GROQ_MODEL"
+    ],
+    "root_env_file_exists": false,
+    "whole_request_seconds": 25
+  },
+  "integrity": {
+    "candidate_contexts": 194,
+    "candidate_selections": 555,
+    "candidate_v2_zip_unchanged": true,
+    "candidate_v3_zip_unchanged": true,
+    "physical_pages": 404,
+    "processed_records": 6,
+    "protected_paths_unchanged": 129,
+    "raw_pdfs": 6,
+    "real_allowlist_entries": 0,
+    "real_legal_approvals": 0,
+    "real_publication_approvals": 0,
+    "real_review_events": 0,
+    "real_submissions": 0,
+    "v1_archive_files_unchanged": 80,
+    "v1_chain": "PASS",
+    "v1_proposals_unchanged": true,
+    "v2_chain": "PASS",
+    "v2_proposed_packets": 3
+  },
+  "objective": "Ready for separately authorized no-corpus website deployment; not an activated legal research service.",
+  "remaining_risks": [
+    "No cloud deployment URL was created or verified in this task.",
+    "Live Groq and real microphone/audible output remain unverified.",
+    "Ten moderate development dependency findings remain; production audit reports zero.",
+    "Render Free capacity/cold-start and target Linux environment remain unverified.",
+    "Legal research activation requires later source clearance, signed authorization and separate deployment action."
+  ],
+  "required_user_actions": [
+    "Review and separately authorize intended feature-branch push and hosting deployment.",
+    "Choose hosting accounts/projects and actual backend/frontend HTTPS origins.",
+    "Set backend access token and exact CORS origins; set Vercel VITE_API_BASE_URL before build.",
+    "Run target smoke tests, including expected readiness 503, and real-device voice acceptance.",
+    "Configure Groq credentials only if live integration verification is desired; it does not enable unapproved research."
+  ],
+  "schema_version": 1,
+  "tests": {
+    "backend": {
+      "failed": 0,
+      "passed": 333,
+      "seconds": 136.72,
+      "warning": "Existing StarletteDeprecationWarning about httpx with TestClient; not suppressed",
+      "warnings": 1
+    },
+    "browser": {
+      "live_groq": false,
+      "mocked_groq_synthetic_speech_checks": 16,
+      "mocked_groq_unsupported_speech_checks": 13,
+      "public_no_corpus_chat_posts": 0,
+      "public_no_corpus_checks": 6,
+      "synthetic_signed_public_checks": 5
+    },
+    "focused_public_authorization_isolation_website": {
+      "failed": 0,
+      "passed": 58
+    },
+    "frontend_lint": "PASS",
+    "frontend_production_build": "PASS",
+    "frontend_typescript": "PASS",
+    "hosted_build_guard": "PASS",
+    "hosted_build_scope": "Local HTTPS api.example test configuration; no real deployed URL claimed.",
+    "isolated_backend": "PASS: existing minimal runtime-only environment, isolated package imports, no private or ML dependencies",
+    "isolated_frontend": "PASS: npm ci --ignore-scripts and hosted build from extracted exact source package",
+    "node_tests": {
+      "hosted_environment_guard": 7,
+      "provider_guard": 3
+    }
+  },
+  "verdict": "READY_FOR_SEPARATELY_AUTHORIZED_NO_CORPUS_WEBSITE_DEPLOYMENT",
+  "voice": {
+    "automated": "Synthetic recognition/synthesis consent, permission denial, transcript draft, start/stop/cancel and unsupported API flows PASS; 320px Chrome layout PASS",
+    "manual_pending": [
+      "Real microphone permission and audio capture",
+      "Transcript accuracy on real devices",
+      "Audible synthesis output",
+      "Actual mobile browser support on HTTPS"
+    ],
+    "pending_public_mode": "Draft dictation is optional; no public answer or read-aloud response is fabricated."
+  }
+}

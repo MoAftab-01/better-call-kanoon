@@ -96,8 +96,8 @@ reverting both files and trusted pins. Never restore old pins automatically.
 ## Hosting configuration (not deployed)
 
 render.yaml: single Uvicorn worker, $PORT, minimal pinned runtime requirements,
-public BM25, automatic deployment off, secret/trust values sync:false. The explicit
-runtime ZIP includes 17 source/configuration files plus artifact-inventory.json;
+public BM25, automatic deployment off, secret/trust values sync:false. The backend uses 17 runtime/configuration files. The current combined website
+ZIP adds 24 frontend build files (41 total), plus artifact-inventory.json;
 no corpus, receipt, signing key, private source, model or diagnostic is included.
 The separate frontend uses frontend/vercel.json: Vite build, dist output, frontend
 project root. Set VITE_API_BASE_URL to the approved backend HTTPS origin. Secrets
@@ -140,3 +140,5 @@ citations, provenance, access protection and mobile rendering against it.
 backend.tests.chat_e2e_server uses a marked mock provider and real local archival
 retrieval for broader browser checks. Neither test writes real review events.
 See measured results for exact check counts and limitations.
+
+For the no-corpus website release, follow [the public website deployment guide](public-website-deployment.md). It supersedes hosting steps here while research remains unavailable.

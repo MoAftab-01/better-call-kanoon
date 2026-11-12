@@ -35,7 +35,7 @@ ERRORS = {
 
 
 def create_app(service=None):
-    app = FastAPI(title="Better Call Kanoon", description="Local archival research; no current-law certification.")
+    app = FastAPI(title="Better Call Kanoon", description="Archival research workspace; public source publication is required. No current-law certification.")
     app.state.chat = service
     lock, arrivals = threading.Lock(), deque()
     environment = os.environ.get("KANOON_ENV", "local")
@@ -127,6 +127,7 @@ def create_app(service=None):
         return JSONResponse(status_code=200 if ready else 503, content={
             "status": "ready" if ready else "blocked", "corpus_available": corpus,
             "research_ready": corpus and configured and data['available'], "authentication_required": production,
+            "research_state": data['research_state'], "message": data['research_message'],
             "legal_currentness": "unknown"})
 
     @app.get("/api/chat/status")

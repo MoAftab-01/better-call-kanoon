@@ -15,6 +15,7 @@ node_modules/
 frontend/dist/
 *.tsbuildinfo
 frontend/.qa/
+.vercel/
 
 # Local secrets
 .env

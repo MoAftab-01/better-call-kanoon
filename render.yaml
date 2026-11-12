@@ -1,10 +1,10 @@
-# Preparation only. Initial deployment and corpus publication need explicit approval.
+# No-corpus website deployment preparation. No approval or corpus is bundled.
 services:
   - type: web
     name: better-call-kanoon-api
     runtime: python
     plan: free
-    autoDeployTrigger: off
+    autoDeployTrigger: "off"
     buildCommand: python -m pip install -r backend/requirements-runtime.txt
     startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT --workers 1 --no-access-log
     healthCheckPath: /api/health
@@ -21,11 +21,9 @@ services:
         sync: false
       - key: PUBLIC_CORPUS_DIR
         value: ./public-corpus
-      - key: PUBLIC_CORPUS_MANIFEST_SHA256
-        sync: false
       - key: PUBLIC_CORPUS_APPROVAL_FILE
         value: ./publication-approval.json
-      - key: PUBLIC_CORPUS_APPROVAL_SHA256
-        sync: false
-      - key: PUBLIC_CORPUS_SIGNER_PUBLIC_KEY
-        sync: false
+# Leave PUBLIC_CORPUS_MANIFEST_SHA256, PUBLIC_CORPUS_APPROVAL_SHA256 and
+# PUBLIC_CORPUS_SIGNER_PUBLIC_KEY absent until independently authorized activation.
+# Missing pins keep research blocked; /api/health still supports hosting probes.
+# Optional GROQ_API_KEY / GROQ_MODEL are backend-only dashboard secrets.

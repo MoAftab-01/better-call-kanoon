@@ -1,11 +1,11 @@
 import { BookOpen, Phone } from 'lucide-react'
 import { officialSource, type Answer } from '../chat'
-export default function SourcePanel({ answer }: { answer: Answer | null }) {
+export default function SourcePanel({ answer, publicationPending = false }: { answer: Answer | null; publicationPending?: boolean }) {
   return <aside className="reference-column" aria-label="Sources and upcoming voice features">
     <section className="sources-panel" id="sources" aria-labelledby="sources-title" tabIndex={-1}>
       <header className="panel-header"><div className="panel-title"><BookOpen size={17} aria-hidden="true" /><h2 id="sources-title">Sources & citations</h2></div></header>
       <div className="sources-content">
-        {!answer ? <><div className="source-emblem" aria-hidden="true"><BookOpen size={30} strokeWidth={1.3} /></div><h3>Evidence beside the answer.</h3><p>Ask a supported question, then select an answer to inspect its actual sources. No sources are selected yet.</p></>
+        {!answer || publicationPending ? <><div className="source-emblem" aria-hidden="true"><BookOpen size={30} strokeWidth={1.3} /></div><h3>{publicationPending ? 'Sources are not available yet.' : 'Evidence beside the answer.'}</h3><p>{publicationPending ? 'Official-source publication is pending. This public workspace cannot provide legal citations until an authorized corpus is available.' : 'Ask a supported question, then select an answer to inspect its actual sources. No sources are selected yet.'}</p></>
           : !answer.citations.length ? <p>No adequate evidence was found for this answer. No citations are invented.</p>
             : answer.citations.map(c => <article className="citation-card" key={c.candidate_id}>
               <span className="evidence-badge">ARCHIVAL · UNREVIEWED</span>

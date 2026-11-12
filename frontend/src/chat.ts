@@ -17,7 +17,9 @@ export interface Answer {
 export interface ChatStatus {
   available: boolean; answer_mode: string; provider_configured: boolean
   authentication_required?: boolean
-  retrieval: { passages: number; mode: string; detail: string }
+  research_state: 'available' | 'publication_pending' | 'unavailable'
+  research_message: string
+  retrieval: { passages: number; mode: string; detail: string; corpus_kind?: string }
 }
 export interface Message { id: string; role: 'user' | 'assistant'; content: string; result?: Answer }
 export function officialSource(url: string | null): string | undefined {

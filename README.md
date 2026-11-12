@@ -1,6 +1,14 @@
 # Better Call Kanoon
 **Your AI Guide to Indian Law**
 
+**Public website deployment:** the application is prepared to run with no public
+corpus. Visitors see "Source publication pending"; legal research and citations
+stay unavailable until separate signed authorization. The private local research
+capability below is not the public site's availability claim. See the
+[hosted website deployment guide](docs/public-website-deployment.md) for the exact
+environment, deployment commands, smoke tests and rollback procedure. No cloud
+deployment or source publication has been performed.
+
 A locally hosted English legal research workspace built with FastAPI, React,
 TypeScript and Vite. It now supports end-to-end chat over a small, explicitly
 bounded archival corpus. It describes source documents; it does not determine

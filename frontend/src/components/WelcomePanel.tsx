@@ -1,14 +1,14 @@
 import { Scale } from 'lucide-react'
 
-export default function WelcomePanel() {
+export default function WelcomePanel({ publicationPending = false }: { publicationPending?: boolean }) {
   return (
     <section className="welcome-panel" aria-labelledby="welcome-title">
       <div className="welcome-copy">
         <p className="eyebrow"><span aria-hidden="true" /> A CLEARER WAY FORWARD</p>
         <h1 id="welcome-title">The law can feel complex.<br /><em>Understanding it shouldn’t.</em></h1>
         <p className="welcome-description">
-          Welcome to Better Call Kanoon. A space for your questions about Indian law,
-          designed to make legal information feel more approachable.
+          {publicationPending ? 'Welcome to Better Call Kanoon. Explore the workspace while official-source publication is pending. Public legal research is not active.'
+            : 'Welcome to Better Call Kanoon. A research workspace for Indian legal information. Research availability depends on authorized source access.'}
         </p>
       </div>
       <div className="welcome-art" aria-hidden="true">

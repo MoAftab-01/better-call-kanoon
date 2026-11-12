@@ -1,6 +1,5 @@
 import { ArrowUp, MessageSquare, Scale, Trash2 } from 'lucide-react'
 import { ReadAloud, VoiceInput } from './BrowserVoice'
-import { apiUrl } from '../api'
 import { useEffect, useRef, useState } from 'react'
 import { sendQuestion, type Answer, type ChatStatus, type Message } from '../chat'
 
@@ -12,12 +11,16 @@ const starters = [
   { label: 'BNSS archival text 25', question: 'BNSS section 25' },
   { label: 'BSA archival text 109', question: 'BSA section 109' },
 ]
-export default function ConversationWorkspace({ connected, onSelect }: { connected: boolean; onSelect: (answer: Answer | null) => void }) {
+export default function ConversationWorkspace({ connected, research, onSelect }: {
+  connected: boolean
+  research: { status: ChatStatus | null; error: boolean; retry: () => void }
+  onSelect: (answer: Answer | null) => void
+}) {
   const [draft, setDraft] = useState('')
   const [messages, setMessages] = useState<Message[]>([])
-  const [status, setStatus] = useState<ChatStatus | null>(null)
-  const [statusError, setStatusError] = useState(false)
-  const [statusAttempt, setStatusAttempt] = useState(0)
+  const { status, error: statusError, retry: retryStatus } = research
+  const publicationPending = status?.research_state === 'publication_pending'
+  const canResearch = connected && !statusError && !!status?.available
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [failedQuestion, setFailedQuestion] = useState('')
@@ -29,23 +32,11 @@ export default function ConversationWorkspace({ connected, onSelect }: { connect
   const sequence = useRef(0)
   const input = useRef<HTMLTextAreaElement>(null)
   const end = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    if (!connected) return
-    let active = true
-    const abort = new AbortController()
-    const timer = window.setTimeout(() => abort.abort(), 90000)
-    fetch(apiUrl('/api/chat/status'), { signal: abort.signal, cache: 'no-store' })
-      .then(r => { if (!r.ok) throw new Error(); return r.json() })
-      .then((s: ChatStatus) => { if (!s.retrieval || typeof s.available !== 'boolean') throw new Error(); setStatus(s); setStatusError(false) })
-      .catch(() => { if (active) setStatusError(true) })
-      .finally(() => window.clearTimeout(timer))
-    return () => { active = false; window.clearTimeout(timer); abort.abort() }
-  }, [connected, statusAttempt])
   useEffect(() => { end.current?.scrollIntoView({ block: 'nearest' }) }, [messages, busy])
   useEffect(() => () => { controller.current?.abort() }, [])
   async function submit(question = draft, retry = false) {
     const text = question.trim()
-    if (!text || sending.current || !connected || !status?.available) return
+    if (!text || sending.current || !canResearch) return
     sending.current = true
     setBusy(true); setError(''); setFailedQuestion(''); setDraft('')
     const serial = ++sequence.current
@@ -75,7 +66,7 @@ export default function ConversationWorkspace({ connected, onSelect }: { connect
   }
   const unavailable = !connected ? 'Backend disconnected. Use Retry in the connection indicator.'
     : statusError ? 'Chat service unavailable. Refresh the backend connection to retry.'
-      : !status ? 'Checking chat services...' : !status.available ? 'Chat service is unavailable.' : ''
+      : !status ? 'Checking research availability...' : !status.available ? status.research_message : ''
   return (
     <section className="conversation-panel" id="workspace" aria-labelledby="conversation-title" tabIndex={-1}>
       <header className="panel-header">
@@ -85,11 +76,13 @@ export default function ConversationWorkspace({ connected, onSelect }: { connect
       {!messages.length && <div className="conversation-empty">
         <div className="empty-emblem" aria-hidden="true"><Scale size={29} strokeWidth={1.4} /></div>
         <p className="section-kicker">RESEARCH WITH THE SOURCE IN VIEW</p>
-        <h3>Ask what the document says.</h3>
-        <p>Explore conservative selections from original BNS, BNSS and BSA Acts and commencement notifications. Coverage depends on the available local corpus. Answers quote unreviewed archival text, not your current legal rights.</p>
-        <div className="starter-area"><p>Start with an available source.</p><div className="starter-list">
+        <h3>{publicationPending ? 'Research is not available yet.' : canResearch ? 'Ask what the document says.' : 'Checking research availability.'}</h3>
+        <p>{publicationPending ? 'Official-source publication must be authorized before this website can provide legal answers or citations. You may prepare a draft; nothing can be submitted while research is unavailable.'
+          : canResearch ? 'Explore conservative selections from original BNS, BNSS and BSA Acts and commencement notifications. Coverage depends on the authorized corpus. Answers quote unreviewed archival text, not your current legal rights.'
+            : 'The workspace is available. Source suggestions and research become available only when the backend confirms source access.'}</p>
+        {canResearch && <div className="starter-area"><p>Start with an available source.</p><div className="starter-list">
           {starters.map(s => <button className="starter-button" type="button" key={s.label} onClick={() => { setDraft(s.question); input.current?.focus() }}>{s.label}</button>)}
-        </div></div>
+        </div></div>}
       </div>}
       {!!messages.length && <div className="message-list" role="log" aria-label="Conversation messages" aria-live="polite" aria-busy={busy}>
         {messages.map(m => <article key={m.id} className={'chat-message ' + m.role}>
@@ -107,9 +100,9 @@ export default function ConversationWorkspace({ connected, onSelect }: { connect
       </div>}
       {busy && <p className="chat-progress" role="status">Retrieving and checking source evidence...</p>}
       {error && <div className="chat-error" role="alert"><p>{error}</p><button type="button" disabled={busy || !connected} onClick={() => void submit(failedQuestion, true)}>Retry question</button></div>}
-      {statusError && connected && <button type="button" className="source-select" onClick={() => { setStatusError(false); setStatusAttempt(n => n + 1) }}>Retry chat readiness</button>}
+      {statusError && connected && <button type="button" className="source-select" onClick={retryStatus}>Retry chat readiness</button>}
       <form className="composer" onSubmit={e => { e.preventDefault(); void submit() }} aria-label="Legal research question">
-        {status?.authentication_required && <label className="access-token">Private demo access token (memory only)<input type="password" autoComplete="off" value={accessToken} onChange={e => setAccessToken(e.target.value)} maxLength={256} /><span>Use a token supplied privately by the operator. Never enter your Groq API key.</span></label>}
+        {status?.authentication_required && canResearch && <label className="access-token">Private demo access token (memory only)<input type="password" autoComplete="off" value={accessToken} onChange={e => setAccessToken(e.target.value)} maxLength={256} /><span>Use a token supplied privately by the operator. Never enter your Groq API key.</span></label>}
         <div className="composer-label-row"><label htmlFor="legal-question">Ask an archival legal research question</label><span className="draft-label">ENGLISH</span></div>
         <div className="composer-input"><textarea ref={input} id="legal-question" name="question" value={draft} onChange={e => setDraft(e.target.value)} maxLength={2000} rows={3}
           onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); void submit() } }}
@@ -118,9 +111,9 @@ export default function ConversationWorkspace({ connected, onSelect }: { connect
             <button className="send-button" type="submit" disabled={busy || !draft.trim() || !!unavailable} aria-label="Send question"><ArrowUp size={19} aria-hidden="true" /></button>
           </div></div>
         </div>
-        <p className="composer-notice" id="answer-availability" role="status">{unavailable || status?.answer_mode}{status && !status.retrieval.passages && ' No local corpus is loaded; unsupported questions receive an insufficient-evidence response.'}</p>
+        <p className="composer-notice" id="answer-availability" role="status">{unavailable || status?.answer_mode}{status && !status.retrieval.passages && status.retrieval.corpus_kind !== 'public' && ' No local corpus is loaded; unsupported questions receive an insufficient-evidence response.'}</p>
         {status && status.retrieval.passages > 0 && <p className="answer-mode">{status.retrieval.passages} unapproved archival selections · {status.retrieval.mode.toUpperCase()} · limited coverage</p>}
-        <p className="draft-privacy" id="draft-privacy">Questions go to your local backend and, when configured, Groq. History stays in browser memory (40 messages, six recent turns sent). Clear or reload to remove it.</p>
+        <p className="draft-privacy" id="draft-privacy">{publicationPending ? 'Drafts stay in this browser and cannot be submitted while publication is pending. ' : 'Submitted questions go to the backend and, when evidence is available and configured, Groq. '}History stays in browser memory (40 messages, six recent turns sent). Clear or reload to remove it.</p>
         <VoiceInput key={voiceEpoch} onText={setDraft} disabled={busy} />
       </form>
     </section>

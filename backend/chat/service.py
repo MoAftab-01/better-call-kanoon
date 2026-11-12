@@ -18,7 +18,13 @@ class ChatService:
 
     def status(self):
         retrieval = self.index.status()
-        return dict(available=bool(retrieval['passages']) and not getattr(self.index,'preview',False) if getattr(self.index,'public_runtime',False) else True, retrieval=retrieval,
+        public = getattr(self.index,'public_runtime',False)
+        available = bool(retrieval['passages']) and not getattr(self.index,'preview',False) if public else True
+        state = 'publication_pending' if public and not available else 'available' if retrieval['passages'] else 'unavailable'
+        return dict(available=available, retrieval=retrieval,research_state=state,
+            research_message=('Source publication is pending. Legal research is unavailable until an approved public corpus passes verification.'
+                if state == 'publication_pending' else 'Archival research is available; legal currentness remains unknown.'
+                if state == 'available' else 'No research corpus is available.'),
             provider_configured=self.settings.configured,
             answer_mode="Groq selects bounded evidence; server quotes exact sources" if self.settings.configured else "Extractive archival mode; Groq key/model not configured",
             privacy="Questions, bounded history and cited paragraphs go to Groq only when configured. No server conversation persistence.")

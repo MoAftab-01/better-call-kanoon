@@ -49,7 +49,7 @@ export function VoiceInput({ onText, disabled }: { onText: (text: string) => voi
       <button className="source-select" type="button" disabled={disabled || !consent} aria-pressed={listening} aria-describedby="speech-privacy" onClick={() => listening ? recognition.current?.stop() : start()}>
         {listening ? <Square size={15} /> : <Mic size={15} />}{listening ? 'Stop recording' : 'Dictate question'}</button>
       {listening && <button type="button" className="source-select" onClick={() => { if (recognition.current) { recognition.current.onresult = null; recognition.current.abort() }; setNotice('Recording cancelled.'); setListening(false) }}>Cancel recording</button>}
-    </> : <p>Speech recognition is unavailable in this browser. Typed chat works normally.</p>}
+    </> : <p>Speech recognition is unavailable in this browser. You can type a draft instead.</p>}
     <p role="status" aria-live="polite">{notice}</p>
   </div>
 }

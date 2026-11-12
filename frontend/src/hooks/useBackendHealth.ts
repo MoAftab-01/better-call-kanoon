@@ -58,7 +58,7 @@ export function useBackendHealth() {
           setConnection({
             state: 'disconnected',
             detail: controller.signal.aborted
-              ? 'The backend did not respond within 5 seconds. You can retry the connection.'
+              ? 'The backend may be starting or unavailable. It did not respond within 5 seconds; checks retry automatically.'
               : 'The backend is unavailable or returned an unexpected response. You can retry the connection.',
           })
         }
