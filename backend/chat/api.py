@@ -35,7 +35,7 @@ ERRORS = {
 
 
 def create_app(service=None):
-    app = FastAPI(title="Better Call Kanoon", description="Archival research workspace; public source publication is required. No current-law certification.")
+    app = FastAPI(title="Better Call AI", description="Archival research workspace; public source publication is required. No current-law certification.")
     app.state.chat = service
     lock, arrivals = threading.Lock(), deque()
     environment = os.environ.get("KANOON_ENV", "local")
@@ -112,7 +112,7 @@ def create_app(service=None):
 
     @app.get("/")
     def welcome():
-        return {"message": "Welcome to Better Call Kanoon"}
+        return {"message": "Welcome to Better Call AI"}
 
     @app.get("/api/health")
     def health():

@@ -43,7 +43,7 @@ export function VoiceInput({ onText, disabled }: { onText: (text: string) => voi
     catch { recognition.current = null; setListening(false); setNotice('Could not start the microphone. Continue typing.') }
   }
   return <div className="browser-voice">
-    <p id="speech-privacy">Browser voice is optional. Your browser may send audio to its speech provider; it may require an internet connection. Kanoon does not store audio.</p>
+    <p id="speech-privacy">Browser voice is optional. Your browser may send audio to its speech provider; it may require an internet connection. Better Call AI does not store audio.</p>
     {supported ? <>
       <label className="voice-consent"><input type="checkbox" checked={consent} disabled={listening} onChange={e => setConsent(e.target.checked)} />I agree to use browser speech recognition.</label>
       <button className="source-select" type="button" disabled={disabled || !consent} aria-pressed={listening} aria-describedby="speech-privacy" onClick={() => listening ? recognition.current?.stop() : start()}>

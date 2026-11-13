@@ -1,1 +1,1 @@
-"""Better Call Kanoon backend application."""
+"""Better Call AI backend application."""

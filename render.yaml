@@ -1,7 +1,7 @@
 # No-corpus website deployment preparation. No approval or corpus is bundled.
 services:
   - type: web
-    name: better-call-kanoon-api
+    name: better-call-ai-api
     runtime: python
     plan: free
     autoDeployTrigger: "off"

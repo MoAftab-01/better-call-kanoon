@@ -1,0 +1,681 @@
+{
+  "baseline": {
+    "backend_seconds": 290.49,
+    "backend_tests": 333,
+    "branch_head_and_remote": "PASS",
+    "protected_before_files": 179,
+    "working_tree": "clean before edits"
+  },
+  "baseline_head": "6f81a10cceb9341faabb4a52e8a60a6b3ecdab94",
+  "branch": "feat/working-legal-chat-mvp",
+  "branding_inventory": [
+    "HTML title and description",
+    "Frontend accessible home label and wordmark",
+    "Welcome, assistant name, privacy copy and footer",
+    "FastAPI title and human welcome message",
+    "Backend application docstring",
+    "Frontend package and lockfile name",
+    "Render service name",
+    "Current README and architecture title",
+    "Future candidate notice template only"
+  ],
+  "changed_files": [
+    "README.md",
+    "backend/app/__init__.py",
+    "backend/chat/api.py",
+    "backend/public_corpus/prepare.py",
+    "backend/tests/test_health.py",
+    "backend/tests/test_public_website.py",
+    "docs/architecture.md",
+    "docs/rebrand-report.json",
+    "docs/rebrand.md",
+    "frontend/index.html",
+    "frontend/package-lock.json",
+    "frontend/package.json",
+    "frontend/src/components/Brand.tsx",
+    "frontend/src/components/BrowserVoice.tsx",
+    "frontend/src/components/ConversationWorkspace.tsx",
+    "frontend/src/components/LegalDisclaimer.tsx",
+    "frontend/src/components/WelcomePanel.tsx",
+    "frontend/src/hooks/useBackendHealth.ts",
+    "frontend/tests/public-runtime.mjs",
+    "render.yaml"
+  ],
+  "compatibility": {
+    "api_paths_preserved": true,
+    "environment_names_preserved": true,
+    "health_service_identifier_preserved": true,
+    "logger_namespace_preserved": true,
+    "no_credentials_or_secret_migration": true,
+    "no_dependency_versions_changed": true,
+    "signature_domain_and_decision_schema_preserved": true,
+    "test_markers_preserved": true
+  },
+  "date": "2026-11-14",
+  "deployment": "Prepared only. Public source publication pending; no Render/Vercel deployment or account/resource changes.",
+  "evidence": {
+    "contexts": 194,
+    "corpus_published": false,
+    "existing_candidates_modified": false,
+    "original_pdfs": 6,
+    "physical_pages": 404,
+    "processed_records": 6,
+    "protected_files_sha256_matched": 179,
+    "real_allowlist_entries": 0,
+    "real_approvals": 0,
+    "real_publication_approvals": 0,
+    "real_review_events": 0,
+    "real_submissions": 0,
+    "selections": 555,
+    "source_text_modified": false,
+    "v1_and_v2_audit_chains": "PASS",
+    "v2_mapping_and_proposals": "PASS"
+  },
+  "external_operation_note": "The code rebrand is verified before commit/push. Repository and directory rename success are reported separately after their authorized operations.",
+  "intended_directory_basename": "Better Call AI",
+  "intended_repository": "MoAftab-01/better-call-ai",
+  "old_reference_summary": {
+    "files": 34,
+    "line_entries": 92,
+    "matches": 97,
+    "reasons": {
+      "historical_synthetic_provenance": 1,
+      "immutable_signature_domain": 1,
+      "migration_documentation": 6,
+      "protected_evidence_or_historical_publication_record": 20,
+      "stable_environment_variable": 50,
+      "stable_health_service_identifier": 6,
+      "stable_logger_namespace": 2,
+      "stable_test_marker": 6
+    }
+  },
+  "operational_limits": [
+    "Existing project/editor/terminal processes may lock the original directory; use one safe rename attempt or manual steps, never copy/delete.",
+    "Existing Windows virtual-environment console launchers can retain old absolute paths; use the preserved python.exe with -m.",
+    "Historical Git objects and main content retain prior branding; no history rewrite or merge is performed."
+  ],
+  "package": {
+    "bytes": 70558,
+    "inventory_and_crc": "PASS",
+    "private_artifacts_included": false,
+    "published": false,
+    "sha256": "6d1b5e1067355c475dda77e307b3ae5cdb9baf620be462842e7c5a3e15311643",
+    "source_files": 41,
+    "source_text_included": false
+  },
+  "product": "Better Call AI",
+  "remaining_old_references": [
+    {
+      "line": 6,
+      "matches": 1,
+      "path": ".env.example",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 8,
+      "matches": 1,
+      "path": ".env.example",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 9,
+      "matches": 1,
+      "path": ".env.example",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 10,
+      "matches": 1,
+      "path": ".env.example",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 99,
+      "matches": 1,
+      "path": "README.md",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 103,
+      "matches": 1,
+      "path": "README.md",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 20,
+      "matches": 1,
+      "path": "backend/chat/api.py",
+      "reason": "stable_logger_namespace"
+    },
+    {
+      "line": 41,
+      "matches": 1,
+      "path": "backend/chat/api.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 43,
+      "matches": 1,
+      "path": "backend/chat/api.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 45,
+      "matches": 1,
+      "path": "backend/chat/api.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 47,
+      "matches": 1,
+      "path": "backend/chat/api.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 119,
+      "matches": 1,
+      "path": "backend/chat/api.py",
+      "reason": "stable_health_service_identifier"
+    },
+    {
+      "line": 14,
+      "matches": 1,
+      "path": "backend/public_corpus/authorization.py",
+      "reason": "immutable_signature_domain"
+    },
+    {
+      "line": 6,
+      "matches": 1,
+      "path": "backend/retrieval/configuration.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 16,
+      "matches": 1,
+      "path": "backend/retrieval/configuration.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 106,
+      "matches": 1,
+      "path": "backend/retrieval/engine.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 37,
+      "matches": 1,
+      "path": "backend/tests/chat_e2e_server.py",
+      "reason": "stable_test_marker"
+    },
+    {
+      "line": 22,
+      "matches": 1,
+      "path": "backend/tests/fixtures/synthetic-manifest.json",
+      "reason": "historical_synthetic_provenance"
+    },
+    {
+      "line": 16,
+      "matches": 1,
+      "path": "backend/tests/public_corpus_e2e_server.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 17,
+      "matches": 1,
+      "path": "backend/tests/public_corpus_e2e_server.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 26,
+      "matches": 1,
+      "path": "backend/tests/public_corpus_e2e_server.py",
+      "reason": "stable_test_marker"
+    },
+    {
+      "line": 11,
+      "matches": 1,
+      "path": "backend/tests/public_website_e2e_server.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 12,
+      "matches": 1,
+      "path": "backend/tests/public_website_e2e_server.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 22,
+      "matches": 1,
+      "path": "backend/tests/public_website_e2e_server.py",
+      "reason": "stable_test_marker"
+    },
+    {
+      "line": 43,
+      "matches": 1,
+      "path": "backend/tests/test_chat_mvp.py",
+      "reason": "stable_logger_namespace"
+    },
+    {
+      "line": 49,
+      "matches": 1,
+      "path": "backend/tests/test_completion_sprint.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 50,
+      "matches": 1,
+      "path": "backend/tests/test_completion_sprint.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 54,
+      "matches": 1,
+      "path": "backend/tests/test_completion_sprint.py",
+      "reason": "stable_health_service_identifier"
+    },
+    {
+      "line": 58,
+      "matches": 1,
+      "path": "backend/tests/test_completion_sprint.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 59,
+      "matches": 1,
+      "path": "backend/tests/test_completion_sprint.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 60,
+      "matches": 1,
+      "path": "backend/tests/test_completion_sprint.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 72,
+      "matches": 1,
+      "path": "backend/tests/test_completion_sprint.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 79,
+      "matches": 1,
+      "path": "backend/tests/test_completion_sprint.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 21,
+      "matches": 1,
+      "path": "backend/tests/test_health.py",
+      "reason": "stable_health_service_identifier"
+    },
+    {
+      "line": 122,
+      "matches": 1,
+      "path": "backend/tests/test_public_authorization.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 94,
+      "matches": 1,
+      "path": "backend/tests/test_public_corpus.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 99,
+      "matches": 1,
+      "path": "backend/tests/test_public_corpus.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 105,
+      "matches": 1,
+      "path": "backend/tests/test_public_corpus.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 106,
+      "matches": 1,
+      "path": "backend/tests/test_public_corpus.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 192,
+      "matches": 1,
+      "path": "backend/tests/test_public_corpus.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 18,
+      "matches": 1,
+      "path": "backend/tests/test_public_website.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 23,
+      "matches": 1,
+      "path": "backend/tests/test_public_website.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 24,
+      "matches": 1,
+      "path": "backend/tests/test_public_website.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 40,
+      "matches": 1,
+      "path": "backend/tests/test_public_website.py",
+      "reason": "stable_health_service_identifier"
+    },
+    {
+      "line": 73,
+      "matches": 1,
+      "path": "backend/tests/test_public_website.py",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 50,
+      "matches": 1,
+      "path": "docs/completion-sprint.md",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 58,
+      "matches": 1,
+      "path": "docs/completion-sprint.md",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 138,
+      "matches": 2,
+      "path": "docs/completion-sprint.md",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 139,
+      "matches": 1,
+      "path": "docs/completion-sprint.md",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 55,
+      "matches": 1,
+      "path": "docs/evidence/v1-preservation.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 128,
+      "matches": 1,
+      "path": "docs/evidence/v1-preservation.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 201,
+      "matches": 1,
+      "path": "docs/evidence/v1-preservation.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 18,
+      "matches": 1,
+      "path": "docs/evidence/v2/acquired-legal-source-manifest-stage2c.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 44,
+      "matches": 1,
+      "path": "docs/evidence/v2/acquired-legal-source-manifest-stage2c.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 70,
+      "matches": 1,
+      "path": "docs/evidence/v2/acquired-legal-source-manifest-stage2c.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 96,
+      "matches": 1,
+      "path": "docs/evidence/v2/acquired-legal-source-manifest-stage2c.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 122,
+      "matches": 1,
+      "path": "docs/evidence/v2/acquired-legal-source-manifest-stage2c.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 148,
+      "matches": 1,
+      "path": "docs/evidence/v2/acquired-legal-source-manifest-stage2c.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 56,
+      "matches": 1,
+      "path": "docs/evidence/v2/packets/proposal_passage_241f23cc9f3ba925cdd7ba481ebf7892e6f1cdeaa18f74f17f08b3e8163130bb.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 56,
+      "matches": 1,
+      "path": "docs/evidence/v2/packets/proposal_passage_667c29888c46581982215e00f1d6a49502dd25cc486efc572473d9cd759d2611.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 56,
+      "matches": 1,
+      "path": "docs/evidence/v2/packets/proposal_passage_6c55f9a7fca605a78983e9cae28fa49712e5973bfc42a4a44e4435ad599de08f.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 1,
+      "matches": 1,
+      "path": "docs/legal-source-inventory-stage2b.md",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 22,
+      "matches": 1,
+      "path": "docs/proposed-legal-source-manifest-stage2b.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 48,
+      "matches": 1,
+      "path": "docs/proposed-legal-source-manifest-stage2b.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 74,
+      "matches": 1,
+      "path": "docs/proposed-legal-source-manifest-stage2b.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 100,
+      "matches": 1,
+      "path": "docs/proposed-legal-source-manifest-stage2b.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 126,
+      "matches": 1,
+      "path": "docs/proposed-legal-source-manifest-stage2b.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 152,
+      "matches": 1,
+      "path": "docs/proposed-legal-source-manifest-stage2b.json",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 13,
+      "matches": 1,
+      "path": "docs/public-corpus-deployment.md",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 24,
+      "matches": 1,
+      "path": "docs/public-corpus-deployment.md",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 25,
+      "matches": 1,
+      "path": "docs/public-corpus-deployment.md",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 46,
+      "matches": 1,
+      "path": "docs/public-website-deployment.md",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 49,
+      "matches": 1,
+      "path": "docs/public-website-deployment.md",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 50,
+      "matches": 1,
+      "path": "docs/public-website-deployment.md",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 138,
+      "matches": 1,
+      "path": "docs/public-website-deployment.md",
+      "reason": "stable_health_service_identifier"
+    },
+    {
+      "line": 178,
+      "matches": 1,
+      "path": "docs/publication-review.md",
+      "reason": "protected_evidence_or_historical_publication_record"
+    },
+    {
+      "line": 17,
+      "matches": 3,
+      "path": "docs/rebrand.md",
+      "reason": "migration_documentation"
+    },
+    {
+      "line": 18,
+      "matches": 2,
+      "path": "docs/rebrand.md",
+      "reason": "migration_documentation"
+    },
+    {
+      "line": 20,
+      "matches": 1,
+      "path": "docs/rebrand.md",
+      "reason": "migration_documentation"
+    },
+    {
+      "line": 24,
+      "matches": 2,
+      "path": "docs/rebrand.md",
+      "reason": "migration_documentation"
+    },
+    {
+      "line": 26,
+      "matches": 1,
+      "path": "docs/rebrand.md",
+      "reason": "migration_documentation"
+    },
+    {
+      "line": 84,
+      "matches": 1,
+      "path": "docs/rebrand.md",
+      "reason": "migration_documentation"
+    },
+    {
+      "line": 100,
+      "matches": 1,
+      "path": "docs/working-mvp.md",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 45,
+      "matches": 1,
+      "path": "frontend/src/hooks/useBackendHealth.ts",
+      "reason": "stable_health_service_identifier"
+    },
+    {
+      "line": 24,
+      "matches": 1,
+      "path": "frontend/tests/browser.mjs",
+      "reason": "stable_test_marker"
+    },
+    {
+      "line": 13,
+      "matches": 1,
+      "path": "frontend/tests/public-runtime.mjs",
+      "reason": "stable_test_marker"
+    },
+    {
+      "line": 15,
+      "matches": 1,
+      "path": "frontend/tests/public-runtime.mjs",
+      "reason": "stable_test_marker"
+    },
+    {
+      "line": 4,
+      "matches": 1,
+      "path": "frontend/vite.config.ts",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 6,
+      "matches": 1,
+      "path": "frontend/vite.config.ts",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 12,
+      "matches": 1,
+      "path": "render.yaml",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 18,
+      "matches": 1,
+      "path": "render.yaml",
+      "reason": "stable_environment_variable"
+    },
+    {
+      "line": 20,
+      "matches": 1,
+      "path": "render.yaml",
+      "reason": "stable_environment_variable"
+    }
+  ],
+  "schema_version": 1,
+  "tests": {
+    "backend_failed": 0,
+    "backend_passed": 333,
+    "backend_seconds": 214.88,
+    "backend_warnings": [
+      "Existing Starlette HTTPX/TestClient deprecation"
+    ],
+    "browser_mocked_provider_synthetic_speech_checks": 16,
+    "browser_mocked_provider_unsupported_speech_checks": 13,
+    "browser_new_title_accessible_brand_and_wordmark": "PASS",
+    "browser_pending_publication_checks": 6,
+    "browser_synthetic_signed_public_checks": 5,
+    "frontend_lint": "PASS",
+    "frontend_production_build": "PASS",
+    "frontend_typescript": "PASS",
+    "hosted_build": "PASS with HTTPS test origin; no deployment",
+    "isolated_package_runtime": "PASS: no private/ML imports, correct health/authentication, readiness blocked",
+    "node_guard_tests": 10
+  }
+}

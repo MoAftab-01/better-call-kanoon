@@ -50,7 +50,7 @@ export function useBackendHealth() {
         if (active && currentRequest === controller) {
           setConnection({
             state: 'connected',
-            detail: 'The Better Call Kanoon backend is healthy. Chat checks evidence and provider availability separately.',
+            detail: 'The Better Call AI backend is healthy. Chat checks evidence and provider availability separately.',
           })
         }
       } catch {

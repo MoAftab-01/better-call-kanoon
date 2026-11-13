@@ -7,8 +7,8 @@ export default function WelcomePanel({ publicationPending = false }: { publicati
         <p className="eyebrow"><span aria-hidden="true" /> A CLEARER WAY FORWARD</p>
         <h1 id="welcome-title">The law can feel complex.<br /><em>Understanding it shouldn’t.</em></h1>
         <p className="welcome-description">
-          {publicationPending ? 'Welcome to Better Call Kanoon. Explore the workspace while official-source publication is pending. Public legal research is not active.'
-            : 'Welcome to Better Call Kanoon. A research workspace for Indian legal information. Research availability depends on authorized source access.'}
+          {publicationPending ? 'Welcome to Better Call AI. Explore the workspace while official-source publication is pending. Public legal research is not active.'
+            : 'Welcome to Better Call AI. A research workspace for Indian legal information. Research availability depends on authorized source access.'}
         </p>
       </div>
       <div className="welcome-art" aria-hidden="true">

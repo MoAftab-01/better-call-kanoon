@@ -8,7 +8,7 @@ def test_welcome() -> None:
         response = client.get("/")
 
     assert response.status_code == 200
-    assert response.json() == {"message": "Welcome to Better Call Kanoon"}
+    assert response.json() == {"message": "Welcome to Better Call AI"}
 
 
 def test_health() -> None:

@@ -86,7 +86,7 @@ export default function ConversationWorkspace({ connected, research, onSelect }:
       </div>}
       {!!messages.length && <div className="message-list" role="log" aria-label="Conversation messages" aria-live="polite" aria-busy={busy}>
         {messages.map(m => <article key={m.id} className={'chat-message ' + m.role}>
-          <strong>{m.role === 'user' ? 'You' : 'Kanoon'}</strong>
+          <strong>{m.role === 'user' ? 'You' : 'Better Call AI'}</strong>
           {m.result && <span className="evidence-badge">{m.result.evidence_status.replaceAll('_', ' ')}</span>}
           <p>{m.content}</p>
           {m.result && <>

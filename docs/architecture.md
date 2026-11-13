@@ -1,4 +1,4 @@
-# Better Call Kanoon architecture
+# Better Call AI architecture
 
 The application currently provides a FastAPI health service and a React/TypeScript
 workspace. Question submission and voice calls remain unavailable. No retrieval

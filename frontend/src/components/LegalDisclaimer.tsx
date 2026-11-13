@@ -6,10 +6,10 @@ export default function LegalDisclaimer() {
       <Info size={16} aria-hidden="true" />
       <div>
         <h2>Information to help you understand. Not a substitute for a lawyer.</h2>
-        <p>Better Call Kanoon describes archival text, not current law or personalized legal advice.
+        <p>Better Call AI describes archival text, not current law or personalized legal advice.
           Research requires authorized sources. Submitted questions reach the backend and, when evidence is available and Groq is configured, Groq. Consult a qualified legal professional for your situation.</p>
       </div>
-      <span className="footer-wordmark" aria-hidden="true">Kanoon<span>.</span></span>
+      <span className="footer-wordmark" aria-hidden="true">AI<span>.</span></span>
     </footer>
   )
 }

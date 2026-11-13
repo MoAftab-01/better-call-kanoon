@@ -9,7 +9,7 @@ from .models import Corpus, Manifest, canonical, sha
 EXCLUSIONS = ['raw PDFs','private processed records','review events and approval stores',
     'private catalogue hashes and candidate IDs','workstation paths and diagnostic metadata',
     'user conversations','embeddings and private indexes','hard-excluded pages and uncertain cross-page joins']
-NOTICE = '''# Better Call Kanoon: candidate archival research corpus
+NOTICE = '''# Better Call AI: candidate archival research corpus
 
 NOT APPROVED FOR PUBLICATION. Preparing this package is not a legal evidence review.
 No passage has been promoted to a verified-evidence allowlist. Legal currentness,

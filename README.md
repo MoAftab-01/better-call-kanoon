@@ -1,5 +1,9 @@
-# Better Call Kanoon
+# Better Call AI
 **Your AI Guide to Indian Law**
+
+Repository: [MoAftab-01/better-call-ai](https://github.com/MoAftab-01/better-call-ai).
+The local folder name is **Better Call AI**. See [the rebrand guide](docs/rebrand.md)
+for compatibility names, preserved historical records and safe folder-rename steps.
 
 **Public website deployment:** the application is prepared to run with no public
 corpus. Visitors see "Source publication pending"; legal research and citations

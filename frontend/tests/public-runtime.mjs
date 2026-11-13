@@ -43,6 +43,10 @@ try{
  await rpc('Page.enable');await rpc('Runtime.enable');await rpc('Network.enable')
  if(publicationPending)await rpc('Page.addScriptToEvaluateOnNewDocument',{source:"Object.defineProperty(window,'SpeechRecognition',{value:undefined});Object.defineProperty(window,'webkitSpeechRecognition',{value:undefined});"})
  await rpc('Page.navigate',{url})
+ await until('document.querySelector(".brand")')
+ assert((await evaluate('document.title')).startsWith('Better Call AI |'))
+ assert.equal(await evaluate('document.querySelector(".brand").getAttribute("aria-label")'),'Better Call AI home')
+ assert.equal(await evaluate('document.querySelector(".brand-name strong").textContent'),'AI.')
  if(publicationPending){
   const health=await fetch(base+'/api/health'),ready=await fetch(base+'/api/ready')
   assert.equal(health.status,200);assert.equal(ready.status,503);assert.equal((await ready.json()).research_ready,false)
@@ -97,7 +101,7 @@ try{
  checks.push('clear removes displayed conversation and sources')
  }
  await mkdir(join(root,'frontend/.qa'),{recursive:true})
- const report={synthetic_only:true,publication_pending:publicationPending,live_groq:false,checks,...(publicationPending?{chat_posts:chatPosts}:{})}
+ const report={synthetic_only:true,publication_pending:publicationPending,branding_verified:true,live_groq:false,checks,...(publicationPending?{chat_posts:chatPosts}:{})}
  await writeFile(join(root,'frontend/.qa/'+(publicationPending?'public-no-corpus':'public-runtime')+'.json'),JSON.stringify(report,null,2))
  console.log(JSON.stringify(report))
 }finally{

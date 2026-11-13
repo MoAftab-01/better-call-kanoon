@@ -35,6 +35,8 @@ def website(tmp_path,monkeypatch):
 
 def test_healthy_website_reports_research_publication_pending(website):
     assert website.get('/').status_code==200
+    assert website.get('/').json()=={'message':'Welcome to Better Call AI'}
+    assert website.get('/openapi.json').json()['info']['title']=='Better Call AI'
     assert website.get('/api/health').json()=={'status':'healthy','service':'better-call-kanoon'}
     ready=website.get('/api/ready');assert ready.status_code==503
     assert ready.json()['research_ready'] is False and ready.json()['corpus_available'] is False
